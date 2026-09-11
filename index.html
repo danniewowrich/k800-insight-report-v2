@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>K800 食品饮料客户 · 生意洞察报告（26年1-8月 v4.2）</title>
+<title>K800 食品饮料客户 · 生意洞察报告（26年1-8月 v4.3）</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 :root{--blue:#2B6CB0;--blue-d:#2C5282;--orange:#DD6B20;--bg:#F7FAFC;--card:#fff;--t1:#1A202C;--t2:#4A5568;--green:#38A169;--red:#C0504D;--purple:#805AD5;}
@@ -35,7 +35,7 @@ td{padding:8px 11px;border-bottom:1px solid #F0F4F8;color:var(--t2);}
 td.num{text-align:right;font-variant-numeric:tabular-nums;} td.cat{font-size:12px;color:#718096;}
 tr:hover td{background:#F7FAFC;}
 .tag{background:#EBF8FF;color:var(--blue);padding:2px 8px;border-radius:6px;font-size:12px;}
-.tag.g{background:#F0FFF4;color:var(--green);} .tag.o{background:#FFFAF0;color:var(--orange);} .tag.r{background:#FFF5F5;color:var(--red);} .tag.p{background:#FAF5FF;color:var(--purple);}
+.tag.g{background:#F0FFF4;color:var(--green);} .tag.o{background:#FFFAF0;color:var(--orange);} .tag.r{background:#FFF5F5;color:var(--red);} .tag.p{background:#FAF5FF;color:var(--purple);} .tag.k{background:#FFF9DB;color:#B7791F;}
 .note{font-size:12px;color:#A0AEC0;margin-top:10px;}
 .tbl-title{font-size:14px;font-weight:600;color:var(--blue-d);margin-bottom:10px;}
 .scroll{max-height:520px;overflow-y:auto;}
@@ -55,6 +55,9 @@ tr:hover td{background:#F7FAFC;}
 .disc b{color:#C53030;}
 .explain{background:#EBF8FF;border:1px solid #90CDF4;border-radius:12px;padding:16px 20px;font-size:13px;color:#2A4365;margin:16px 0;line-height:1.8;}
 .explain b{color:var(--blue-d);}
+.callout{background:linear-gradient(135deg,#EBF8FF,#BEE3F8);border:1px solid #90CDF4;border-radius:14px;padding:18px 22px;font-size:13.5px;color:#2A4365;line-height:1.85;margin:20px 0;}
+.callout b{color:var(--blue-d);}
+.callout .q{font-weight:700;color:#C05621;}
 .cluster-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
 .cl{background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 4px 16px rgba(0,0,0,.05);border:1px solid #EDF2F7;border-top:4px solid var(--blue);}
 .cl.c0{border-top-color:var(--green);} .cl.c1{border-top-color:var(--orange);} .cl.c2{border-top-color:var(--blue);} .cl.c3{border-top-color:var(--purple);} .cl.c4{border-top-color:var(--red);}
@@ -71,36 +74,35 @@ tr:hover td{background:#F7FAFC;}
 </style></head><body><div class="wrap">
   <div class="hero">
     <h1>K800 食品饮料客户 · 生意洞察报告</h1>
-    <div class="sub">口径 2026年1-8月（ISO周 2026W01~2026W36）· <b>v4.2</b>。基于 adhome 49周店铺底表、新版竞价投放明细(631k行) 与微信小店35周GMV数据包，围绕四大板块构建 K800 281 家客户的生意洞察。</div>
+    <div class="sub">口径 2026年1-8月（ISO周 2026W01~2026W36）· <b>v4.3</b>。基于 adhome 49周店铺底表、新版竞价投放明细(631k行) 与微信小店35周GMV数据包，围绕四大板块构建 K800 281 家客户的生意洞察。</div>
     <div class="meta">
       <div class="m"><b>281</b><span>K800 客户品牌</span></div>
       <div class="m"><b>70.8亿</b><span>1-8月总GMV</span></div>
       <div class="m"><b>8.9亿</b><span>月均GMV</span></div>
       <div class="m"><b>50.2亿</b><span>广告GMV(35周包)</span></div>
-      <div class="m"><b>63%/37%</b><span>自营/分销 GMV占比</span></div>
+      <div class="m"><b>77</b><span>重微信豆客户(分销)</span></div>
     </div>
   </div>
 
   <div class="summary">
     <h2>报告摘要 · 四大板块速览</h2>
     <div class="sgrid">
-      <div class="si"><b>① 三级行业 GMV 结构</b><p>K800 281家、1-8月总GMV 70.8亿。膳食营养、粮油调味速食、冲调品居前；乳制品/传统滋补直播占比高达78%/80%，软饮料/休闲食品货架与短视频并重。</p></div>
-      <div class="si"><b>② 五象限客群</b><p>按主导渠道×自营分销分五类：<b>直播分销型 115家</b>占最多，<b>短视频自营型 10家但GMV 16.5亿</b>（含诺特兰德等天花板综合客户），货架型 39家待内容化。</p></div>
-      <div class="si"><b>③ 总GMV vs 广告GMV</b><p>两者强正相关(相关系数0.885)；对数轴散点看清左下密集的中小客户与右上头部客户的分层。</p></div>
-      <div class="si"><b>④ 广告GMV构成</b><p>35周包广告GMV 50.2亿：直播广告占76%、直投(=直购=短视频广告)24%；直播内自播61%>达播39%。新数据源商品链路口径合计38.5亿三分口径验证一致。</p></div>
+      <div class="si"><b>① 三级行业 GMV 结构</b><p>K800 281家、1-8月总GMV 70.8亿。膳食营养、粮油调味速食、冲调品居前；乳制品/传统滋补直播占比高达78%/80%。</p></div>
+      <div class="si"><b>② 五象限客群</b><p>直播分销型 115家（其中重微信豆53家）；直播自营型 65家/25.6亿最重；短视频自营型仅10家但16.5亿。</p></div>
+      <div class="si"><b>③ 总GMV vs 广告GMV</b><p>强正相关(相关系数0.885)。高广告依赖 30家（资金流向·盯ROI） vs 加投洼地 9家（增长机会·小额测试）。</p></div>
+      <div class="si"><b>④ 广告GMV构成</b><p>35周包：直播76%/直投(=短视频)24%；新数据源三分口径：短视频43%/直播39%/货架18%——两口径互为补充（见板块四解释）。</p></div>
     </div>
     <div class="explain" style="margin-top:16px;margin-bottom:0;">
       <b>⚠ 与旧版（26年1-7月，43.5亿）GMV差异说明：</b>本版 70.8亿 由三因素叠加，非重复统计——
-      <b>①数据源升级</b>（旧版反推口径→adhome精确 +7.0亿）、
-      <b>②时间窗延长</b>（1-7月→1-8月 +10.5亿）、
+      <b>①数据源升级</b>（+7.0亿）、<b>②时间窗延长</b>（1-7月→1-8月 +10.5亿）、
       <b>③客户名单扩充</b>（203→281家 +16.4亿）。
-      交集182家1-8月54.4亿 + 新增86家16.4亿 = 70.8亿。
+      交集182家54.4亿 + 新增86家16.4亿 = 70.8亿。
     </div>
   </div>
 
   <!-- ============ 板块1 ============ -->
   <div class="section"><div class="sec-title">板块一 · GMV 结构分析（分 KPI 三级行业）</div>
-    <div class="lead">K800 客户按 KPI 三级行业聚合，2026年1-8月总 GMV <b>70.81亿</b>（KPI已映射覆盖 47.04亿、占66%）。<b>结构差异明显</b>：休闲食品 直播42%>短视频31%>其他27%（短视频强于货架）；软饮料 直播44%>其他31%>短视频25%（<b>货架反而强于短视频</b>，属"货架型底盘"）；乳制品/传统滋补 直播占比78%/80% 高度依赖直播。</div>
+    <div class="lead">K800 客户按 KPI 三级行业聚合，2026年1-8月总 GMV <b>70.81亿</b>（KPI已映射覆盖 47.04亿、占66%）。<b>结构差异明显</b>：休闲食品 直播42%>短视频31%>其他27%（短视频强于货架）；软饮料 直播44%>其他31%>短视频25%（<b>货架反而强于短视频</b>）；乳制品/传统滋补 直播占比78%/80% 高度依赖直播。</div>
     <div class="card"><div id="c_s1bar" class="chart" style="height:440px;"></div></div>
     <div class="card" style="margin-top:20px;"><div class="tbl-title">KPI 三级行业 · GMV 规模与结构（按总GMV降序）</div>
       <div class="scroll"><table><thead><tr><th>三级行业</th><th>品牌数</th><th>总GMV</th><th>月均GMV</th><th>直播占比</th><th>短视频占比</th><th>其他占比</th><th>广告占比</th><th>头部品牌(万)</th></tr></thead><tbody><tr><td><b>膳食营养</b></td><td class='num'>6</td><td class='num'>18.25亿</td><td class='num'>2.28亿</td><td class='num'>49%</td><td class='num'>36%</td><td class='num'>15%</td><td class='num'>31%</td><td class='cat'>诺特兰德(125386)、华大营养(22041)、万益蓝(15524)、五个女博士(12435)、江中(6421)</td></tr><tr style="background:#FFF5F5;"><td><b>待映射</b></td><td class='num'>117</td><td class='num'>13.80亿</td><td class='num'>1.73亿</td><td class='num'>49%</td><td class='num'>24%</td><td class='num'>27%</td><td class='num'>13%</td><td class='cat'>百威(5124)、百草味(4800)、晟麦(4738)、佳沛(4342)、onlytree(3819)</td></tr><tr style="background:#FFF5F5;"><td><b>未匹配</b></td><td class='num'>78</td><td class='num'>9.97亿</td><td class='num'>1.25亿</td><td class='num'>65%</td><td class='num'>17%</td><td class='num'>17%</td><td class='num'>10%</td><td class='cat'>东方甄选(22025)、本来果坊(14041)、天海藏(10520)、自然搭档(5150)、世壮(3491)</td></tr><tr><td><b>粮油调味速食</b></td><td class='num'>15</td><td class='num'>7.81亿</td><td class='num'>0.98亿</td><td class='num'>51%</td><td class='num'>28%</td><td class='num'>21%</td><td class='num'>35%</td><td class='cat'>叮叮懒人菜(14958)、大希地(11856)、不集(10574)、锋味派(7984)、福月德(6298)</td></tr><tr><td><b>冲调品</b></td><td class='num'>7</td><td class='num'>5.09亿</td><td class='num'>0.64亿</td><td class='num'>59%</td><td class='num'>26%</td><td class='num'>15%</td><td class='num'>17%</td><td class='cat'>永和豆浆(12674)、南方黑芝麻(10742)、四只猫(9382)、喜纯(8710)、金味(4869)</td></tr><tr><td><b>乳制品</b></td><td class='num'>5</td><td class='num'>3.60亿</td><td class='num'>0.45亿</td><td class='num'>78%</td><td class='num'>8%</td><td class='num'>15%</td><td class='num'>31%</td><td class='cat'>认养一头牛(14688)、原始黄金(11934)、蒙牛(5083)、伊利(4110)、特仑苏(198)</td></tr><tr><td><b>休闲食品</b></td><td class='num'>8</td><td class='num'>3.26亿</td><td class='num'>0.41亿</td><td class='num'>42%</td><td class='num'>30%</td><td class='num'>27%</td><td class='num'>23%</td><td class='cat'>三只松鼠(18344)、劲家庄(4569)、德芙(3835)、袋鼠先生(2239)、七小七(1562)</td></tr><tr><td><b>软饮料</b></td><td class='num'>5</td><td class='num'>2.34亿</td><td class='num'>0.29亿</td><td class='num'>44%</td><td class='num'>25%</td><td class='num'>31%</td><td class='num'>41%</td><td class='cat'>轻上(6818)、椰谷(4725)、碧翠园(4523)、康师傅(4160)、春光(3176)</td></tr><tr><td><b>传统滋补</b></td><td class='num'>7</td><td class='num'>1.82亿</td><td class='num'>0.23亿</td><td class='num'>80%</td><td class='num'>6%</td><td class='num'>14%</td><td class='num'>38%</td><td class='cat'>华北制药(8678)、燕之屋(3703)、纯耕(2259)、小仙炖(1527)、官栈(1419)</td></tr><tr><td><b>白酒</b></td><td class='num'>3</td><td class='num'>1.25亿</td><td class='num'>0.16亿</td><td class='num'>60%</td><td class='num'>0%</td><td class='num'>40%</td><td class='num'>49%</td><td class='cat'>五粮液(6610)、手艺人(5032)、汾酒(825)</td></tr><tr><td><b>保健食品</b></td><td class='num'>7</td><td class='num'>1.06亿</td><td class='num'>0.13亿</td><td class='num'>74%</td><td class='num'>4%</td><td class='num'>22%</td><td class='num'>61%</td><td class='cat'>黄金搭档(2925)、汤臣倍健(2399)、健尔马(1546)、哈药(1286)、一鸣(1047)</td></tr><tr><td><b>啤酒</b></td><td class='num'>1</td><td class='num'>0.63亿</td><td class='num'>0.08亿</td><td class='num'>35%</td><td class='num'>30%</td><td class='num'>35%</td><td class='num'>25%</td><td class='cat'>海天(6334)</td></tr><tr><td><b>宠物</b></td><td class='num'>1</td><td class='num'>0.55亿</td><td class='num'>0.07亿</td><td class='num'>72%</td><td class='num'>2%</td><td class='num'>26%</td><td class='num'>85%</td><td class='cat'>卫仕(5473)</td></tr><tr><td><b>茶叶</b></td><td class='num'>2</td><td class='num'>0.53亿</td><td class='num'>0.07亿</td><td class='num'>80%</td><td class='num'>3%</td><td class='num'>17%</td><td class='num'>44%</td><td class='cat'>中茶(3017)、八马(2312)</td></tr><tr><td><b>生鲜</b></td><td class='num'>3</td><td class='num'>0.51亿</td><td class='num'>0.06亿</td><td class='num'>50%</td><td class='num'>18%</td><td class='num'>32%</td><td class='num'>62%</td><td class='cat'>彩虹星球(3391)、参小妹(1067)、山猫超人(604)</td></tr><tr><td><b>葡萄酒</b></td><td class='num'>2</td><td class='num'>0.33亿</td><td class='num'>0.04亿</td><td class='num'>21%</td><td class='num'>39%</td><td class='num'>40%</td><td class='num'>38%</td><td class='cat'>帝月(2835)、览翠(485)</td></tr><tr><td><b>海外保健食品</b></td><td class='num'>1</td><td class='num'>0.00亿</td><td class='num'>0.00亿</td><td class='num'>1%</td><td class='num'>0%</td><td class='num'>99%</td><td class='num'>5%</td><td class='cat'>健安喜(6)</td></tr></tbody></table></div></div>
@@ -127,24 +129,26 @@ tr:hover td{background:#F7FAFC;}
   <!-- ============ 板块2 ============ -->
   <div class="section"><div class="sec-title">板块二 · 五象限客群（主导渠道 × 自营/分销）</div>
     <div class="explain">
-      <b>分类口径解释（v4.2 · 重要）：</b><br/>
+      <b>分类口径解释（v4.3 · 重要）：</b><br/>
       · <b>渠道类型</b>取每客户<b>自身内部</b>三渠道（直播/短视频/其他）GMV占比 argmax；其他≥50%强制归<b>货架型</b>。<br/>
-      · <b>自营/分销新口径</b>（本次重构）：<br/>
-      &nbsp;&nbsp;— <b>自营 = 广告GMV占比 ≥ 20% 且 广告GMV绝对额 ≥ 100万</b>（同时满足）——语义是"主动投广告、有独立广告经营能力"<br/>
-      &nbsp;&nbsp;— <b>分销 = 广告投入不足以称为主动经营</b>——语义是"靠达人/经销自然分销"<br/>
-      · <b>GMV高/低</b>用全体268家的<b>总GMV中位数 1006万</b>切分，与渠道归类独立。<br/>
-      · <b>综合型</b>标签：三渠道占比标准差&lt;10%（渠道均衡）的客户，如诺特兰德/东方甄选，归类仍走 argmax 但会用 <span class="tag p">综合</span> 标签特别标注。全食饮盘共 19 家综合型客户。
+      · <b>自营/分销</b>：<b>自营 = 广告GMV占比≥20% 且 广告GMV≥100万</b>（主动投广告、有独立广告经营能力）；<b>分销 = 广告投入不足以称为主动经营</b>（靠达人/经销分销）。<br/>
+      · <b>微豆子标签（新增）</b>：分销客户中 <b>ADQ 日均消耗=0</b> 的标记为<span class="tag k">重微信豆</span>。<b>判定口径</b>：判断为分销（广告占比<20%或广告GMV<100万），<b>且</b>未检出 ADQ 投放数据（新数据源四字段级联匹配命中行为0），<b>推测</b>以微信豆/自然流/其他通路驱动；ADQ有消耗的标记为「主动分销」。共 77 家重微信豆 / 105 家主动分销。<br/>
+      · <b>GMV高/低</b>用全体268家的<b>总GMV中位数 1006万</b>切分；<b>综合型</b>标签 = 三渠道占比标准差&lt;10%（19家）。
     </div>
-    <div class="lead"><b>v4.2 客群分布</b>：直播分销型 <b>115家/17.8亿</b>（最广），直播自营型 <b>65家/25.6亿</b>（最重），短视频自营型仅 <b>10家但 GMV 16.5亿</b>——含诺特兰德等天花板综合客户。自营/分销 GMV 各占 63%/37%。</div>
+    <div class="lead"><b>v4.3 客群分布</b>：直播分销型（或重度微豆）<b>115家/17.8亿</b>（含重微信豆53家），直播自营型 <b>65家/25.6亿</b>（GMV最重），短视频自营型 <b>10家但16.5亿</b>（含诺特兰德等天花板客户）。自营/分销 GMV 各占 63%/37%。</div>
     <div class="grid2">
       <div class="card"><div id="c_kpiquad" class="chart" style="height:460px;"></div></div>
       <div class="card"><div id="c_cluster" class="chart" style="height:460px;"></div></div>
     </div>
-    <p class="note">左图：13个KPI三级行业按「直播占比×自营占比」落入四象限（气泡=行业GMV，右下=<b>高直播·分销主导</b>、左下=<b>短视频·分销主导</b>，术语已修正）。右图：五类客群品牌数与GMV对比。</p>
+    <p class="note">左图：13个KPI三级行业按「直播占比×自营占比」落入四象限（气泡=行业GMV）。右图：五类客群品牌数与GMV对比（标签含微豆数），下方有"核心洞察"提炼单客户GMV/品牌数不对称含义。</p>
+    <div class="callout" style="margin:18px 0;">
+      <b>📊 右图核心洞察 · 自营 vs 分销 客户深度差异巨大：</b><br/>
+      短视频自营型仅10家但单客户16510万、是直播分销型(1551万)的<b>4.0倍</b>，集中了诺特兰德等天花板客户；自营型整体单客户(3943万)是分销型平均(993万)的<b>4.0倍</b>——<b>自营/分销的客户深度差异巨大</b>，决定服务策略分层。
+    </div>
+    <div class="cluster-cards"><div class='cl c0'><h4>直播自营型</h4><div class='meta2'><b>65</b>家 · GMV <b>25.6</b>亿 · 高GMV 50/低GMV 15 · 综合型 5家</div><p><b>特征：</b>自播能力+主动广告投入双强，是直播场的核心作战部队。均值广告占比 43%。</p><p><b>代表品牌：</b>华大营养、东方甄选、万益蓝</p><p><b>主要行业：</b>粮油调味速食、保健食品、传统滋补</p><p><b>行动建议：</b>给高GMV品牌加投放大直播间流量，低GMV品牌做直播间转化诊断提ROI</p></div><div class='cl c1'><h4>直播分销型（或重度微豆）</h4><div class='meta2'><b>115</b>家 · GMV <b>17.8</b>亿 · 高GMV 42/低GMV 73 · 综合型 7家 · <span class="tag k">重微信豆 53家</span></div><p><b>特征：</b>直播场GMV靠达人分销跑通、品牌自身广告投入低；其中「重微信豆」客户推测对ROI要求高或ADQ拿量能力弱。均值广告占比 9%。</p><p><b>代表品牌：</b>三只松鼠、认养一头牛、本来果坊</p><p><b>主要行业：</b>冲调品、休闲食品、乳制品</p><p><b>行动建议：</b>推联合投放——品牌出人群包/素材、经销商承接；重微信豆客户做ADQ小额测试（微信豆+ADQ双轨），验证ADQ拿量能力后逐步迁移</p></div><div class='cl c2'><h4>短视频自营型</h4><div class='meta2'><b>10</b>家 · GMV <b>16.5</b>亿 · 高GMV 10/低GMV 0 · 综合型 2家</div><p><b>特征：</b>短视频种草+广告投入并重，多为大盘天花板综合型客户。均值广告占比 29%。</p><p><b>代表品牌：</b>诺特兰德、四只猫、笑厨</p><p><b>主要行业：</b>粮油调味速食、膳食营养、冲调品</p><p><b>行动建议：</b>短视频种草+直播承接双链路优化，天花板客户单独深耕</p></div><div class='cl c3'><h4>短视频分销型（或重度微豆）</h4><div class='meta2'><b>39</b>家 · GMV <b>5.6</b>亿 · 高GMV 17/低GMV 22 · 综合型 5家 · <span class="tag k">重微信豆 14家</span></div><p><b>特征：</b>短视频GMV跑通但广告投入低；其中「重微信豆」客户推测对ROI要求高或ADQ拿量能力弱。均值广告占比 6%。</p><p><b>代表品牌：</b>不集、喜纯、下厨房</p><p><b>主要行业：</b>粮油调味速食、冲调品</p><p><b>行动建议：</b>小额加投测试把短视频流量沉淀为转化；重微信豆客户同上双轨策略</p></div><div class='cl c4'><h4>货架型</h4><div class='meta2'><b>39</b>家 · GMV <b>5.3</b>亿 · 高GMV 15/低GMV 24 · 综合型 0家 · <span class="tag k">重微信豆 10家</span></div><p><b>特征：</b>其他(货架/搜索)GMV占比≥50%，内容场缺位，需做内容冷启动。均值广告占比 22%。</p><p><b>代表品牌：</b>轻上、百威、手艺人</p><p><b>主要行业：</b>休闲食品、粮油调味速食、传统滋补</p><p><b>行动建议：</b>做内容场冷启动（短视频种草+达人直播），把货架流量迁移到内容场</p></div></div>
     <div class="card" style="margin-top:20px;"><div class="tbl-title">按行业聚合 · 象限归类结论</div>
       <table><thead><tr><th>三级行业</th><th>品牌数</th><th>GMV</th><th>直播占比</th><th>自营占比</th><th>所属象限</th></tr></thead><tbody><tr><td><b>膳食营养</b></td><td class='num'>6</td><td class='num'>18.25亿</td><td class='num'>49%</td><td class='num'>100%</td><td><span class='tag p'>短视频·自营主导</span></td></tr><tr><td><b>粮油调味速食</b></td><td class='num'>15</td><td class='num'>7.81亿</td><td class='num'>51%</td><td class='num'>86%</td><td><span class='tag g'>高直播·自营主导</span></td></tr><tr><td><b>冲调品</b></td><td class='num'>7</td><td class='num'>5.09亿</td><td class='num'>59%</td><td class='num'>43%</td><td><span class='tag o'>高直播·分销主导</span></td></tr><tr><td><b>乳制品</b></td><td class='num'>5</td><td class='num'>3.60亿</td><td class='num'>78%</td><td class='num'>48%</td><td><span class='tag o'>高直播·分销主导</span></td></tr><tr><td><b>休闲食品</b></td><td class='num'>8</td><td class='num'>3.26亿</td><td class='num'>42%</td><td class='num'>38%</td><td><span class='tag r'>短视频·分销主导</span></td></tr><tr><td><b>软饮料</b></td><td class='num'>5</td><td class='num'>2.34亿</td><td class='num'>44%</td><td class='num'>100%</td><td><span class='tag p'>短视频·自营主导</span></td></tr><tr><td><b>传统滋补</b></td><td class='num'>7</td><td class='num'>1.82亿</td><td class='num'>80%</td><td class='num'>100%</td><td><span class='tag g'>高直播·自营主导</span></td></tr><tr><td><b>白酒</b></td><td class='num'>3</td><td class='num'>1.25亿</td><td class='num'>60%</td><td class='num'>93%</td><td><span class='tag g'>高直播·自营主导</span></td></tr><tr><td><b>保健食品</b></td><td class='num'>7</td><td class='num'>1.06亿</td><td class='num'>74%</td><td class='num'>90%</td><td><span class='tag g'>高直播·自营主导</span></td></tr><tr><td><b>啤酒</b></td><td class='num'>1</td><td class='num'>0.63亿</td><td class='num'>35%</td><td class='num'>100%</td><td><span class='tag p'>短视频·自营主导</span></td></tr><tr><td><b>宠物</b></td><td class='num'>1</td><td class='num'>0.55亿</td><td class='num'>72%</td><td class='num'>100%</td><td><span class='tag g'>高直播·自营主导</span></td></tr><tr><td><b>茶叶</b></td><td class='num'>2</td><td class='num'>0.53亿</td><td class='num'>80%</td><td class='num'>100%</td><td><span class='tag g'>高直播·自营主导</span></td></tr><tr><td><b>生鲜</b></td><td class='num'>3</td><td class='num'>0.51亿</td><td class='num'>50%</td><td class='num'>100%</td><td><span class='tag p'>短视频·自营主导</span></td></tr><tr><td><b>葡萄酒</b></td><td class='num'>2</td><td class='num'>0.33亿</td><td class='num'>21%</td><td class='num'>100%</td><td><span class='tag p'>短视频·自营主导</span></td></tr><tr><td><b>海外保健食品</b></td><td class='num'>1</td><td class='num'>0.00亿</td><td class='num'>0%</td><td class='num'>0%</td><td><span class='tag r'>短视频·分销主导</span></td></tr></tbody></table></div>
     <div class="lead" style="margin-top:18px;"><b>行业聚合结论：</b>13个三级行业按直播×自营双维聚类——<b>高直播·自营主导</b>（6类：粮油调味速食、传统滋补、白酒、保健食品、宠物、茶叶）；<b>高直播·分销主导</b>（2类：冲调品、乳制品）；<b>短视频·自营主导</b>（5类：膳食营养、软饮料、啤酒、生鲜、葡萄酒）；<b>短视频·分销主导</b>（2类：休闲食品、海外保健食品）。</div>
-    <div class="cluster-cards"><div class='cl c0'><h4>直播自营型</h4><div class='meta2'><b>65</b>家 · GMV <b>25.6</b>亿 · 高GMV 50/低GMV 15 · 综合型 5家</div><p><b>特征：</b>自播能力+主动广告投入双强，是直播场的核心作战部队。均值广告占比 43%。</p><p><b>代表品牌：</b>华大营养、东方甄选、万益蓝</p><p><b>主要行业：</b>粮油调味速食、保健食品、传统滋补</p><p><b>行动建议：</b>给高GMV品牌加投放大直播间流量，低GMV品牌做直播间转化诊断提ROI</p></div><div class='cl c1'><h4>直播分销型</h4><div class='meta2'><b>115</b>家 · GMV <b>17.8</b>亿 · 高GMV 42/低GMV 73 · 综合型 7家</div><p><b>特征：</b>直播场GMV靠达人分销/自然流跑通，品牌自身很少投广告，是最大增量池。均值广告占比 9%。</p><p><b>代表品牌：</b>三只松鼠、认养一头牛、本来果坊</p><p><b>主要行业：</b>冲调品、休闲食品、乳制品</p><p><b>行动建议：</b>推联合投放模式——品牌出人群包/素材、经销商承接，大促放量不动日常价盘</p></div><div class='cl c2'><h4>短视频自营型</h4><div class='meta2'><b>10</b>家 · GMV <b>16.5</b>亿 · 高GMV 10/低GMV 0 · 综合型 2家</div><p><b>特征：</b>短视频种草+广告投入并重，多为大盘天花板综合型客户。均值广告占比 29%。</p><p><b>代表品牌：</b>诺特兰德、四只猫、笑厨</p><p><b>主要行业：</b>粮油调味速食、膳食营养、冲调品</p><p><b>行动建议：</b>短视频种草+直播承接双链路优化，天花板客户单独深耕</p></div><div class='cl c3'><h4>短视频分销型</h4><div class='meta2'><b>39</b>家 · GMV <b>5.6</b>亿 · 高GMV 17/低GMV 22 · 综合型 5家</div><p><b>特征：</b>短视频GMV跑通但广告投入低，需要小额测试放量。均值广告占比 6%。</p><p><b>代表品牌：</b>不集、喜纯、下厨房</p><p><b>主要行业：</b>粮油调味速食、冲调品</p><p><b>行动建议：</b>小额加投测试，把短视频引流量沉淀为直播间转化</p></div><div class='cl c4'><h4>货架型</h4><div class='meta2'><b>39</b>家 · GMV <b>5.3</b>亿 · 高GMV 15/低GMV 24 · 综合型 0家</div><p><b>特征：</b>其他(货架/搜索)GMV占比≥50%，内容场缺位，需做内容冷启动。均值广告占比 22%。</p><p><b>代表品牌：</b>轻上、百威、手艺人</p><p><b>主要行业：</b>休闲食品、粮油调味速食、传统滋补</p><p><b>行动建议：</b>做内容场冷启动（短视频种草+达人直播），把货架流量迁移到内容场</p></div></div>
     <div class="btnbar">
       <a class="btn" href="quadrant-full.html">查看五象限完整落点总表（268家）→</a>
       <a class="btn o" href="cluster-top.html">查看五类客群各TOP代表客户 →</a>
@@ -152,64 +156,86 @@ tr:hover td{background:#F7FAFC;}
   </div>
 
   <!-- ============ 板块3 ============ -->
-  <div class="section"><div class="sec-title">板块三 · 总 GMV 与广告 GMV 的关系</div>
-    <div class="lead">客户维度总GMV与广告GMV<b>强正相关（相关系数 0.885）</b>——广告是 GMV 的重要驱动。散点图用<b>对数轴</b>展开跨4个数量级的分布，加中位数十字线分四象限：<b>右上=大盘头部（高GMV高投放）</b>；<b>右下=加投洼地（高GMV低广告）</b>；<b>左上=高广告依赖（高广告占比但GMV小·需盯ROI）</b>；<b>左下=中小盘客户</b>。</div>
+  <div class="section"><div class="sec-title">板块三 · 总 GMV 与广告 GMV 的关系（两群体透视）</div>
+    <div class="lead">客户维度总GMV与广告GMV<b>强正相关（相关系数 0.885）</b>。比起全量散点，更有意义的是两个结构性群体：<b>① 高广告依赖（广告占比≥50%，30家）</b>——GMV由投放拉动、停投风险大，是<b>资金流向的预警名单</b>；<b>② 加投洼地（广告占比≤5% 且 GMV≥3000万，9家）</b>——自然流/达人盘已跑通高GMV、广告渗透极低，是<b>增长机会名单</b>。</div>
     <div class="grid2">
-      <div class="card"><div id="c_s3scatter" class="chart" style="height:460px;"></div></div>
-      <div class="card"><div id="c_s3top" class="chart" style="height:460px;"></div></div>
+      <div class="card"><div id="c_s3hi" class="chart" style="height:480px;"></div></div>
+      <div class="card"><div id="c_s3lo" class="chart" style="height:480px;"></div></div>
     </div>
+    <p class="note">左图：高广告依赖客户（x=广告占比%·按客群着色）；右图：加投洼地客户（x=总GMV万·按客群着色）。</p>
     <div class="grid2" style="margin-top:20px;">
-      <div class="card"><div class="tbl-title">高广告依赖客户（广告占比≥50%·需盯ROI）</div>
-        <div class="scroll" style="max-height:420px;"><table><thead><tr><th>品牌</th><th>总GMV(万)</th><th>广告GMV(万)</th><th>广告占比</th><th>行业</th></tr></thead><tbody><tr><td>健尔马</td><td class='num'>1,546</td><td class='num'>1,463</td><td class='num'>95%</td><td class='cat'>保健食品</td></tr><tr><td>呜咔实验室</td><td class='num'>309</td><td class='num'>287</td><td class='num'>93%</td><td class='cat'>待映射</td></tr><tr><td>轻启力</td><td class='num'>1,108</td><td class='num'>1,018</td><td class='num'>92%</td><td class='cat'>粮油调味速食</td></tr><tr><td>益倍萃</td><td class='num'>665</td><td class='num'>573</td><td class='num'>86%</td><td class='cat'>休闲食品</td></tr><tr><td>多燕瘦</td><td class='num'>648</td><td class='num'>553</td><td class='num'>85%</td><td class='cat'>膳食营养</td></tr><tr><td>卫仕</td><td class='num'>5,473</td><td class='num'>4,666</td><td class='num'>85%</td><td class='cat'>宠物</td></tr><tr><td>参小妹</td><td class='num'>1,067</td><td class='num'>899</td><td class='num'>84%</td><td class='cat'>生鲜</td></tr><tr><td>健力多</td><td class='num'>94</td><td class='num'>78</td><td class='num'>83%</td><td class='cat'>待映射</td></tr><tr><td>椰泰</td><td class='num'>1,049</td><td class='num'>860</td><td class='num'>82%</td><td class='cat'>待映射</td></tr><tr><td>哈药</td><td class='num'>1,286</td><td class='num'>1,052</td><td class='num'>82%</td><td class='cat'>保健食品</td></tr><tr><td>汤臣倍健</td><td class='num'>2,399</td><td class='num'>1,855</td><td class='num'>77%</td><td class='cat'>保健食品</td></tr><tr><td>馥食集</td><td class='num'>3,034</td><td class='num'>2,342</td><td class='num'>77%</td><td class='cat'>粮油调味速食</td></tr><tr><td>览翠</td><td class='num'>485</td><td class='num'>371</td><td class='num'>76%</td><td class='cat'>葡萄酒</td></tr><tr><td>华大营养</td><td class='num'>22,041</td><td class='num'>16,833</td><td class='num'>76%</td><td class='cat'>膳食营养</td></tr><tr><td>空刻</td><td class='num'>1,434</td><td class='num'>1,059</td><td class='num'>74%</td><td class='cat'>粮油调味速食</td></tr></tbody></table></div></div>
-      <div class="card"><div class="tbl-title">高GMV低广告依赖客户（广告占比≤5% & GMV≥3000万·加投洼地）</div>
-        <div class="scroll" style="max-height:420px;"><table><thead><tr><th>品牌</th><th>总GMV(万)</th><th>广告GMV(万)</th><th>广告占比</th><th>行业</th></tr></thead><tbody><tr><td>本来果坊</td><td class='num'>14,041</td><td class='num'>395</td><td class='num'>3%</td><td class='cat'>未匹配</td></tr><tr><td>天海藏</td><td class='num'>10,520</td><td class='num'>12</td><td class='num'>0%</td><td class='cat'>未匹配</td></tr><tr><td>自然搭档</td><td class='num'>5,150</td><td class='num'>37</td><td class='num'>1%</td><td class='cat'>未匹配</td></tr><tr><td>百威</td><td class='num'>5,124</td><td class='num'>4</td><td class='num'>0%</td><td class='cat'>待映射</td></tr><tr><td>百草味</td><td class='num'>4,800</td><td class='num'>36</td><td class='num'>1%</td><td class='cat'>待映射</td></tr><tr><td>晟麦</td><td class='num'>4,738</td><td class='num'>180</td><td class='num'>4%</td><td class='cat'>待映射</td></tr><tr><td>佳沛</td><td class='num'>4,342</td><td class='num'>158</td><td class='num'>4%</td><td class='cat'>待映射</td></tr><tr><td>君乐宝</td><td class='num'>3,652</td><td class='num'>70</td><td class='num'>2%</td><td class='cat'>待映射</td></tr><tr><td>下厨房</td><td class='num'>3,324</td><td class='num'>28</td><td class='num'>1%</td><td class='cat'>未匹配</td></tr></tbody></table></div></div>
+      <div class="card"><div class="tbl-title">高广告依赖 TOP15（广告占比≥50%·需盯ROI）</div>
+        <div class="scroll" style="max-height:420px;"><table><thead><tr><th>品牌</th><th>总GMV(万)</th><th>广告GMV(万)</th><th>广告占比</th><th>客群</th><th>行业</th></tr></thead><tbody><tr><td>健尔马</td><td class='num'>1,546</td><td class='num'>1,463</td><td class='num'>95%</td><td>直播自营型</td><td class='cat'>保健食品</td></tr><tr><td>呜咔实验室</td><td class='num'>309</td><td class='num'>287</td><td class='num'>93%</td><td>直播自营型</td><td class='cat'>待映射</td></tr><tr><td>轻启力</td><td class='num'>1,108</td><td class='num'>1,018</td><td class='num'>92%</td><td>货架型</td><td class='cat'>粮油调味速食</td></tr><tr><td>益倍萃</td><td class='num'>665</td><td class='num'>573</td><td class='num'>86%</td><td>直播自营型</td><td class='cat'>休闲食品</td></tr><tr><td>多燕瘦</td><td class='num'>648</td><td class='num'>553</td><td class='num'>85%</td><td>货架型</td><td class='cat'>膳食营养</td></tr><tr><td>卫仕</td><td class='num'>5,473</td><td class='num'>4,666</td><td class='num'>85%</td><td>直播自营型</td><td class='cat'>宠物</td></tr><tr><td>参小妹</td><td class='num'>1,067</td><td class='num'>899</td><td class='num'>84%</td><td>直播自营型</td><td class='cat'>生鲜</td></tr><tr><td>健力多</td><td class='num'>94</td><td class='num'>78</td><td class='num'>83%</td><td>直播分销型</td><td class='cat'>待映射</td></tr><tr><td>椰泰</td><td class='num'>1,049</td><td class='num'>860</td><td class='num'>82%</td><td>货架型</td><td class='cat'>待映射</td></tr><tr><td>哈药</td><td class='num'>1,286</td><td class='num'>1,052</td><td class='num'>82%</td><td>直播自营型</td><td class='cat'>保健食品</td></tr><tr><td>汤臣倍健</td><td class='num'>2,399</td><td class='num'>1,855</td><td class='num'>77%</td><td>直播自营型</td><td class='cat'>保健食品</td></tr><tr><td>馥食集</td><td class='num'>3,034</td><td class='num'>2,342</td><td class='num'>77%</td><td>货架型</td><td class='cat'>粮油调味速食</td></tr><tr><td>览翠</td><td class='num'>485</td><td class='num'>371</td><td class='num'>76%</td><td>货架型</td><td class='cat'>葡萄酒</td></tr><tr><td>华大营养</td><td class='num'>22,041</td><td class='num'>16,833</td><td class='num'>76%</td><td>直播自营型</td><td class='cat'>膳食营养</td></tr><tr><td>空刻</td><td class='num'>1,434</td><td class='num'>1,059</td><td class='num'>74%</td><td>直播自营型</td><td class='cat'>粮油调味速食</td></tr></tbody></table></div></div>
+      <div class="card"><div class="tbl-title">加投洼地 TOP15（广告占比≤5% & GMV≥3000万·增长机会）</div>
+        <div class="scroll" style="max-height:420px;"><table><thead><tr><th>品牌</th><th>总GMV(万)</th><th>广告GMV(万)</th><th>广告占比</th><th>客群</th><th>行业</th></tr></thead><tbody><tr><td>本来果坊</td><td class='num'>14,041</td><td class='num'>395</td><td class='num'>3%</td><td>直播分销型</td><td class='cat'>未匹配</td></tr><tr><td>天海藏</td><td class='num'>10,520</td><td class='num'>12</td><td class='num'>0%</td><td>直播分销型</td><td class='cat'>未匹配</td></tr><tr><td>自然搭档</td><td class='num'>5,150</td><td class='num'>37</td><td class='num'>1%</td><td>直播分销型</td><td class='cat'>未匹配</td></tr><tr><td>百威</td><td class='num'>5,124</td><td class='num'>4</td><td class='num'>0%</td><td>货架型</td><td class='cat'>待映射</td></tr><tr><td>百草味</td><td class='num'>4,800</td><td class='num'>36</td><td class='num'>1%</td><td>货架型</td><td class='cat'>待映射</td></tr><tr><td>晟麦</td><td class='num'>4,738</td><td class='num'>180</td><td class='num'>4%</td><td>直播分销型</td><td class='cat'>待映射</td></tr><tr><td>佳沛</td><td class='num'>4,342</td><td class='num'>158</td><td class='num'>4%</td><td>直播分销型</td><td class='cat'>待映射</td></tr><tr><td>君乐宝</td><td class='num'>3,652</td><td class='num'>70</td><td class='num'>2%</td><td>直播分销型</td><td class='cat'>待映射</td></tr><tr><td>下厨房</td><td class='num'>3,324</td><td class='num'>28</td><td class='num'>1%</td><td>短视频分销型</td><td class='cat'>未匹配</td></tr></tbody></table></div></div>
     </div>
     <div class="card" style="margin-top:20px;"><div class="tbl-title">三级行业 · 总GMV vs 广告GMV</div>
-      <div class="scroll" style="max-height:420px;"><table><thead><tr><th>三级行业</th><th>总GMV</th><th>广告GMV</th><th>广告占比</th></tr></thead><tbody><tr><td><b>膳食营养</b></td><td class='num'>18.25亿</td><td class='num'>5.72亿</td><td class='num'>31%</td></tr><tr><td><b>粮油调味速食</b></td><td class='num'>7.81亿</td><td class='num'>2.75亿</td><td class='num'>35%</td></tr><tr><td><b>冲调品</b></td><td class='num'>5.09亿</td><td class='num'>0.87亿</td><td class='num'>17%</td></tr><tr><td><b>乳制品</b></td><td class='num'>3.60亿</td><td class='num'>1.13亿</td><td class='num'>31%</td></tr><tr><td><b>休闲食品</b></td><td class='num'>3.26亿</td><td class='num'>0.75亿</td><td class='num'>23%</td></tr><tr><td><b>软饮料</b></td><td class='num'>2.34亿</td><td class='num'>0.97亿</td><td class='num'>41%</td></tr><tr><td><b>传统滋补</b></td><td class='num'>1.82亿</td><td class='num'>0.70亿</td><td class='num'>38%</td></tr><tr><td><b>白酒</b></td><td class='num'>1.25亿</td><td class='num'>0.61亿</td><td class='num'>49%</td></tr><tr><td><b>保健食品</b></td><td class='num'>1.06亿</td><td class='num'>0.65亿</td><td class='num'>61%</td></tr><tr><td><b>啤酒</b></td><td class='num'>0.63亿</td><td class='num'>0.16亿</td><td class='num'>25%</td></tr><tr><td><b>宠物</b></td><td class='num'>0.55亿</td><td class='num'>0.47亿</td><td class='num'>85%</td></tr><tr><td><b>茶叶</b></td><td class='num'>0.53亿</td><td class='num'>0.23亿</td><td class='num'>44%</td></tr><tr><td><b>生鲜</b></td><td class='num'>0.51亿</td><td class='num'>0.31亿</td><td class='num'>62%</td></tr><tr><td><b>葡萄酒</b></td><td class='num'>0.33亿</td><td class='num'>0.13亿</td><td class='num'>38%</td></tr><tr><td><b>海外保健食品</b></td><td class='num'>0.00亿</td><td class='num'>0.00亿</td><td class='num'>5%</td></tr></tbody></table></div></div>
+      <div class="scroll" style="max-height:400px;"><table><thead><tr><th>三级行业</th><th>总GMV</th><th>广告GMV</th><th>广告占比</th></tr></thead><tbody><tr><td><b>膳食营养</b></td><td class='num'>18.25亿</td><td class='num'>5.72亿</td><td class='num'>31%</td></tr><tr><td><b>粮油调味速食</b></td><td class='num'>7.81亿</td><td class='num'>2.75亿</td><td class='num'>35%</td></tr><tr><td><b>冲调品</b></td><td class='num'>5.09亿</td><td class='num'>0.87亿</td><td class='num'>17%</td></tr><tr><td><b>乳制品</b></td><td class='num'>3.60亿</td><td class='num'>1.13亿</td><td class='num'>31%</td></tr><tr><td><b>休闲食品</b></td><td class='num'>3.26亿</td><td class='num'>0.75亿</td><td class='num'>23%</td></tr><tr><td><b>软饮料</b></td><td class='num'>2.34亿</td><td class='num'>0.97亿</td><td class='num'>41%</td></tr><tr><td><b>传统滋补</b></td><td class='num'>1.82亿</td><td class='num'>0.70亿</td><td class='num'>38%</td></tr><tr><td><b>白酒</b></td><td class='num'>1.25亿</td><td class='num'>0.61亿</td><td class='num'>49%</td></tr><tr><td><b>保健食品</b></td><td class='num'>1.06亿</td><td class='num'>0.65亿</td><td class='num'>61%</td></tr><tr><td><b>啤酒</b></td><td class='num'>0.63亿</td><td class='num'>0.16亿</td><td class='num'>25%</td></tr><tr><td><b>宠物</b></td><td class='num'>0.55亿</td><td class='num'>0.47亿</td><td class='num'>85%</td></tr><tr><td><b>茶叶</b></td><td class='num'>0.53亿</td><td class='num'>0.23亿</td><td class='num'>44%</td></tr><tr><td><b>生鲜</b></td><td class='num'>0.51亿</td><td class='num'>0.31亿</td><td class='num'>62%</td></tr><tr><td><b>葡萄酒</b></td><td class='num'>0.33亿</td><td class='num'>0.13亿</td><td class='num'>38%</td></tr><tr><td><b>海外保健食品</b></td><td class='num'>0.00亿</td><td class='num'>0.00亿</td><td class='num'>5%</td></tr></tbody></table></div></div>
     <div class="strat"><h3>行动建议 · GMV-广告关系</h3><ul>
-      <li><b>高GMV低广告依赖（加投洼地）</b>：自然流/达人盘已跑通高GMV，广告渗透极低，是最优质增量对象，小额测试验证付费增量。</li>
-      <li><b>高广告依赖（ROI预警）</b>：广告占比≥50%的品牌GMV由投放拉动，停投风险大，需做投放结构与ROI诊断。</li>
+      <li><b>高广告依赖（ROI预警）</b>：广告占比≥50%的品牌GMV由投放拉动，停投风险大，需做投放结构与ROI诊断，提升自然流/达人盘占比。</li>
+      <li><b>加投洼地（增长机会）</b>：自然流/达人盘已跑通高GMV，广告渗透极低，是最优质增量对象，小额测试验证付费增量。</li>
       <li><b>行业层面</b>：软饮料/传统滋补/粮油广告占比高，优先推进这些行业的投放结构优化。</li>
     </ul></div>
   </div>
 
   <!-- ============ 板块4 ============ -->
-  <div class="section"><div class="sec-title">板块四 · 广告 GMV 构成（直投 vs 直播；自播 vs 达播）</div>
+  <div class="section"><div class="sec-title">板块四 · 广告 GMV 构成（两个口径分开呈现）</div>
     <div class="explain">
-      <b>术语对齐（重要）：</b><br/>
-      · <b>直投广告 = 直购广告 = 短视频广告</b>（三种命名指同一概念）——包括新表商品链路中的 直购/CID/品宣/加粉/其他 各种短视频场景。<br/>
-      · <b>直播广告 = 直播广告</b>（直播间投放，含自播 + 达播）。<br/>
-      · <b>小店（货架投放）</b>独立于内容场，作为货架/搜索场景的补充。
+      <b>术语对齐：</b><b>直投广告 = 直购广告 = 短视频广告</b>（同一概念的三种命名，含新表链路中的 直购/CID/品宣/加粉/其他）；<b>直播广告 = 直播广告</b>（含自播+达播）；<b>小店 = 货架投放</b>（独立于内容场）。
     </div>
-    <div class="lead"><b>两个口径交叉验证：</b>基于35周包 广告GMV <b>50.17亿</b>：直播广告 <b>76%</b> / 直投(=短视频广告) 24%；直播内 自播 <b>61%</b> > 达播 39%。基于新数据源 商品链路合计 <b>38.5亿</b>：直播广告 14.94亿 / 短视频广告 16.44亿 / 货架投放 7.12亿——两个口径结构一致，直播是绝对主场。</div>
-    <div class="kpis">
-      <div class="kpi"><b>38.23亿</b><span>直播广告GMV · 76% (35周包)</span></div>
-      <div class="kpi"><b>11.94亿</b><span>直投(=短视频)广告GMV · 24%</span></div>
-      <div class="kpi"><b>23.18亿</b><span>自播GMV · 直播内61%</span></div>
-      <div class="kpi"><b>15.05亿</b><span>达播GMV · 直播内39%</span></div>
+
+    <div class="card">
+      <div class="tbl-title">口径 A · 35周包精确广告GMV（每周TOP2500店铺榜单·广告直接成交口径）</div>
+      <div class="kpis">
+        <div class="kpi"><b>50.17亿</b><span>广告GMV合计</span></div>
+        <div class="kpi"><b>38.23亿</b><span>直播广告 · 76%</span></div>
+        <div class="kpi"><b>11.94亿</b><span>直投(=短视频) · 24%</span></div>
+        <div class="kpi"><b>23.18亿</b><span>自播 · 直播内61%</span></div>
+        <div class="kpi"><b>15.05亿</b><span>达播 · 直播内39%</span></div>
+      </div>
+      <div class="grid2">
+        <div><div id="c_s4bar" class="chart" style="height:340px;"></div></div>
+        <div><div id="c_s4month" class="chart" style="height:340px;"></div></div>
+      </div>
+      <div class="card" style="margin-top:18px;box-shadow:none;"><div class="tbl-title">口径 A · 月度趋势（亿元）</div>
+        <table><thead><tr><th>月份</th><th>广告GMV</th><th>直投</th><th>直播</th><th>自播</th><th>达播</th></tr></thead><tbody><tr><td>2025-12</td><td class='num'>1.24</td><td class='num'>0.21</td><td class='num'>1.02</td><td class='num'>0.57</td><td class='num'>0.45</td></tr><tr><td>2026-01</td><td class='num'>6.26</td><td class='num'>1.29</td><td class='num'>4.97</td><td class='num'>2.92</td><td class='num'>2.05</td></tr><tr><td>2026-02</td><td class='num'>5.09</td><td class='num'>1.07</td><td class='num'>4.02</td><td class='num'>2.57</td><td class='num'>1.45</td></tr><tr><td>2026-03</td><td class='num'>6.08</td><td class='num'>1.32</td><td class='num'>4.76</td><td class='num'>2.93</td><td class='num'>1.83</td></tr><tr><td>2026-04</td><td class='num'>5.55</td><td class='num'>1.35</td><td class='num'>4.20</td><td class='num'>2.30</td><td class='num'>1.89</td></tr><tr><td>2026-05</td><td class='num'>5.61</td><td class='num'>1.36</td><td class='num'>4.25</td><td class='num'>2.62</td><td class='num'>1.63</td></tr><tr><td>2026-06</td><td class='num'>7.61</td><td class='num'>1.81</td><td class='num'>5.79</td><td class='num'>3.69</td><td class='num'>2.10</td></tr><tr><td>2026-07</td><td class='num'>6.33</td><td class='num'>1.59</td><td class='num'>4.74</td><td class='num'>2.75</td><td class='num'>1.99</td></tr><tr><td>2026-08</td><td class='num'>6.41</td><td class='num'>1.94</td><td class='num'>4.48</td><td class='num'>2.84</td><td class='num'>1.64</td></tr></tbody></table></div>
     </div>
-    <div class="grid2">
-      <div class="card"><div id="c_s4bar" class="chart" style="height:360px;"></div></div>
-      <div class="card"><div id="c_s4month" class="chart" style="height:360px;"></div></div>
+
+    <div class="callout">
+      <span class="q">为什么口径 A 说"直播76% > 直投24%"，口径 B 却是"短视频 > 直播"？</span><br/>
+      两个口径统计的对象不同，<b>互为补充、并不矛盾</b>：<br/>
+      · <b>口径 A（35周包）</b>= 广告投放后<b>直接成交的GMV</b>（店铺榜单精确金额）——直播广告即时转化强，所以直播占绝对主导（76%）；<br/>
+      · <b>口径 B（新数据源）</b>= 全部投放链路的<b>消耗×ROI估算</b>（预算全貌）——短视频/直购类链路数量多而分散（直购+CID+品宣+加粉合计），累积预估GMV（16.4亿）略高于直播（14.9亿）；<br/>
+      · 一句话：<b>A 看"转化效率"（钱投进直播间立刻变GMV），B 看"预算分布"（广告盘子铺在哪些链路）</b>。
     </div>
-    <div class="card" style="margin-top:20px;"><div class="tbl-title">新数据源商品链路 · 三分口径日耗分布（1-8月合计亿元）</div>
-      <div id="c_s4link3" style="height:280px;"></div></div>
-    <div class="card" style="margin-top:20px;"><div class="tbl-title">广告GMV构成 · 月度趋势（35周包·亿元）</div>
-      <table><thead><tr><th>月份</th><th>广告GMV</th><th>直投</th><th>直播</th><th>自播</th><th>达播</th></tr></thead><tbody><tr><td>2025-12</td><td class='num'>1.24</td><td class='num'>0.21</td><td class='num'>1.02</td><td class='num'>0.57</td><td class='num'>0.45</td></tr><tr><td>2026-01</td><td class='num'>6.26</td><td class='num'>1.29</td><td class='num'>4.97</td><td class='num'>2.92</td><td class='num'>2.05</td></tr><tr><td>2026-02</td><td class='num'>5.09</td><td class='num'>1.07</td><td class='num'>4.02</td><td class='num'>2.57</td><td class='num'>1.45</td></tr><tr><td>2026-03</td><td class='num'>6.08</td><td class='num'>1.32</td><td class='num'>4.76</td><td class='num'>2.93</td><td class='num'>1.83</td></tr><tr><td>2026-04</td><td class='num'>5.55</td><td class='num'>1.35</td><td class='num'>4.20</td><td class='num'>2.30</td><td class='num'>1.89</td></tr><tr><td>2026-05</td><td class='num'>5.61</td><td class='num'>1.36</td><td class='num'>4.25</td><td class='num'>2.62</td><td class='num'>1.63</td></tr><tr><td>2026-06</td><td class='num'>7.61</td><td class='num'>1.81</td><td class='num'>5.79</td><td class='num'>3.69</td><td class='num'>2.10</td></tr><tr><td>2026-07</td><td class='num'>6.33</td><td class='num'>1.59</td><td class='num'>4.74</td><td class='num'>2.75</td><td class='num'>1.99</td></tr><tr><td>2026-08</td><td class='num'>6.41</td><td class='num'>1.94</td><td class='num'>4.48</td><td class='num'>2.84</td><td class='num'>1.64</td></tr></tbody></table></div>
+
+    <div class="card">
+      <div class="tbl-title">口径 B · 新数据源商品消费链路 GMV 预估（K800全量投放·消耗×ROI口径）</div>
+      <div class="kpis">
+        <div class="kpi" style="border-top-color:var(--orange);"><b>38.50亿</b><span>三分口径合计</span></div>
+        <div class="kpi"><b>14.94亿</b><span>直播广告 · 39%</span></div>
+        <div class="kpi"><b>16.44亿</b><span>短视频广告(直购/CID等) · 43%</span></div>
+        <div class="kpi"><b>7.12亿</b><span>货架投放(小店) · 18%</span></div>
+      </div>
+      <div id="c_s4link3" style="height:300px;"></div>
+      <p class="note">细分链路：直播 14.94亿、直购 8.53亿、小店 7.12亿、加粉 4.26亿、CID 2.86亿、品宣 0.71亿、其他 0.09亿。</p>
+    </div>
+
     <div class="strat"><h3>行动建议 · 广告构成</h3><ul>
-      <li><b>直播广告为绝对主场（76%）</b>：广告预算与能力建设向直播倾斜，直投(=短视频广告)作为货架/搜索场景补充。</li>
-      <li><b>自播为主（直播内61%）</b>：优先夯实品牌自播间投放运营能力；达播作为大促/新品爆发的放大器。</li>
-      <li><b>达播提效</b>：达播39%对拉新破圈价值高，做达人分层与ROI精细化。</li>
+      <li><b>直播是转化主场（口径A 76%）</b>：广告预算与能力建设向直播倾斜，直播内优先夯实自播（61%）。</li>
+      <li><b>短视频链路预算盘子更大（口径B 43%）</b>：直购/CID/加粉等链路分散且量大，适合种草蓄水与拉新，做链路级ROI精细化。</li>
+      <li><b>货架投放（小店18%）</b>：作为内容场的补充承接，重点优化搜索/商城场景转化。</li>
     </ul></div>
-    <div class="disc"><b>数据披露：</b>35周包样本为每周广告系统 TOP2500 店铺榜单（非全平台全量）；广告GMV由真实值与测算值混合构成；直投/直播广告细分覆盖 45%，自播/达播覆盖 35%——缺失细分不计入分子。新数据源商品链路来自食品饮料_竞价_2026年1-8月_投放明细.xlsx，日耗×243天估算总消耗，两口径为交叉验证。</div>
+    <div class="disc"><b>数据披露：</b>口径A样本为每周广告系统TOP2500店铺榜单（非全平台全量），广告GMV由真实值与测算值混合构成，直投/直播细分覆盖45%、自播/达播覆盖35%，缺失细分不计入分子；口径B来自食品饮料_竞价_2026年1-8月_投放明细.xlsx，日耗×243天估算。两口径独立统计、不可相加。</div>
   </div>
 
-  <p class="note" style="margin-top:28px;text-align:center;">数据口径：GMV来自adhome 49周店铺底表(截取2026W01~W36)；广告映射来自新数据源(631k行)四字段级联匹配；广告构成来自微信小店35周GMV包(TOP2500样本)与新数据源商品链路。<br/>报告版本 v4.2 · 生成 2026-09-11</p>
+  <p class="note" style="margin-top:28px;text-align:center;">数据口径：GMV来自adhome 49周店铺底表(截取2026W01~W36)；广告映射来自新数据源(631k行)四字段级联匹配；口径A来自微信小店35周GMV包、口径B来自新数据源商品链路。<br/>报告版本 v4.3 · 生成 2026-09-11</p>
 </div>
 <script>
-const D={"s1bar": {"cats": ["膳食营养", "待映射", "未匹配", "粮油调味速食", "冲调品", "乳制品", "休闲食品", "软饮料", "传统滋补", "白酒", "保健食品", "啤酒", "宠物", "茶叶", "生鲜", "葡萄酒", "海外保健食品"], "live": [8.9, 6.77, 6.5, 4.02, 3.02, 2.79, 1.39, 1.03, 1.46, 0.74, 0.79, 0.22, 0.39, 0.42, 0.25, 0.07, 0.0], "sv": [6.67, 3.31, 1.73, 2.18, 1.33, 0.27, 0.99, 0.59, 0.12, 0.01, 0.04, 0.19, 0.01, 0.02, 0.09, 0.13, 0.0], "oth": [2.68, 3.72, 1.73, 1.61, 0.74, 0.54, 0.89, 0.72, 0.25, 0.5, 0.24, 0.22, 0.14, 0.09, 0.16, 0.13, 0.0], "ad": [5.72, 1.85, 0.97, 2.75, 0.87, 1.13, 0.75, 0.97, 0.7, 0.61, 0.65, 0.16, 0.47, 0.23, 0.31, 0.13, 0.0]}, "kpiquad": [{"行业": "膳食营养", "直播占比": 48.8, "自营占比": 100.0, "GMV亿": 18.25, "品牌数": 6, "象限": "短视频·自营主导"}, {"行业": "粮油调味速食", "直播占比": 51.4, "自营占比": 86.5, "GMV亿": 7.81, "品牌数": 15, "象限": "高直播·自营主导"}, {"行业": "冲调品", "直播占比": 59.2, "自营占比": 43.3, "GMV亿": 5.09, "品牌数": 7, "象限": "高直播·分销主导"}, {"行业": "乳制品", "直播占比": 77.5, "自营占比": 47.8, "GMV亿": 3.6, "品牌数": 5, "象限": "高直播·分销主导"}, {"行业": "休闲食品", "直播占比": 42.5, "自营占比": 38.4, "GMV亿": 3.26, "品牌数": 8, "象限": "短视频·分销主导"}, {"行业": "软饮料", "直播占比": 43.8, "自营占比": 100.0, "GMV亿": 2.34, "品牌数": 5, "象限": "短视频·自营主导"}, {"行业": "传统滋补", "直播占比": 80.1, "自营占比": 99.5, "GMV亿": 1.82, "品牌数": 7, "象限": "高直播·自营主导"}, {"行业": "白酒", "直播占比": 59.7, "自营占比": 93.4, "GMV亿": 1.25, "品牌数": 3, "象限": "高直播·自营主导"}, {"行业": "保健食品", "直播占比": 74.0, "自营占比": 90.1, "GMV亿": 1.06, "品牌数": 7, "象限": "高直播·自营主导"}, {"行业": "啤酒", "直播占比": 35.3, "自营占比": 100.0, "GMV亿": 0.63, "品牌数": 1, "象限": "短视频·自营主导"}, {"行业": "宠物", "直播占比": 71.6, "自营占比": 100.0, "GMV亿": 0.55, "品牌数": 1, "象限": "高直播·自营主导"}, {"行业": "茶叶", "直播占比": 79.6, "自营占比": 100.0, "GMV亿": 0.53, "品牌数": 2, "象限": "高直播·自营主导"}, {"行业": "生鲜", "直播占比": 49.9, "自营占比": 100.0, "GMV亿": 0.51, "品牌数": 3, "象限": "短视频·自营主导"}, {"行业": "葡萄酒", "直播占比": 20.6, "自营占比": 100.0, "GMV亿": 0.33, "品牌数": 2, "象限": "短视频·自营主导"}, {"行业": "海外保健食品", "直播占比": 0.0, "自营占比": 0.0, "GMV亿": 0.0, "品牌数": 1, "象限": "短视频·分销主导"}], "clusters": [["直播自营型", 65, 25.63], ["直播分销型", 115, 17.84], ["短视频自营型", 10, 16.51], ["短视频分销型", 39, 5.57], ["货架型", 39, 5.26]], "s3scatter": [[125386.0, 26077.0, 0.208, "诺特兰德", "自营", "短视频自营型", "膳食营养"], [22041.0, 16833.0, 0.764, "华大营养", "自营", "直播自营型", "膳食营养"], [22025.0, 7549.0, 0.343, "东方甄选", "自营", "直播自营型", "未匹配"], [18344.0, 2164.0, 0.118, "三只松鼠", "分销", "直播分销型", "休闲食品"], [15524.0, 8099.0, 0.522, "万益蓝", "自营", "直播自营型", "膳食营养"], [14958.0, 5167.0, 0.345, "叮叮懒人菜", "自营", "直播自营型", "粮油调味速食"], [14688.0, 2832.0, 0.193, "认养一头牛", "分销", "直播分销型", "乳制品"], [14041.0, 395.0, 0.028, "本来果坊", "分销", "直播分销型", "未匹配"], [12674.0, 2936.0, 0.232, "永和豆浆", "自营", "直播自营型", "冲调品"], [12435.0, 3018.0, 0.243, "五个女博士", "自营", "直播自营型", "膳食营养"], [11934.0, 6151.0, 0.515, "原始黄金", "自营", "直播自营型", "乳制品"], [11856.0, 2964.0, 0.25, "大希地", "自营", "直播自营型", "粮油调味速食"], [10742.0, 1534.0, 0.143, "南方黑芝麻", "分销", "直播分销型", "冲调品"], [10574.0, 1432.0, 0.135, "不集", "分销", "短视频分销型", "粮油调味速食"], [10520.0, 12.0, 0.001, "天海藏", "分销", "直播分销型", "未匹配"], [9382.0, 1945.0, 0.207, "四只猫", "自营", "短视频自营型", "冲调品"], [8710.0, 1084.0, 0.124, "喜纯", "分销", "短视频分销型", "冲调品"], [8678.0, 3534.0, 0.407, "华北制药", "自营", "直播自营型", "传统滋补"], [7984.0, 3350.0, 0.42, "锋味派", "自营", "直播自营型", "粮油调味速食"], [6818.0, 3612.0, 0.53, "轻上", "自营", "货架型", "软饮料"], [6610.0, 2328.0, 0.352, "五粮液", "自营", "直播自营型", "白酒"], [6421.0, 2651.0, 0.413, "江中", "自营", "直播自营型", "膳食营养"], [6334.0, 1600.0, 0.253, "海天", "自营", "直播自营型", "啤酒"], [6298.0, 2645.0, 0.42, "福月德", "自营", "直播自营型", "粮油调味速食"], [6060.0, 2851.0, 0.47, "笑厨", "自营", "短视频自营型", "粮油调味速食"], [5473.0, 4666.0, 0.853, "卫仕", "自营", "直播自营型", "宠物"], [5150.0, 37.0, 0.007, "自然搭档", "分销", "直播分销型", "未匹配"], [5124.0, 4.0, 0.001, "百威", "分销", "货架型", "待映射"], [5083.0, 1538.0, 0.302, "蒙牛", "自营", "直播自营型", "乳制品"], [5032.0, 3675.0, 0.73, "手艺人", "自营", "货架型", "白酒"], [4869.0, 839.0, 0.172, "金味", "分销", "直播分销型", "冲调品"], [4800.0, 36.0, 0.007, "百草味", "分销", "货架型", "待映射"], [4738.0, 180.0, 0.038, "晟麦", "分销", "直播分销型", "待映射"], [4725.0, 1484.0, 0.314, "椰谷", "自营", "短视频自营型", "软饮料"], [4569.0, 2093.0, 0.458, "劲家庄", "自营", "货架型", "休闲食品"], [4523.0, 1471.0, 0.325, "碧翠园", "自营", "直播自营型", "软饮料"], [4472.0, 404.0, 0.09, "五谷磨房", "分销", "直播分销型", "冲调品"], [4342.0, 158.0, 0.036, "佳沛", "分销", "直播分销型", "待映射"], [4295.0, 1078.0, 0.251, "沙漠一号", "自营", "短视频自营型", "粮油调味速食"], [4160.0, 1436.0, 0.345, "康师傅", "自营", "直播自营型", "软饮料"], [4110.0, 624.0, 0.152, "伊利", "分销", "直播分销型", "乳制品"], [3835.0, 846.0, 0.221, "德芙", "自营", "货架型", "休闲食品"], [3819.0, 296.0, 0.077, "onlytree", "分销", "直播分销型", "待映射"], [3788.0, 875.0, 0.231, "美赞臣", "自营", "短视频自营型", "待映射"], [3703.0, 1171.0, 0.316, "燕之屋", "自营", "直播自营型", "传统滋补"], [3652.0, 70.0, 0.019, "君乐宝", "分销", "直播分销型", "待映射"], [3491.0, 436.0, 0.125, "世壮", "分销", "直播分销型", "未匹配"], [3403.0, 1333.0, 0.392, "楼外楼", "自营", "直播自营型", "粮油调味速食"], [3391.0, 1828.0, 0.539, "彩虹星球", "自营", "直播自营型", "生鲜"], [3372.0, 794.0, 0.236, "加点滋味", "自营", "短视频自营型", "粮油调味速食"], [3342.0, 237.0, 0.071, "小黄象", "分销", "直播分销型", "待映射"], [3324.0, 28.0, 0.008, "下厨房", "分销", "短视频分销型", "未匹配"], [3176.0, 1692.0, 0.533, "春光", "自营", "直播自营型", "软饮料"], [3108.0, 1397.0, 0.45, "乖不二", "自营", "短视频自营型", "待映射"], [3066.0, 512.0, 0.167, "洽洽", "分销", "货架型", "待映射"], [3034.0, 2342.0, 0.772, "馥食集", "自营", "货架型", "粮油调味速食"], [3017.0, 1227.0, 0.407, "中茶", "自营", "直播自营型", "茶叶"], [2972.0, 107.0, 0.036, "童涵春堂1783", "分销", "直播分销型", "未匹配"], [2925.0, 1643.0, 0.562, "黄金搭档", "自营", "直播自营型", "保健食品"], [2851.0, 726.0, 0.255, "白象", "自营", "直播自营型", "待映射"], [2835.0, 893.0, 0.315, "帝月", "自营", "短视频自营型", "葡萄酒"], [2828.0, 210.0, 0.074, "习酒", "分销", "直播分销型", "待映射"], [2822.0, 76.0, 0.027, "良品铺子", "分销", "短视频分销型", "待映射"], [2740.0, 141.0, 0.051, "青岛啤酒", "分销", "直播分销型", "待映射"], [2722.0, 35.0, 0.013, "盼盼", "分销", "货架型", "待映射"], [2593.0, 6.0, 0.002, "雪兰", "分销", "短视频分销型", "待映射"], [2583.0, 312.0, 0.121, "江中食疗", "分销", "直播分销型", "未匹配"], [2416.0, 4.0, 0.002, "鲁花", "分销", "直播分销型", "未匹配"], [2399.0, 1855.0, 0.773, "汤臣倍健", "自营", "直播自营型", "保健食品"], [2381.0, 25.0, 0.01, "九芝堂", "分销", "短视频分销型", "待映射"], [2312.0, 1118.0, 0.484, "八马", "自营", "直播自营型", "茶叶"], [2295.0, 214.0, 0.093, "国联 水产", "分销", "直播分销型", "待映射"], [2259.0, 826.0, 0.366, "纯耕", "自营", "直播自营型", "传统滋补"], [2239.0, 1222.0, 0.546, "袋鼠先生", "自营", "直播自营型", "休闲食品"], [2164.0, 262.0, 0.121, "今麦郎", "分销", "短视频分销型", "待映射"], [2129.0, 711.0, 0.334, "维维", "自营", "直播自营型", "待映射"], [2107.0, 468.0, 0.222, "榴芒一刻", "自营", "直播自营型", "待映射"], [2104.0, 444.0, 0.211, "朵娜贝拉", "自营", "短视频自营型", "待映射"], [2074.0, 98.0, 0.047, "FIBOO", "分销", "直播分销型", "待映射"], [2060.0, 148.0, 0.072, "脆升升", "分销", "货架型", "待映射"], [1993.0, 229.0, 0.115, "十月稻田", "分销", "直播分销型", "待映射"], [1960.0, 778.0, 0.397, "程意严选", "自营", "直播自营型", "待映射"], [1890.0, 647.0, 0.343, "一念草木中", "自营", "直播自营型", "待映射"], [1842.0, 96.0, 0.052, "天山", "分销", "直播分销型", "待映射"], [1817.0, 75.0, 0.041, "小野轻煮", "分销", "短视频分销型", "未匹配"], [1806.0, 139.0, 0.077, "麻六记", "分销", "短视频分销型", "待映射"], [1805.0, 231.0, 0.128, "谷本日记", "分销", "短视频分销型", "待映射"], [1781.0, 97.0, 0.054, "百年堂", "分销", "直播分销型", "未匹配"], [1756.0, 23.0, 0.013, "金龙鱼", "分销", "直播分销型", "未匹配"], [1735.0, 1.0, 0.001, "美荻斯", "分销", "直播分销型", "未匹配"], [1692.0, 2.0, 0.001, "双汇", "分销", "货架型", "未匹配"], [1639.0, 572.0, 0.349, "古井贡酒", "自营", "直播自营型", "待映射"], [1634.0, 3.0, 0.002, "犇西诗", "分销", "直播分销型", "未匹配"], [1630.0, 441.0, 0.27, "皇上皇", "自营", "直播自营型", "待映射"], [1612.0, 137.0, 0.085, "三全", "分销", "直播分销型", "待映射"], [1593.0, 165.0, 0.104, "北大荒", "分销", "短视频分销型", "待映射"], [1575.0, 649.0, 0.412, "思念", "自营", "直播自营型", "粮油调味速食"], [1570.0, 85.0, 0.054, "李锦记", "分销", "直播分销型", "待映射"], [1562.0, 287.0, 0.184, "七小七", "分销", "直播分销型", "休闲食品"], [1561.0, 269.0, 0.172, "海底捞", "分销", "短视频分销型", "待映射"], [1546.0, 1463.0, 0.946, "健尔马", "自营", "直播自营型", "保健食品"], [1527.0, 698.0, 0.457, "小仙炖", "自营", "直播自营型", "传统滋补"], [1514.0, 170.0, 0.112, "本来生活", "分销", "直播分销型", "未匹配"], [1489.0, 88.0, 0.059, "咖世家", "分销", "短视频分销型", "待映射"], [1462.0, 10.0, 0.006, "郭师傅", "分销", "直播分销型", "未匹配"], [1434.0, 1059.0, 0.739, "空刻", "自营", "直播自营型", "粮油调味速食"], [1419.0, 503.0, 0.354, "官栈", "自营", "直播自营型", "传统滋补"], [1379.0, 35.0, 0.026, "光明", "分销", "直播分销型", "待映射"], [1368.0, 1.0, 0.001, "旺旺", "分销", "货架型", "待映射"], [1361.0, 434.0, 0.319, "九阳豆浆", "自营", "直播自营型", "待映射"], [1340.0, 1.0, 0.001, "脱骨侠", "分销", "直播分销型", "未匹配"], [1332.0, 28.0, 0.021, "华美", "分销", "直播分销型", "待映射"], [1320.0, 2.0, 0.001, "皇家小虎", "分销", "短视频分销型", "未匹配"], [1294.0, 66.0, 0.051, "大白兔", "分销", "货架型", "待映射"], [1289.0, 176.0, 0.137, "野人日记", "分销", "短视频分销型", "待映射"], [1286.0, 1052.0, 0.818, "哈药", "自营", "直播自营型", "保健食品"], [1262.0, 268.0, 0.213, "麦富迪", "自营", "直播自营型", "待映射"], [1243.0, 2.0, 0.002, "鲜蜂队", "分销", "直播分销型", "未匹配"], [1238.0, 270.0, 0.218, "疆小娃", "自营", "直播自营型", "休闲食品"], [1213.0, 49.0, 0.041, "飞鹤", "分销", "短视频分销型", "待映射"], [1167.0, 64.0, 0.054, "盐津铺子", "分销", "直播分销型", "待映射"], [1161.0, 42.0, 0.036, "西麦", "分销", "直播分销型", "待映射"], [1146.0, 254.0, 0.222, "费列罗", "自营", "直播自营型", "待映射"], [1132.0, 577.0, 0.51, "林小生", "自营", "直播自营型", "粮油调味速食"], [1117.0, 41.0, 0.036, "宁之春", "分销", "短视频分销型", "待映射"], [1108.0, 1018.0, 0.919, "轻启力", "自营", "货架型", "粮油调味速食"], [1085.0, 401.0, 0.37, "泸州老窖", "自营", "直播自营型", "待映射"], [1067.0, 899.0, 0.842, "参小妹", "自营", "直播自营型", "生鲜"], [1049.0, 860.0, 0.82, "椰泰", "自营", "货架型", "待映射"], [1049.0, 21.0, 0.02, "福东海", "分销", "直播分销型", "待映射"], [1047.0, 47.0, 0.044, "一鸣", "分销", "直播分销型", "保健食品"], [1044.0, 8.0, 0.008, "每日博士", "分销", "直播分销型", "待映射"], [1015.0, 287.0, 0.283, "享食者", "自营", "直播自营型", "粮油调味速食"], [1009.0, 419.0, 0.415, "农夫山泉", "自营", "直播自营型", "待映射"], [1003.0, 311.0, 0.31, "会稽山", "自营", "直播自营型", "待映射"], [973.0, 15.0, 0.015, "圣农", "分销", "短视频分销型", "未匹配"], [949.0, 20.0, 0.021, "好想你", "分销", "直播分销型", "待映射"], [946.0, 300.0, 0.317, "敖东", "自营", "直播自营型", "保健食品"], [914.0, 220.0, 0.241, "同庆楼", "自营", "直播自营型", "待映射"], [889.0, 5.0, 0.005, "华弘草芝堂", "分销", "直播分销型", "未匹配"], [867.0, 11.0, 0.013, "鲨鱼菲特", "分销", "短视频分销型", "未匹配"], [827.0, 5.0, 0.005, "泰森", "分销", "直播分销型", "未匹配"], [825.0, 82.0, 0.1, "汾酒", "分销", "直播分销型", "白酒"], [793.0, 135.0, 0.17, "FoYes", "分销", "短视频分销型", "待映射"], [749.0, 25.0, 0.034, "雷允上", "分销", "直播分销型", "未匹配"], [735.0, 30.0, 0.041, "三养", "分销", "货架型", "待映射"], [709.0, 3.0, 0.004, "丙田", "分销", "短视频分销型", "未匹配"], [696.0, 3.0, 0.004, "戈壁工坊", "分销", "直播分销型", "未匹配"], [694.0, 60.0, 0.087, "徐福记", "分销", "直播分销型", "待映射"], [679.0, 189.0, 0.279, "瑞琪奥兰", "自营", "直播自营型", "待映射"], [665.0, 573.0, 0.862, "益倍萃", "自营", "直播自营型", "休闲食品"], [658.0, 18.0, 0.027, "科尔沁", "分销", "短视频分销型", "待映射"], [648.0, 553.0, 0.853, "多燕瘦", "自营", "货架型", "膳食营养"], [648.0, 398.0, 0.615, "阴山优麦", "自营", "直播自营型", "待映射"], [646.0, 27.0, 0.041, "新希望", "分销", "直播分销型", "待映射"], [643.0, 2.0, 0.003, "怡宝", "分销", "货架型", "未匹配"], [615.0, 51.0, 0.083, "沃隆", "分销", "直播分销型", "待映射"], [604.0, 413.0, 0.684, "山猫超人", "自营", "直播自营型", "生鲜"], [587.0, 112.0, 0.19, "嘉华", "分销", "直播分销型", "待映射"], [578.0, 196.0, 0.339, "张一元", "自营", "直播自营型", "待映射"], [565.0, 257.0, 0.454, "慢严舒柠", "自营", "货架型", "传统滋补"], [548.0, 111.0, 0.203, "狮峰", "自营", "直播自营型", "待映射"], [541.0, 193.0, 0.357, "燕之坊", "自营", "直播自营型", "待映射"], [536.0, 73.0, 0.136, "黄天鹅", "分销", "直播分销型", "待映射"], [509.0, 187.0, 0.367, "悦鲜活", "自营", "直播自营型", "待映射"], [504.0, 10.0, 0.02, "暴肌独角兽", "分销", "短视频分销型", "待映射"], [487.0, 27.0, 0.056, "双钱", "分销", "短视频分销型", "待映射"], [485.0, 19.0, 0.04, "仲景", "分销", "直播分销型", "未匹配"], [485.0, 371.0, 0.765, "览翠", "自营", "货架型", "葡萄酒"], [478.0, 0.0, 0.001, "紫燕百味鸡", "分销", "直播分销型", "未匹配"], [472.0, 22.0, 0.046, "王小卤", "分销", "短视频分销型", "未匹配"], [469.0, 104.0, 0.223, "修正", "自营", "直播自营型", "保健食品"], [462.0, 42.0, 0.091, "福牌阿胶", "分销", "直播分销型", "未匹配"], [454.0, 14.0, 0.03, "保乐力加", "分销", "直播分销型", "待映射"], [453.0, 15.0, 0.034, "卫龙", "分销", "直播分销型", "待映射"], [444.0, 1.0, 0.002, "葡记", "分销", "货架型", "未匹配"], [430.0, 109.0, 0.253, "洋河", "自营", "直播自营型", "待映射"], [427.0, 49.0, 0.115, "统一", "分销", "直播分销型", "待映射"], [419.0, 1.0, 0.003, "茅台酱香酒", "分销", "直播分销型", "待映射"], [411.0, 2.0, 0.006, "几片海", "分销", "短视频分销型", "未匹配"], [411.0, 60.0, 0.145, "欢乐果园joytree", "分销", "直播分销型", "未匹配"], [393.0, 5.0, 0.013, "陈李济", "分销", "直播分销型", "未匹配"], [391.0, 5.0, 0.012, "臭宝", "分销", "直播分销型", "未匹配"], [391.0, 21.0, 0.054, "邹三和", "分销", "直播分销型", "未匹配"], [357.0, 20.0, 0.056, "广州酒家", "分销", "直播分销型", "未匹配"], [356.0, 9.0, 0.026, "蔡林记", "分销", "直播分销型", "未匹配"], [354.0, 58.0, 0.164, "豆柴", "分销", "直播分销型", "待映射"], [347.0, 219.0, 0.633, "松鹤楼", "自营", "直播自营型", "待映射"], [337.0, 47.0, 0.139, "潘祥记", "分销", "直播分销型", "待映射"], [324.0, 25.0, 0.078, "每日鲜语", "分销", "直播分销型", "待映射"], [323.0, 5.0, 0.015, "五芳斋", "分销", "直播分销型", "未匹配"], [321.0, 7.0, 0.021, "褚橙", "分销", "短视频分销型", "未匹配"], [319.0, 23.0, 0.072, "藤桥", "分销", "直播分销型", "未匹配"], [310.0, 74.0, 0.239, "康比特CPT", "分销", "直播分销型", "待映射"], [309.0, 287.0, 0.928, "呜咔实验室", "自营", "直播自营型", "待映射"], [297.0, 19.0, 0.065, "秭归脐橙", "分销", "直播分销型", "未匹配"], [296.0, 55.0, 0.186, "白大师", "分销", "直播分销型", "待映射"], [294.0, 75.0, 0.255, "厨邦", "分销", "直播分销型", "待映射"], [280.0, 34.0, 0.122, "乡盛", "分销", "短视频分销型", "待映射"], [279.0, 20.0, 0.07, "张飞", "分销", "直播分销型", "待映射"], [276.0, 11.0, 0.041, "奔富", "分销", "直播分销型", "待映射"], [260.0, 3.0, 0.013, "茶口乐", "分销", "直播分销型", "未匹配"], [257.0, 9.0, 0.037, "晓芹", "分销", "货架型", "待映射"], [254.0, 7.0, 0.027, "乐事", "分销", "货架型", "未匹配"], [252.0, 3.0, 0.013, "佐丹力", "分销", "直播分销型", "未匹配"], [251.0, 36.0, 0.145, "凤球唛", "分销", "短视频分销型", "待映射"], [240.0, 63.0, 0.264, "满小饱", "分销", "短视频分销型", "待映射"], [224.0, 68.0, 0.301, "华祥苑", "分销", "直播分销型", "待映射"], [223.0, 0.0, 0.001, "欣和", "分销", "短视频分销型", "待映射"], [209.0, 95.0, 0.456, "小罐茶", "分销", "直播分销型", "待映射"], [206.0, 8.0, 0.037, "稻香村", "分销", "直播分销型", "待映射"], [200.0, 14.0, 0.073, "大喜大", "分销", "直播分销型", "未匹配"], [198.0, 118.0, 0.595, "特仑苏", "自营", "货架型", "乳制品"], [198.0, 67.0, 0.341, "格力高", "分销", "货架型", "休闲食品"], [192.0, 0.0, 0.0, "修文食品", "分销", "直播分销型", "未匹配"], [182.0, 5.0, 0.029, "朕宅", "分销", "短视频分销型", "未匹配"], [181.0, 0.0, 0.002, "路易拉菲", "分销", "直播分销型", "待映射"], [179.0, 1.0, 0.006, "百瑞源", "分销", "直播分销型", "未匹配"], [167.0, 6.0, 0.039, "李子柒", "分销", "短视频分销型", "待映射"], [165.0, 19.0, 0.115, "大马碧富", "分销", "短视频分销型", "待映射"], [158.0, 10.0, 0.064, "binking", "分销", "短视频分销型", "待映射"], [158.0, 2.0, 0.01, "九度七", "分销", "短视频分销型", "未匹配"], [155.0, 0.0, 0.001, "美心", "分销", "直播分销型", "待映射"], [155.0, 9.0, 0.056, "周黑鸭", "分销", "货架型", "未匹配"], [146.0, 1.0, 0.007, "金豆芽", "分销", "直播分销型", "未匹配"], [139.0, 62.0, 0.447, "海文铭", "分销", "直播分销型", "待映射"], [128.0, 0.0, 0.002, "红塔", "分销", "直播分销型", "未匹配"], [128.0, 10.0, 0.074, "福口居", "分销", "直播分销型", "未匹配"], [125.0, 34.0, 0.272, "阳澄锦绍", "分销", "直播分销型", "待映射"], [119.0, 2.0, 0.014, "茅台", "分销", "直播分销型", "待映射"], [111.0, 16.0, 0.145, "民和", "分销", "直播分销型", "待映射"], [110.0, 1.0, 0.013, "康维他", "分销", "直播分销型", "未匹配"], [109.0, 2.0, 0.018, "德州扒鸡", "分销", "直播分销型", "未匹配"], [103.0, 1.0, 0.011, "利口福", "分销", "直播分销型", "未匹配"], [102.0, 0.0, 0.002, "豪客来轻烹", "分销", "直播分销型", "未匹配"], [97.0, 0.0, 0.0, "方回春堂", "分销", "直播分销型", "未匹配"], [94.0, 0.0, 0.001, "雀巢", "分销", "货架型", "冲调品"], [94.0, 78.0, 0.826, "健力多", "分销", "直播分销型", "待映射"], [94.0, 56.0, 0.593, "步天歌", "分销", "直播分销型", "待映射"], [93.0, 0.0, 0.001, "喜之郎", "分销", "货架型", "待映射"], [93.0, 5.0, 0.057, "舜华", "分销", "货架型", "传统滋补"], [74.0, 2.0, 0.031, "月盛斋", "分销", "直播分销型", "未匹配"], [45.0, 10.0, 0.216, "智力", "分销", "直播分销型", "待映射"], [45.0, 3.0, 0.058, "馋小乖", "分销", "短视频分销型", "未匹配"], [44.0, 31.0, 0.705, "苏状元", "分销", "直播分销型", "待映射"], [40.0, 0.0, 0.0, "安井", "分销", "直播分销型", "未匹配"], [39.0, 15.0, 0.391, "格兰菲迪", "分销", "货架型", "待映射"], [38.0, 1.0, 0.032, "老金磨方", "分销", "直播分销型", "未匹配"], [37.0, 0.0, 0.003, "荣业", "分销", "直播分销型", "未匹配"], [33.0, 0.0, 0.008, "邻小言", "分销", "直播分销型", "未匹配"], [31.0, 3.0, 0.101, "来伊份", "分销", "直播分销型", "待映射"], [29.0, 1.0, 0.037, "东北农嫂", "分销", "直播分销型", "未匹配"], [28.0, 4.0, 0.156, "999", "分销", "直播分销型", "待映射"], [26.0, 0.0, 0.002, "正新", "分销", "短视频分销型", "未匹配"], [23.0, 0.0, 0.0, "剑南春", "分销", "货架型", "待映射"], [22.0, 1.0, 0.056, "益节MoveFree", "分销", "货架型", "未匹配"], [19.0, 0.0, 0.017, "if溢福", "分销", "货架型", "未匹配"], [15.0, 1.0, 0.04, "颜值百分百", "分销", "短视频分销型", "未匹配"], [15.0, 0.0, 0.026, "宛禾米线", "分销", "货架型", "未匹配"], [14.0, 2.0, 0.14, "麦吉士", "分销", "直播分销型", "未匹配"], [11.0, 0.0, 0.0, "马爹利", "分销", "直播分销型", "待映射"], [8.0, 2.0, 0.19, "金华火腿", "分销", "货架型", "未匹配"], [6.0, 0.0, 0.049, "健安喜", "分销", "货架型", "海外保健食品"], [3.0, 0.0, 0.007, "沁州黄小米", "分销", "货架型", "待映射"], [3.0, 0.0, 0.019, "圣迪乐", "分销", "直播分销型", "未匹配"], [2.0, 0.0, 0.0, "枣粮先生", "分销", "直播分销型", "未匹配"], [1.0, 0.0, 0.007, "瀛洲渡", "分销", "货架型", "待映射"], [0.0, 0.0, 0.0, "天福号", "分销", "货架型", "未匹配"]], "s3gmv_med": 1006.0999999999999, "s3ad_med": 74.6, "s3top": [["诺特兰德", 125386.0, 26077.0, 0.208], ["华大营养", 22041.0, 16833.0, 0.764], ["东方甄选", 22025.0, 7549.0, 0.343], ["三只松鼠", 18344.0, 2164.0, 0.118], ["万益蓝", 15524.0, 8099.0, 0.522], ["叮叮懒人菜", 14958.0, 5167.0, 0.345], ["认养一头牛", 14688.0, 2832.0, 0.193], ["本来果坊", 14041.0, 395.0, 0.028], ["永和豆浆", 12674.0, 2936.0, 0.232], ["五个女博士", 12435.0, 3018.0, 0.243], ["原始黄金", 11934.0, 6151.0, 0.515], ["大希地", 11856.0, 2964.0, 0.25], ["南方黑芝麻", 10742.0, 1534.0, 0.143], ["不集", 10574.0, 1432.0, 0.135], ["天海藏", 10520.0, 12.0, 0.001]], "s4": {"zt": 11.94, "zb": 38.23, "zib": 23.18, "db": 15.05, "zt_p": 0.238, "zb_p": 0.762, "zib_p": 0.606, "db_p": 0.394}, "s4month": {"cats": ["2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08"], "zt": [0.21, 1.29, 1.07, 1.32, 1.35, 1.36, 1.81, 1.59, 1.94], "zb": [1.02, 4.97, 4.02, 4.76, 4.2, 4.25, 5.79, 4.74, 4.48]}, "s4link3": [["直播广告", 14.94], ["短视频广告", 16.44], ["货架投放", 7.12]]};
+const D={"s1bar": {"cats": ["膳食营养", "待映射", "未匹配", "粮油调味速食", "冲调品", "乳制品", "休闲食品", "软饮料", "传统滋补", "白酒", "保健食品", "啤酒", "宠物", "茶叶", "生鲜", "葡萄酒", "海外保健食品"], "live": [8.9, 6.77, 6.5, 4.02, 3.02, 2.79, 1.39, 1.03, 1.46, 0.74, 0.79, 0.22, 0.39, 0.42, 0.25, 0.07, 0.0], "sv": [6.67, 3.31, 1.73, 2.18, 1.33, 0.27, 0.99, 0.59, 0.12, 0.01, 0.04, 0.19, 0.01, 0.02, 0.09, 0.13, 0.0], "oth": [2.68, 3.72, 1.73, 1.61, 0.74, 0.54, 0.89, 0.72, 0.25, 0.5, 0.24, 0.22, 0.14, 0.09, 0.16, 0.13, 0.0], "ad": [5.72, 1.85, 0.97, 2.75, 0.87, 1.13, 0.75, 0.97, 0.7, 0.61, 0.65, 0.16, 0.47, 0.23, 0.31, 0.13, 0.0]}, "kpiquad": [{"行业": "膳食营养", "直播占比": 48.8, "自营占比": 100.0, "GMV亿": 18.25, "品牌数": 6, "象限": "短视频·自营主导"}, {"行业": "粮油调味速食", "直播占比": 51.4, "自营占比": 86.5, "GMV亿": 7.81, "品牌数": 15, "象限": "高直播·自营主导"}, {"行业": "冲调品", "直播占比": 59.2, "自营占比": 43.3, "GMV亿": 5.09, "品牌数": 7, "象限": "高直播·分销主导"}, {"行业": "乳制品", "直播占比": 77.5, "自营占比": 47.8, "GMV亿": 3.6, "品牌数": 5, "象限": "高直播·分销主导"}, {"行业": "休闲食品", "直播占比": 42.5, "自营占比": 38.4, "GMV亿": 3.26, "品牌数": 8, "象限": "短视频·分销主导"}, {"行业": "软饮料", "直播占比": 43.8, "自营占比": 100.0, "GMV亿": 2.34, "品牌数": 5, "象限": "短视频·自营主导"}, {"行业": "传统滋补", "直播占比": 80.1, "自营占比": 99.5, "GMV亿": 1.82, "品牌数": 7, "象限": "高直播·自营主导"}, {"行业": "白酒", "直播占比": 59.7, "自营占比": 93.4, "GMV亿": 1.25, "品牌数": 3, "象限": "高直播·自营主导"}, {"行业": "保健食品", "直播占比": 74.0, "自营占比": 90.1, "GMV亿": 1.06, "品牌数": 7, "象限": "高直播·自营主导"}, {"行业": "啤酒", "直播占比": 35.3, "自营占比": 100.0, "GMV亿": 0.63, "品牌数": 1, "象限": "短视频·自营主导"}, {"行业": "宠物", "直播占比": 71.6, "自营占比": 100.0, "GMV亿": 0.55, "品牌数": 1, "象限": "高直播·自营主导"}, {"行业": "茶叶", "直播占比": 79.6, "自营占比": 100.0, "GMV亿": 0.53, "品牌数": 2, "象限": "高直播·自营主导"}, {"行业": "生鲜", "直播占比": 49.9, "自营占比": 100.0, "GMV亿": 0.51, "品牌数": 3, "象限": "短视频·自营主导"}, {"行业": "葡萄酒", "直播占比": 20.6, "自营占比": 100.0, "GMV亿": 0.33, "品牌数": 2, "象限": "短视频·自营主导"}, {"行业": "海外保健食品", "直播占比": 0.0, "自营占比": 0.0, "GMV亿": 0.0, "品牌数": 1, "象限": "短视频·分销主导"}], "clusters": [["直播自营型", 65, 25.63, 0], ["直播分销型（或重度微豆）", 115, 17.84, 53], ["短视频自营型", 10, 16.51, 0], ["短视频分销型（或重度微豆）", 39, 5.57, 14], ["货架型", 39, 5.26, 10]], "s3hi": [["健尔马", 1546.0, 1463.0, 0.946, "保健食品", "直播自营型"], ["呜咔实验室", 309.0, 287.0, 0.928, "待映射", "直播自营型"], ["轻启力", 1108.0, 1018.0, 0.919, "粮油调味速食", "货架型"], ["益倍萃", 665.0, 573.0, 0.862, "休闲食品", "直播自营型"], ["多燕瘦", 648.0, 553.0, 0.853, "膳食营养", "货架型"], ["卫仕", 5473.0, 4666.0, 0.853, "宠物", "直播自营型"], ["参小妹", 1067.0, 899.0, 0.842, "生鲜", "直播自营型"], ["健力多", 94.0, 78.0, 0.826, "待映射", "直播分销型"], ["椰泰", 1049.0, 860.0, 0.82, "待映射", "货架型"], ["哈药", 1286.0, 1052.0, 0.818, "保健食品", "直播自营型"], ["汤臣倍健", 2399.0, 1855.0, 0.773, "保健食品", "直播自营型"], ["馥食集", 3034.0, 2342.0, 0.772, "粮油调味速食", "货架型"], ["览翠", 485.0, 371.0, 0.765, "葡萄酒", "货架型"], ["华大营养", 22041.0, 16833.0, 0.764, "膳食营养", "直播自营型"], ["空刻", 1434.0, 1059.0, 0.739, "粮油调味速食", "直播自营型"]], "s3lo": [["本来果坊", 14041.0, 395.0, 0.028, "未匹配", "直播分销型"], ["天海藏", 10520.0, 12.0, 0.001, "未匹配", "直播分销型"], ["自然搭档", 5150.0, 37.0, 0.007, "未匹配", "直播分销型"], ["百威", 5124.0, 4.0, 0.001, "待映射", "货架型"], ["百草味", 4800.0, 36.0, 0.007, "待映射", "货架型"], ["晟麦", 4738.0, 180.0, 0.038, "待映射", "直播分销型"], ["佳沛", 4342.0, 158.0, 0.036, "待映射", "直播分销型"], ["君乐宝", 3652.0, 70.0, 0.019, "待映射", "直播分销型"], ["下厨房", 3324.0, 28.0, 0.008, "未匹配", "短视频分销型"]], "s4a": {"zt": 11.94, "zb": 38.23, "zib": 23.18, "db": 15.05, "zt_p": 0.238, "zb_p": 0.762, "zib_p": 0.606, "db_p": 0.394}, "s4month": {"cats": ["2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08"], "zt": [0.21, 1.29, 1.07, 1.32, 1.35, 1.36, 1.81, 1.59, 1.94], "zb": [1.02, 4.97, 4.02, 4.76, 4.2, 4.25, 5.79, 4.74, 4.48]}, "s4b": {"cats": ["短视频广告", "直播广告", "货架投放"], "vals": [16.44, 14.94, 7.12], "pcts": [0.427, 0.388, 0.185]}};
 function mk(id,opt){const el=document.getElementById(id);if(!el)return;const c=echarts.init(el);c.setOption(opt);window.addEventListener('resize',()=>c.resize());}
 {
+const CMAP={'直播自营型':'#38A169','直播分销型':'#DD6B20','短视频自营型':'#805AD5','短视频分销型':'#C0504D','货架型':'#A0AEC0'};
 // 板块1 堆叠柱
 mk('c_s1bar',{
   title:{text:'各三级行业 GMV 结构（直播/短视频/其他/广告·亿元）',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
@@ -246,60 +272,59 @@ mk('c_kpiquad',{
     ]}
   }]
 });
-// 板块2 图2 五客群
+// 板块2 图2 五客群(含微豆)
 mk('c_cluster',{
   title:{text:'五类客群 · 品牌数与GMV对比',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
-  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},legend:{bottom:0},
-  grid:{left:90,right:60,top:40,bottom:40},
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>{let i=p[0].dataIndex;let c=D.clusters[i];return `${c[0]}<br/>品牌数:${c[1]}家<br/>GMV:${c[2]}亿<br/>重微信豆:${c[3]||0}家`;}},
+  grid:{left:150,right:60,top:40,bottom:40},
   xAxis:[{type:'value',name:'品牌数'},{type:'value',name:'GMV(亿)',position:'top'}],
-  yAxis:{type:'category',data:D.clusters.map(x=>x[0]),inverse:true,axisLabel:{fontSize:12}},
+  yAxis:{type:'category',data:D.clusters.map(x=>x[0]),inverse:true,axisLabel:{fontSize:11}},
   series:[
     {name:'品牌数',type:'bar',data:D.clusters.map(x=>x[1]),barWidth:'38%',itemStyle:{color:'#2B6CB0',borderRadius:[0,5,5,0]},label:{show:true,position:'right'}},
     {name:'GMV(亿)',type:'bar',xAxisIndex:1,data:D.clusters.map(x=>x[2]),barWidth:'38%',itemStyle:{color:'#DD6B20',borderRadius:[0,5,5,0]},label:{show:true,position:'right',formatter:'{c}亿'}}
   ]
 });
-// 板块3 散点(对数轴)
-const sc=D.s3scatter.filter(x=>x[0]>0&&x[1]>0).map(x=>({value:[x[0],x[1]],ratio:x[2],name:x[3],sd:x[4],cluster:x[5]}));
-mk('c_s3scatter',{
-  title:{text:'客户 · 总GMV vs 广告GMV(万·对数轴)',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
-  tooltip:{formatter:p=>`${p.data.name}(${p.data.sd}·${p.data.cluster})<br/>总GMV:${p.data.value[0].toLocaleString()}万<br/>广告GMV:${p.data.value[1].toLocaleString()}万<br/>广告占比:${(p.data.ratio*100).toFixed(0)}%`},
-  grid:{left:70,right:30,top:45,bottom:50},
-  xAxis:{type:'log',name:'总GMV(万)',min:10,max:200000,logBase:10},
-  yAxis:{type:'log',name:'广告GMV(万)',min:1,max:50000,logBase:10},
-  series:[{type:'scatter',data:sc,symbolSize:6,itemStyle:{color:p=>p.data.sd=='自营'?'#38A169':'#DD6B20',opacity:.55},
-    label:{show:true,formatter:p=>p.data.value[0]>=5000?p.data.name:'',fontSize:10,color:'#4A5568',position:'top'},
-    labelLayout:{hideOverlap:true,moveOverlap:'shiftY'},
-    markLine:{silent:true,symbol:'none',lineStyle:{type:'dashed',color:'#CBD5E0'},data:[{xAxis:D.s3gmv_med},{yAxis:D.s3ad_med}],label:{show:true,color:'#A0AEC0',fontSize:10,formatter:p=>p.name||'中位数'}}
-  }]
+// 板块3 图A 高广告依赖
+const hi=D.s3hi.map(x=>({name:x[0],gmv:x[1],ad:x[2],ratio:x[3],kpi:x[4],cl:x[5]}));
+mk('c_s3hi',{
+  title:{text:`高广告依赖 TOP${hi.length} · 广告占比%(停投风险)`,left:'center',textStyle:{fontSize:13.5,color:'#C05621'}},
+  tooltip:{formatter:p=>`${p.data.name}<br/>客群:${p.data.cl}<br/>总GMV:${p.data.gmv.toLocaleString()}万<br/>广告GMV:${p.data.ad.toLocaleString()}万<br/>广告占比:${(p.data.ratio*100).toFixed(0)}%`},
+  grid:{left:90,right:60,top:45,bottom:30},
+  xAxis:{type:'value',name:'广告占比%',axisLabel:{formatter:'{value}%'}},
+  yAxis:{type:'category',data:hi.map(x=>x.name).reverse(),axisLabel:{fontSize:11}},
+  series:[{type:'bar',data:hi.map(x=>({value:Math.round(x.ratio*100),name:x.name,...x})).reverse(),
+    itemStyle:{color:p=>CMAP[p.data.cl]||'#999',borderRadius:[0,4,4,0]},
+    label:{show:true,position:'right',formatter:p=>p.data.value+'%'}}]
 });
-// 板块3 TOP15柱
-mk('c_s3top',{
-  title:{text:'TOP15 客户 · 总GMV vs 广告GMV (万)',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
-  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},legend:{bottom:0},grid:{left:75,right:50,top:40,bottom:40},
-  xAxis:{type:'value',name:'GMV(万)'},
-  yAxis:{type:'category',data:D.s3top.map(x=>x[0]),inverse:true,axisLabel:{fontSize:10.5}},
-  series:[
-    {name:'总GMV',type:'bar',data:D.s3top.map(x=>x[1]),itemStyle:{color:'#2B6CB0'},barWidth:'40%'},
-    {name:'广告GMV',type:'bar',data:D.s3top.map(x=>x[2]),itemStyle:{color:'#DD6B20'},barWidth:'40%'}
-  ]
+// 板块3 图B 加投洼地
+const lo=D.s3lo.map(x=>({name:x[0],gmv:x[1],ad:x[2],ratio:x[3],kpi:x[4],cl:x[5]}));
+mk('c_s3lo',{
+  title:{text:`加投洼地 TOP${lo.length} · 总GMV万(增长机会)`,left:'center',textStyle:{fontSize:13.5,color:'#38A169'}},
+  tooltip:{formatter:p=>`${p.data.name}<br/>客群:${p.data.cl}<br/>总GMV:${p.data.gmv.toLocaleString()}万<br/>广告GMV:${p.data.ad.toLocaleString()}万<br/>广告占比:${(p.data.ratio*100).toFixed(1)}%`},
+  grid:{left:90,right:70,top:45,bottom:30},
+  xAxis:{type:'value',name:'总GMV(万)'},
+  yAxis:{type:'category',data:lo.map(x=>x.name).reverse(),axisLabel:{fontSize:11}},
+  series:[{type:'bar',data:lo.map(x=>({value:x.gmv,name:x.name,...x})).reverse(),
+    itemStyle:{color:p=>CMAP[p.data.cl]||'#999',borderRadius:[0,4,4,0]},
+    label:{show:true,position:'right',formatter:p=>(p.data.value/10000).toFixed(1)+'亿'}}]
 });
-// 板块4 图1 水平堆叠
+// 板块4 口径A 堆叠
 mk('c_s4bar',{
-  title:{text:'广告GMV构成占比(35周包)',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
+  title:{text:'口径A · 广告GMV构成占比',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
   tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>{let s=p[0].name+'<br/>';p.forEach(x=>{if(x.value>0)s+=`${x.marker}${x.seriesName}: ${x.value}亿<br/>`;});return s;}},
-  legend:{bottom:0},grid:{left:90,right:40,top:40,bottom:55},
+  legend:{bottom:0},grid:{left:100,right:40,top:40,bottom:55},
   xAxis:{type:'value',name:'GMV(亿)'},
   yAxis:{type:'category',data:['直播内(自播/达播)','广告(直播/直投)'],axisLabel:{fontSize:12}},
   series:[
-    {name:'直播广告',type:'bar',stack:'a',data:[0,D.s4.zb],itemStyle:{color:'#2B6CB0'},label:{show:true,formatter:p=>p.value>0?`直播 ${(D.s4.zb_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}},
-    {name:'直投=短视频广告',type:'bar',stack:'a',data:[0,D.s4.zt],itemStyle:{color:'#DD6B20'},label:{show:true,formatter:p=>p.value>0?`直投 ${(D.s4.zt_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}},
-    {name:'自播',type:'bar',stack:'a',data:[D.s4.zib,0],itemStyle:{color:'#38A169'},label:{show:true,formatter:p=>p.value>0?`自播 ${(D.s4.zib_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}},
-    {name:'达播',type:'bar',stack:'a',data:[D.s4.db,0],itemStyle:{color:'#805AD5'},label:{show:true,formatter:p=>p.value>0?`达播 ${(D.s4.db_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}}
+    {name:'直播广告',type:'bar',stack:'a',data:[0,D.s4a.zb],itemStyle:{color:'#2B6CB0'},label:{show:true,formatter:p=>p.value>0?`直播 ${(D.s4a.zb_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}},
+    {name:'直投=短视频广告',type:'bar',stack:'a',data:[0,D.s4a.zt],itemStyle:{color:'#DD6B20'},label:{show:true,formatter:p=>p.value>0?`直投 ${(D.s4a.zt_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}},
+    {name:'自播',type:'bar',stack:'a',data:[D.s4a.zib,0],itemStyle:{color:'#38A169'},label:{show:true,formatter:p=>p.value>0?`自播 ${(D.s4a.zib_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}},
+    {name:'达播',type:'bar',stack:'a',data:[D.s4a.db,0],itemStyle:{color:'#805AD5'},label:{show:true,formatter:p=>p.value>0?`达播 ${(D.s4a.db_p*100).toFixed(0)}%`:'',color:'#fff',fontSize:11}}
   ]
 });
-// 板块4 图2 月度
+// 板块4 口径A 月度
 mk('c_s4month',{
-  title:{text:'广告GMV构成 · 月度趋势(35周包·亿)',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
+  title:{text:'口径A · 月度趋势(亿)',left:'center',textStyle:{fontSize:14,color:'#2C5282'}},
   tooltip:{trigger:'axis'},legend:{bottom:0},grid:{left:50,right:30,top:45,bottom:55},
   xAxis:{type:'category',data:D.s4month.cats,axisLabel:{rotate:30,fontSize:10}},
   yAxis:{type:'value',name:'GMV(亿)'},
@@ -308,15 +333,16 @@ mk('c_s4month',{
     {name:'直投(=短视频)',type:'bar',stack:'a',data:D.s4month.zt,itemStyle:{color:'#DD6B20'}}
   ]
 });
-// 板块4 图3 新数据源商品链路三分口径
+// 板块4 口径B 三分口径
 mk('c_s4link3',{
-  title:{text:'新数据源 商品链路 · 三分口径(亿)',left:'center',textStyle:{fontSize:13,color:'#2C5282'}},
-  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:110,right:60,top:45,bottom:35},
-  xAxis:{type:'value',name:'GMV(亿)'},
-  yAxis:{type:'category',data:D.s4link3.map(x=>x[0]),inverse:true,axisLabel:{fontSize:12}},
-  series:[{name:'消耗×ROI估算GMV',type:'bar',data:D.s4link3.map(x=>x[1]),
-    itemStyle:{color:p=>['#2B6CB0','#DD6B20','#A0AEC0'][p.dataIndex]},
-    label:{show:true,position:'right',formatter:'{c}亿'}}]
+  title:{text:'口径B · 商品消费链路三分口径 GMV 预估(亿)',left:'center',textStyle:{fontSize:13.5,color:'#2C5282'}},
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>`${p[0].name}: ${p[0].value}亿 (${(D.s4b.pcts[p[0].dataIndex]*100).toFixed(1)}%)`},
+  grid:{left:110,right:70,top:45,bottom:35},
+  xAxis:{type:'value',name:'GMV预估(亿)'},
+  yAxis:{type:'category',data:D.s4b.cats.map(x=>x).reverse(),axisLabel:{fontSize:12}},
+  series:[{type:'bar',data:D.s4b.vals.slice().reverse(),
+    itemStyle:{color:p=>['#2B6CB0','#DD6B20','#A0AEC0'][2-p.dataIndex]||'#999',borderRadius:[0,4,4,0]},
+    label:{show:true,position:'right',formatter:p=>p.data.value+'亿'}}]
 });
 }
 </script></body></html>
