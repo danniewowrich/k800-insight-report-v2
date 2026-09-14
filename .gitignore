@@ -1,0 +1,34 @@
+# K800 生意洞察报告 v4.3 · GitHub Pages 白名单部署
+# 只保留报告相关文件，其余全部忽略
+
+# ---- 忽略：中间数据 json ----
+report_data*.json
+brand_mapping*.json
+
+# ---- 忽略：临时/开发目录 ----
+.codebuddy/
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# ---- 忽略：所有 Python 构建脚本 ----
+*.py
+
+# ---- 忽略：多版本 xlsx（只保留 v43 主底表） ----
+*.xlsx
+!K800报告完整整合表_v43.xlsx
+
+# ---- 忽略：非报告的 HTML 与 md 文档 ----
+食饮电商市场洞察报告.md
+经营解决方案架构师_组织落位方案.html
+商家成长引擎组_组织方案.html
+K800生意洞察报告.html
+K800生意洞察报告_v4.html
+K800生意洞察报告_v42.html
+K800生意洞察报告_v43.html
+
+# ---- 忽略：备份文件 ----
+*.bak.*
+*.bak
