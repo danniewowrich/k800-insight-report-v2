@@ -355,8 +355,8 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
     <div class="sc-toolbar">
       <span class="sct">标注密度</span>
       <button class="scbtn" data-n="0" onclick="setLbl(0)">不标注</button>
-      <button class="scbtn" data-n="15" onclick="setLbl(15)">TOP15</button>
-      <button class="scbtn active" data-n="35" onclick="setLbl(35)">TOP35</button>
+      <button class="scbtn active" data-n="15" onclick="setLbl(15)">TOP15（默认）</button>
+      <button class="scbtn" data-n="35" onclick="setLbl(35)">TOP35</button>
       <button class="scbtn" data-n="999" onclick="setLbl(999)">全部267家</button>
       <span class="sct" style="margin-left:auto;">气泡大小 ∝ 月均GMV</span>
     </div>
@@ -481,10 +481,11 @@ echarts.init(document.getElementById('bar')).setOption({
 });
 
 const scChart = echarts.init(document.getElementById('sc'));
-let LBL_MODE = 35;
+let LBL_MODE = 15;
 
 function lblCount(q){
   if(LBL_MODE === 0) return 0;
+  if(q === '高GMV·低投放') return 9999;   /* 机会区9家始终标注 */
   if(LBL_MODE >= 999) return 9999;
   if(LBL_MODE === 15) return Math.max(2, Math.round(SCTOP[q] * 15 / 35));
   return SCTOP[q];
@@ -496,14 +497,14 @@ function scOption(){
     return {
       name:q, type:'scatter',
       data: SCG[q].map((d,i)=>({value:[d[0],d[1]], name:d[2], tr:d[3], roi:d[4], lab:i<n})),
-      symbolSize: d=>Math.min(26, Math.max(7, Math.sqrt(d[0])/1.9)),
-      itemStyle:{color:QC[q], opacity:.78, borderColor:'#fff', borderWidth:.6},
+      symbolSize: d=>Math.min(22, Math.max(6, Math.sqrt(d[0])/2.1)),
+      itemStyle:{color:QC[q], opacity:q==='低GMV·低投放'?.35:.78, borderColor:'#fff', borderWidth:.6},
       label:{
-        show:true, position:'right', distance:6, fontSize:10.5, fontWeight:600,
+        show:true, position:p=>p.data.value[0]>=1500?'top':'right', distance:5, fontSize:10, fontWeight:600,
         color:QC[q], textBorderColor:'#fff', textBorderWidth:2.5,
         formatter:p=>p.data.lab ? p.data.name : ''
       },
-      labelLayout:{hideOverlap:true, moveOverlap:'shiftY'},
+      labelLayout:{hideOverlap:true},
       emphasis:{focus:'series', label:{show:true, fontSize:12.5},
         itemStyle:{opacity:1, borderWidth:2, borderColor:'#1A365D'}}
     };
