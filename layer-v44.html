@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>K800 客户分层报告 v4.4 · GMV×投放 两层分层</title>
+<title>K800 客户分层报告 v4.4.2 · GMV×投放 两层分层</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 :root{--blue:#2B6CB0;--blue-d:#2C5282;--blue-dd:#1A365D;--orange:#DD6B20;--bg:#F7FAFC;
@@ -16,7 +16,7 @@ padding:44px 40px;box-shadow:0 20px 50px rgba(43,108,176,.25);position:relative;
 .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
 background:radial-gradient(circle,rgba(221,107,32,.35),transparent 70%);border-radius:50%;}
 .hero h1{font-size:29px;font-weight:700;margin-bottom:10px;position:relative;}
-.hero .sub{font-size:14px;opacity:.93;max-width:900px;position:relative;}
+.hero .sub{font-size:14px;opacity:.93;max-width:920px;position:relative;}
 .hero .meta{margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;position:relative;}
 .hero .m{background:rgba(255,255,255,.13);padding:10px 18px;border-radius:12px;backdrop-filter:blur(6px);transition:.22s;}
 .hero .m:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);}
@@ -34,6 +34,7 @@ text-align:center;margin-bottom:18px;}
 .formula .f1 em{font-style:normal;color:#F6AD55;}
 .formula .f2{font-size:14.5px;opacity:.92;}
 .formula .f2 em{font-style:normal;color:#90CDF4;font-weight:600;}
+.formula .f3{font-size:12.5px;opacity:.8;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);}
 .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .q{background:#fff;border-radius:16px;padding:22px 24px;box-shadow:0 4px 18px rgba(0,0,0,.05);
 border:1px solid #EDF2F7;border-top:5px solid var(--blue);transition:.25s;}
@@ -52,56 +53,37 @@ border-top:1px dashed #E2E8F0;border-bottom:1px dashed #E2E8F0;}
 .q .n.hi b{color:var(--orange);}
 .q .shares{margin:0 0 12px;}
 .q .sh{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--t3);margin:5px 0;}
-.q .sh span{width:96px;flex-shrink:0;}
-.q .sh b{width:52px;text-align:right;color:var(--blue-d);font-size:12.5px;}
+.q .sh span{width:110px;flex-shrink:0;}
+.q .sh b{width:58px;text-align:right;color:var(--blue-d);font-size:12.5px;}
 .q .bar{flex:1;height:7px;background:#EDF2F7;border-radius:4px;overflow:hidden;}
 .q .bar i{display:block;height:100%;background:linear-gradient(90deg,#2B6CB0,#63A4DB);border-radius:4px;}
 .q .bar.o i{background:linear-gradient(90deg,#DD6B20,#F6AD55);}
 .q .bar.p i{background:linear-gradient(90deg,#805AD5,#B794F4);}
-/* 增量路径建议 */
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.pc{background:#fff;border-radius:16px;padding:20px 22px;box-shadow:0 4px 18px rgba(0,0,0,.05);
-border:1px solid #EDF2F7;}
-.pc-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-padding-bottom:12px;border-bottom:1px solid #EDF2F7;}
-.pc-h b{font-size:15.5px;color:var(--blue-d);}
-.pc-h .pos{display:block;font-size:11.5px;color:var(--t3);margin-top:2px;}
-.route{font-size:12px;font-weight:700;padding:5px 13px;border-radius:999px;color:#fff;white-space:nowrap;}
-.route.gmv{background:linear-gradient(135deg,#2B6CB0,#2C5282);}
-.route.tr{background:linear-gradient(135deg,#DD6B20,#C05621);}
-.route.both{background:linear-gradient(135deg,#805AD5,#6B46C1);}
-.pc-cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0;}
-.pw{background:#F7FAFC;border:1px solid #E2E8F0;border-radius:11px;padding:11px 13px;text-align:center;}
-.pw span{display:block;font-size:11.5px;color:var(--t3);font-weight:600;}
-.pw em{display:block;font-style:normal;font-size:10.8px;color:#A0AEC0;margin:3px 0 5px;}
-.pw b{font-size:19px;color:var(--t3);}
-.pw.win{background:linear-gradient(135deg,#FFFAF0,#FEEBC8);border-color:#FBD38D;}
-.pw.win b{color:var(--orange);}
-.pw.win span{color:#C05621;}
-.pc dl{font-size:12.5px;line-height:1.7;}
-.pc dt{color:var(--blue-d);font-weight:700;font-size:11.8px;margin-top:10px;}
-.pc dt:first-child{margin-top:0;}
-.pc dd{color:var(--t2);margin-left:0;}
-.pc dt.x{color:#C53030;} .pc dd.x{color:#9B2C2C;}
-/* 外链条 */
-.xlink{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-background:linear-gradient(135deg,#EBF8FF,#BEE3F8);border:1px solid #90CDF4;border-radius:14px;
-padding:16px 22px;margin-top:18px;}
-.xlink .t{font-size:13.5px;color:#2A4365;line-height:1.7;}
-.xlink .t b{color:var(--blue-d);}
-.xbtn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;
-padding:11px 22px;border-radius:10px;text-decoration:none;font-size:13.5px;font-weight:600;
-box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
-.xbtn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(43,108,176,.42);}
-.xbtn.o{background:linear-gradient(135deg,var(--orange),#C05621);box-shadow:0 4px 14px rgba(221,107,32,.3);}
+.q .bar.r i{background:linear-gradient(90deg,#C0504D,#FC8181);}
 .q .act{font-size:13px;color:var(--t2);line-height:1.72;}
-.q .act .hd{color:var(--blue-d);font-weight:700;}
+.q .route{display:inline-block;font-size:12px;font-weight:700;padding:4px 13px;border-radius:999px;
+color:#fff;margin-bottom:7px;}
+.q .route.gmv{background:linear-gradient(135deg,#2B6CB0,#2C5282);}
+.q .route.tr{background:linear-gradient(135deg,#DD6B20,#C05621);}
 .q .comp{margin-top:11px;padding-top:10px;border-top:1px dashed #E2E8F0;font-size:11.8px;color:var(--t3);}
 .tag{display:inline-block;background:#EBF8FF;color:var(--blue);padding:2px 8px;border-radius:6px;
 font-size:11.5px;margin:2px 4px 2px 0;}
-.tag.g{background:#F0FFF4;color:var(--green);} .tag.o{background:#FFFAF0;color:var(--orange);}
-.tag.r{background:#FFF5F5;color:var(--red);} .tag.p{background:#FAF5FF;color:var(--purple);}
-.tag.k{background:#FFF9DB;color:var(--gold);}
+.tag.o{background:#FFFAF0;color:var(--orange);}
+/* 统一大逻辑 */
+.logic{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;
+background:#fff;border-radius:16px;padding:26px 30px;box-shadow:0 4px 18px rgba(0,0,0,.05);border:1px solid #EDF2F7;}
+.lg{border-radius:14px;padding:20px 22px;}
+.lg.a{background:linear-gradient(135deg,#FFFAF0,#FEEBC8);border:1px solid #FBD38D;}
+.lg.b{background:linear-gradient(135deg,#EBF8FF,#BEE3F8);border:1px solid #90CDF4;}
+.lg .cond{font-size:15px;font-weight:700;margin-bottom:6px;}
+.lg.a .cond{color:#C05621;} .lg.b .cond{color:var(--blue-d);}
+.lg .arrow{font-size:20px;margin:8px 0;}
+.lg .act{font-size:22px;font-weight:700;margin-bottom:8px;}
+.lg.a .act{color:var(--orange);} .lg.b .act{color:var(--blue);}
+.lg .why{font-size:12.8px;color:var(--t2);line-height:1.7;}
+.lg .who{margin-top:10px;padding-top:9px;border-top:1px dashed rgba(0,0,0,.1);font-size:12px;color:var(--t3);}
+.lg .who b{color:var(--t1);}
+.vs{font-size:15px;color:#CBD5E0;font-weight:700;}
 table{width:100%;border-collapse:collapse;font-size:12.8px;}
 th{background:#EDF2F7;color:var(--blue-d);font-weight:600;padding:10px;text-align:left;position:sticky;top:0;z-index:2;}
 td{padding:10px;border-bottom:1px solid #F0F4F8;color:var(--t2);vertical-align:top;}
@@ -113,6 +95,8 @@ tr:hover td{background:#F7FAFC;}
 .callout{background:linear-gradient(135deg,#EBF8FF,#BEE3F8);border:1px solid #90CDF4;border-radius:14px;
 padding:18px 22px;font-size:13.5px;color:#2A4365;line-height:1.85;margin:18px 0;}
 .callout b{color:var(--blue-d);}
+.warn{background:linear-gradient(135deg,#FFF5F5,#FED7D7);border-color:#FEB2B2;color:#9B2C2C;}
+.warn b{color:#C53030;}
 .disc{background:#FFF5F5;border:1px solid #FEB2B2;border-radius:12px;padding:16px 20px;
 font-size:12.5px;color:#9B2C2C;margin-top:18px;}
 .disc b{color:#C53030;display:block;margin-bottom:8px;font-size:13px;}
@@ -128,65 +112,106 @@ font-size:12.5px;color:#9B2C2C;margin-top:18px;}
 .lv{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:5px;color:#fff;}
 .lv.q1{background:var(--green);} .lv.q2{background:var(--orange);}
 .lv.q3{background:var(--red);} .lv.q4{background:#A0AEC0;}
-@media(max-width:900px){.qgrid,.grid2,.cmp,.pgrid,.pc-cmp{grid-template-columns:1fr;}}
+.xlink{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+background:linear-gradient(135deg,#EBF8FF,#BEE3F8);border:1px solid #90CDF4;border-radius:14px;
+padding:16px 22px;margin-top:18px;}
+.xlink .t{font-size:13.5px;color:#2A4365;line-height:1.7;}
+.xlink .t b{color:var(--blue-d);}
+.xbtn{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;
+padding:11px 22px;border-radius:10px;text-decoration:none;font-size:13.5px;font-weight:600;
+box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
+.xbtn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(43,108,176,.42);}
+.xbtn.o{background:linear-gradient(135deg,var(--orange),#C05621);box-shadow:0 4px 14px rgba(221,107,32,.3);}
+@media(max-width:900px){.qgrid,.grid2,.cmp{grid-template-columns:1fr;}
+.logic{grid-template-columns:1fr;} .vs{text-align:center;}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <div class="hero">
-  <h1>K800 食品饮料客户 · 分层报告 v4.4</h1>
-  <div class="sub">口径 2026年1-8月（ISO周 2026W01~2026W36）。本版新增<b>第一层「GMV × 投放」分层</b>
-  （月均GMV≥500万 / ADQ日耗≥10,000元），<b>第二层五象限逻辑完全不变</b>。
-  第一层定「打什么」，第二层定「怎么打」。原 v4.3 报告与底表完整保留，本报告为独立新版本。</div>
+  <h1>K800 食品饮料客户 · 分层报告 v4.4.2</h1>
+  <div class="sub">口径 2026年1-8月（ISO周 2026W01~2026W36）。
+  <b>第一层「GMV × 投放」</b>（月均GMV≥500万 / ADQ日耗≥10,000元）定「打什么」，
+  <b>第二层五象限</b>（逻辑不变）定「怎么打」。
+  <b>本版修正广告TR口径</b>：TR = 广告费用 ÷ 总GMV（平台 take rate），
+  原先误用的「广告GMV ÷ 总GMV」已更名为<b>广告GMV占比</b>，两者并列展示。</div>
   <div class="meta">
     <div class="m"><b>267</b><span>客户品牌</span></div>
     <div class="m"><b>68.60亿</b><span>1-8月总GMV</span></div>
-    <div class="m"><b>17.52亿</b><span>广告GMV</span></div>
-    <div class="m"><b>25.5%</b><span>整体广告TR</span></div>
-    <div class="m"><b>9</b><span>高GMV·低投放（提渗透池）</span></div>
+    <div class="m"><b>10.25亿</b><span>ADQ广告费用</span></div>
+    <div class="m"><b>14.94%</b><span>广告TR（费用/GMV）</span></div>
+    <div class="m"><b>1.71</b><span>整体投放ROI</span></div>
   </div>
 </div>
 
 <div class="xlink">
   <div class="t"><b>配套报告 · K800 食品饮料客户 · 生意洞察报告 20260916</b><br>
   三级行业 GMV 结构、五象限客群详解、广告GMV 构成、周期迁移等完整分析，
-  其「GMV & 投放」分层口径已同步更新为本版 v4.4 新口径（月均GMV 500万 / ADQ日耗 10,000元）。</div>
+  其「GMV & 投放」分层口径已同步本版。</div>
   <a class="xbtn" href="index.html">查看生意洞察报告 →</a>
   <a class="xbtn o" href="0917-K800报告完整整合表_v44.xlsx" download>⬇ 下载 v4.4 总表（29 sheets）</a>
 </div>
 
 <div class="section">
-  <div class="sec-title">核心逻辑 · 平台收入只有两条增量路径</div>
+  <div class="sec-title">核心公式 · 平台收入只有两条增量路径</div>
   <div class="formula">
-    <div class="f1">广告GMV　=　电商GMV　×　<em>广告TR</em></div>
+    <div class="f1">广告收入　=　电商GMV　×　<em>广告TR</em></div>
     <div class="f2">增量 = <em>ΔGMV × TR</em>（做大盘子）　＋　<em>GMV × ΔTR</em>（提高渗透）</div>
+    <div class="f3">广告TR = ADQ广告费用 ÷ 总GMV　｜　广告GMV占比 = 广告GMV ÷ 总GMV　｜　投放ROI = 广告GMV ÷ 广告费用</div>
   </div>
-  <div class="lead">任何一个客户，<b>要么帮他把 GMV 做大，要么把投放渗透提起来</b>——第一层分层就是在回答
-  「这个客户该走哪条路」。第二层五象限回答「他的生意长什么样、该从哪条渠道下手」。</div>
+  <div class="callout warn"><b>⚠ 口径修正说明（v4.4.2）</b>
+  此前版本把「广告GMV ÷ 总GMV」标注为广告TR，实为<b>广告成交渗透率</b>，并非平台 take rate。
+  本版修正为 <b>广告TR = 广告费用 ÷ 总GMV</b>：全体 267 家广告费用 10.25亿 ÷ 总GMV 68.60亿 = <b>14.94%</b>，
+  而原误用指标为 25.54%，<b>两者相差约 1.7 倍</b>。报告与底表所有相关数值均已按新口径重算。</div>
 
   <div class="cmp">
-    <div class="box old"><h5>v4.3 旧口径（已下线）</h5>
-      高GMV = 总GMV ≥ 1003万（≈月均125万）→ 133家为高GMV<br>
+    <div class="box old"><h5>v4.3 旧分层口径（已下线）</h5>
+      高GMV = 总GMV ≥ 1003万（≈月均125万）→ 133家<br>
       高投放 = 广告占比 ≥ 20%（渗透率口径）<br>
-      <span style="font-size:12px;">问题：GMV门槛过低失去区分度；投放档用TR，与第二层自营/分销判定重复，等于同一刀切两次。</span></div>
-    <div class="box new"><h5>v4.4 新口径（本版）</h5>
-      高GMV = <b>月均GMV ≥ 500万</b>（≈总GMV 4000万）→ <b>40家</b>为高GMV，门槛提高约4倍<br>
-      高投放 = <b>ADQ日均消耗 ≥ 10,000元</b>（绝对投入量口径）<br>
-      <span style="font-size:12px;">两层解耦：日耗=投入规模（第一层），TR=渗透率（第二层判自营/分销），各自独立不冲突。</span></div>
+      <span style="font-size:12px;">问题：GMV门槛过低失区分度；投放档用渗透率，与第二层自营/分销判定重复。</span></div>
+    <div class="box new"><h5>v4.4 分层口径（本版）</h5>
+      高GMV = <b>月均GMV ≥ 500万</b>（≈总GMV 4000万）→ <b>40家</b><br>
+      高投放 = <b>ADQ日均消耗 ≥ 10,000元</b>（绝对投入量）<br>
+      <span style="font-size:12px;">两层解耦：日耗=投入规模（第一层），TR=渗透率（第二层判自营/分销）。</span></div>
   </div>
-  <div class="callout"><b>为什么投放档改用日耗而不是 TR？</b>
-  TR 是渗透率，已经用于第二层判定自营/分销（TR≥20% 且 广告GMV≥100万 = 自营）；
-  再用它切第一层等于同一个维度切两次，这正是旧口径显得重复的原因。
-  日均消耗是绝对量，直接反映客户的投入规模与平台收入贡献，更适合做资源分配依据。<br>
-  <b>例：</b>三只松鼠日耗 1.86万 → <span class="lv q1">高投放</span>（第一层：投入规模大）；
-  TR 仅 11.8% → <b>分销</b>（第二层：渗透率低，靠达人跑量）。两个结论同时成立，不矛盾。</div>
+</div>
+
+<div class="section">
+  <div class="sec-title">增量路径 · 一句话大逻辑</div>
+  <div class="lead">不按格展开细化动作，<b>只记一条规则</b>：客户投放到不到位，决定他走哪条路。</div>
+  <div class="logic">
+    <div class="lg a">
+      <div class="cond">低投放客户</div>
+      <div class="arrow">↓</div>
+      <div class="act">做大 TR</div>
+      <div class="why">投放缺位，GMV 主要来自自然流与达人分销。增量来自<b>提高广告渗透</b>——
+      把已经被市场验证的生意转化为付费投放。</div>
+      <div class="who"><b>202 家</b>　GMV 22.72亿　
+      广告费用 0.66亿　TR 2.90%</div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="lg b">
+      <div class="cond">高投放客户</div>
+      <div class="arrow">↓</div>
+      <div class="act">做大 GMV</div>
+      <div class="why">投放能力已建立，再加投边际收益递减。增量来自<b>把 GMV 盘子做大</b>——
+      GMV 增长后按现有 TR 自然带来广告费用增长。</div>
+      <div class="who"><b>65 家</b>　GMV 45.88亿　
+      广告费用 9.59亿　TR 20.90%</div>
+    </div>
+  </div>
+  <div class="callout"><b>落到四格：</b>
+  高GMV·高投放 → <span class="hl">做大 GMV</span>　｜　高GMV·低投放 → <span class="hl">做大 TR</span>　｜　
+  低GMV·高投放 → <span class="hl">做大 GMV</span>　｜　低GMV·低投放 → <span class="hl">做大 TR</span><br>
+  <b>资源优先级</b>按 GMV 体量排：高GMV两格共 40 家、占 66.3% 的 GMV，
+  是人力主投向；低GMV·低投放 193 家走批量化，不占单客人力。</div>
 </div>
 
 <div class="section">
   <div class="sec-title">第一层 · GMV × 投放 四格分层</div>
   <div class="lead">按 <b>月均GMV 500万</b> 与 <b>ADQ日耗 10,000元</b> 两条线切出四格。
-  每格只有<b>一个主攻方向</b>，不混打。</div>
+  每格同时给出 <b>广告TR（费用/GMV）</b> 与 <b>广告GMV占比（广告GMV/GMV）</b> 两个口径，避免混淆。</div>
   <div class="qgrid">
 <div class="q q1">
   <div class="qh"><h3>高GMV·高投放</h3><span class="pill">基本盘 · 压舱石</span></div>
@@ -194,15 +219,18 @@ font-size:12.5px;color:#9B2C2C;margin-top:18px;}
     <div class="n"><b>31</b><span>家客户</span></div>
     <div class="n"><b>39.64亿</b><span>1-8月累计GMV</span></div>
     <div class="n"><b>4.96亿</b><span>象限月均GMV</span></div>
-    <div class="n hi"><b>1,598万</b><span>单客月均GMV（中位 998万）</span></div>
+    <div class="n hi"><b>1,598万</b><span>单客月均（中位 998万）</span></div>
+    <div class="n"><b>2.35</b><span>投放ROI</span></div>
   </div>
   <div class="shares">
     <div class="sh"><span>占全盘 GMV</span><div class="bar"><i style="width:57.8%"></i></div><b>57.8%</b></div>
-    <div class="sh"><span>占全盘广告GMV</span><div class="bar o"><i style="width:70.2%"></i></div><b>70.2%</b></div>
-    <div class="sh"><span>广告TR</span><div class="bar p"><i style="width:62.0%"></i></div><b>31.0%</b></div>
+    <div class="sh"><span>占全盘广告费用</span><div class="bar o"><i style="width:51.0%"></i></div><b>51.0%</b></div>
+    <div class="sh"><span>广告TR（费用/GMV）</span><div class="bar r"><i style="width:13.2%"></i></div><b>13.19%</b></div>
+    <div class="sh"><span>广告GMV占比</span><div class="bar p"><i style="width:31.0%"></i></div><b>31.0%</b></div>
   </div>
-  <div class="act"><span class="hd">主攻 · 做大 GMV</span><br>GMV 与投放双强，贡献 <b>57.8% 的 GMV、70.2% 的广告收入</b>，是压舱石。TR 31% 已落在健康区间(20~35%)上沿，<b>继续提 TR 会压商家利润、引发停投</b>；增量应压在<b>把 GMV 盘子做大</b>：开缺位的场、扩货盘、提客单。</div>
-  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播·自营 17</span>　<span class="tag">重短视频·自营 5</span>　<span class="tag">重直播&分销型 4</span>　<span class="tag">货架型 3</span>　<span class="tag">重短视频&分销型 2</span><br>
+  <div class="act"><span class="route gmv">增量主路径 · 做大 GMV</span><br>GMV 与投放双强，贡献 <b>57.8% 的 GMV、51.0% 的广告费用</b>，是压舱石。投放 ROI 2.35 健康，<b>投放能力已建立</b>——增量应来自把 GMV 盘子做大。</div>
+  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&自营 17</span>　<span class="tag">重短视频&自营 5</span>　<span class="tag">重直播&分销 4</span>　<span class="tag">货架 3</span>　<span class="tag">重短视频&分销 2</span><br>
+  <b style="color:#4A5568;">广告费用：</b>5.23亿　
   <b style="color:#4A5568;">户均日耗：</b>69,397元　
   <b style="color:#4A5568;">自营/分销：</b>25 / 6<br>
   <b style="color:#4A5568;">代表客户：</b>诺特兰德、华大营养、三只松鼠、万益蓝、叮叮懒人菜、认养一头牛</div>
@@ -213,34 +241,40 @@ font-size:12.5px;color:#9B2C2C;margin-top:18px;}
     <div class="n"><b>9</b><span>家客户</span></div>
     <div class="n"><b>5.81亿</b><span>1-8月累计GMV</span></div>
     <div class="n"><b>0.73亿</b><span>象限月均GMV</span></div>
-    <div class="n hi"><b>806万</b><span>单客月均GMV（中位 609万）</span></div>
+    <div class="n hi"><b>806万</b><span>单客月均（中位 609万）</span></div>
+    <div class="n"><b>5.08</b><span>投放ROI</span></div>
   </div>
   <div class="shares">
     <div class="sh"><span>占全盘 GMV</span><div class="bar"><i style="width:8.5%"></i></div><b>8.5%</b></div>
-    <div class="sh"><span>占全盘广告GMV</span><div class="bar o"><i style="width:1.2%"></i></div><b>1.2%</b></div>
-    <div class="sh"><span>广告TR</span><div class="bar p"><i style="width:7.1%"></i></div><b>3.6%</b></div>
+    <div class="sh"><span>占全盘广告费用</span><div class="bar o"><i style="width:0.4%"></i></div><b>0.4%</b></div>
+    <div class="sh"><span>广告TR（费用/GMV）</span><div class="bar r"><i style="width:0.7%"></i></div><b>0.70%</b></div>
+    <div class="sh"><span>广告GMV占比</span><div class="bar p"><i style="width:3.6%"></i></div><b>3.6%</b></div>
   </div>
-  <div class="act"><span class="hd">主攻 · 提 TR（最高优先级）</span><br>GMV 已被市场验证（9家<b>全为分销</b>、自营0家，靠达人/经销跑通），但品牌自身几乎不投，TR 仅 3.6%。<b>货已验证，只差品牌自己投起来</b>——四格中确定性最高的增量池。</div>
-  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&分销型 7</span>　<span class="tag">货架型 2</span><br>
+  <div class="act"><span class="route tr">增量主路径 · 做大 TR</span><br>GMV 已被市场验证（9家<b>全为分销</b>、自营0家，靠达人/经销跑通），但广告费用仅 0.04亿、<b>TR 只有 0.70%</b>。ROI 高达 5.08 说明投放效率好，<b>缺的只是品牌自己投起来</b>。</div>
+  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&分销 7</span>　<span class="tag">货架 2</span><br>
+  <b style="color:#4A5568;">广告费用：</b>0.04亿　
   <b style="color:#4A5568;">户均日耗：</b>1,860元　
   <b style="color:#4A5568;">自营/分销：</b>0 / 9<br>
   <b style="color:#4A5568;">代表客户：</b>本来果坊、天海藏、自然搭档、百威、金味、百草味</div>
 </div>
 <div class="q q3">
-  <div class="qh"><h3>低GMV·高投放</h3><span class="pill">ROI风险池</span></div>
+  <div class="qh"><h3>低GMV·高投放</h3><span class="pill">ROI 风险池</span></div>
   <div class="nums">
     <div class="n"><b>34</b><span>家客户</span></div>
     <div class="n"><b>6.24亿</b><span>1-8月累计GMV</span></div>
     <div class="n"><b>0.78亿</b><span>象限月均GMV</span></div>
-    <div class="n hi"><b>230万</b><span>单客月均GMV（中位 192万）</span></div>
+    <div class="n hi"><b>230万</b><span>单客月均（中位 192万）</span></div>
+    <div class="n"><b style="color:#C53030;">0.69</b><span>投放ROI</span></div>
   </div>
   <div class="shares">
     <div class="sh"><span>占全盘 GMV</span><div class="bar"><i style="width:9.1%"></i></div><b>9.1%</b></div>
-    <div class="sh"><span>占全盘广告GMV</span><div class="bar o"><i style="width:17.1%"></i></div><b>17.1%</b></div>
-    <div class="sh"><span>广告TR</span><div class="bar p"><i style="width:95.8%"></i></div><b>47.9%</b></div>
+    <div class="sh"><span>占全盘广告费用</span><div class="bar o"><i style="width:42.6%"></i></div><b>42.6%</b></div>
+    <div class="sh"><span>广告TR（费用/GMV）</span><div class="bar r"><i style="width:69.9%"></i></div><b>69.87%</b></div>
+    <div class="sh"><span>广告GMV占比</span><div class="bar p"><i style="width:47.9%"></i></div><b>47.9%</b></div>
   </div>
-  <div class="act"><span class="hd">主攻 · 做大 GMV（TR已透支）</span><br>盘子小但投放重，<b>TR 47.9% 已超健康上限 35%</b>，多家 TR>80% 近乎全靠买量。TR 健康空间为 0、<b>不可再加投</b>；只能先诊断漏斗控成本，同时扩货盘把 GMV 做起来摊薄 TR。</div>
-  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播·自营 22</span>　<span class="tag">货架型 9</span>　<span class="tag">重短视频·自营 2</span>　<span class="tag">重直播&分销型 1</span><br>
+  <div class="act"><span class="route gmv">增量主路径 · 做大 GMV</span><br>盘子小但投放重，<b>TR 69.87%</b>——每做 1 元 GMV 要花 0.7 元广告费；<b>投放 ROI 仅 0.69，投入产出已倒挂</b>，商家在亏钱买量。</div>
+  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&自营 22</span>　<span class="tag">货架 9</span>　<span class="tag">重短视频&自营 2</span>　<span class="tag">重直播&分销 1</span><br>
+  <b style="color:#4A5568;">广告费用：</b>4.36亿　
   <b style="color:#4A5568;">户均日耗：</b>52,805元　
   <b style="color:#4A5568;">自营/分销：</b>31 / 3<br>
   <b style="color:#4A5568;">代表客户：</b>德芙、美赞臣、燕之屋、楼外楼、彩虹星球、春光</div>
@@ -251,220 +285,139 @@ font-size:12.5px;color:#9B2C2C;margin-top:18px;}
     <div class="n"><b>193</b><span>家客户</span></div>
     <div class="n"><b>16.91亿</b><span>1-8月累计GMV</span></div>
     <div class="n"><b>2.11亿</b><span>象限月均GMV</span></div>
-    <div class="n hi"><b>110万</b><span>单客月均GMV（中位 61万）</span></div>
+    <div class="n hi"><b>110万</b><span>单客月均（中位 61万）</span></div>
+    <div class="n"><b>3.28</b><span>投放ROI</span></div>
   </div>
   <div class="shares">
     <div class="sh"><span>占全盘 GMV</span><div class="bar"><i style="width:24.6%"></i></div><b>24.6%</b></div>
-    <div class="sh"><span>占全盘广告GMV</span><div class="bar o"><i style="width:11.6%"></i></div><b>11.6%</b></div>
-    <div class="sh"><span>广告TR</span><div class="bar p"><i style="width:24.0%"></i></div><b>12.0%</b></div>
+    <div class="sh"><span>占全盘广告费用</span><div class="bar o"><i style="width:6.0%"></i></div><b>6.0%</b></div>
+    <div class="sh"><span>广告TR（费用/GMV）</span><div class="bar r"><i style="width:3.6%"></i></div><b>3.65%</b></div>
+    <div class="sh"><span>广告GMV占比</span><div class="bar p"><i style="width:12.0%"></i></div><b>12.0%</b></div>
   </div>
-  <div class="act"><span class="hd">主攻 · 提 TR，但须批量化</span><br>双低。TR 12% 虽有 8 个百分点空间，但 193 家<b>单客月均 GMV 仅 110万（中位 61万）</b>，单客人力投入产出不成立。走产品化/自助化批量覆盖，接近门槛者优先孵化。</div>
-  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&分销型 97</span>　<span class="tag">货架型 36</span>　<span class="tag">重短视频&分销型 35</span>　<span class="tag">重直播·自营 23</span>　<span class="tag">重短视频·自营 2</span><br>
+  <div class="act"><span class="route tr">增量主路径 · 做大 TR</span><br>双低。TR 3.65%、ROI 3.28，投放效率不差但体量小，193 家<b>单客月均 GMV 仅 110万（中位 61万）</b>，单客人力投入产出不成立。</div>
+  <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&分销 97</span>　<span class="tag">货架 36</span>　<span class="tag">重短视频&分销 35</span>　<span class="tag">重直播&自营 23</span>　<span class="tag">重短视频&自营 2</span><br>
+  <b style="color:#4A5568;">广告费用：</b>0.62亿　
   <b style="color:#4A5568;">户均日耗：</b>1,318元　
   <b style="color:#4A5568;">自营/分销：</b>29 / 164<br>
   <b style="color:#4A5568;">代表客户：</b>onlytree、君乐宝、世壮、加点滋味、小黄象、下厨房</div>
 </div></div>
   <div class="note">「1-8月累计GMV」= 该象限所有客户 8 个月 GMV 之和；「象限月均GMV」= 累计÷8；
-  「单客月均GMV」= 该象限客户月均GMV的算术平均，括号内为中位数（反映象限内部分化程度）。
-  三条进度条分别为该象限占全盘 GMV / 全盘广告GMV 的比重，以及该象限整体广告TR。</div>
+  「单客月均GMV」= 该象限客户月均GMV的算术平均，括号内为中位数（反映内部分化）。
+  投放ROI = 广告GMV ÷ 广告费用，<b>小于 1 表示投入产出倒挂</b>（红色标注）。</div>
 </div>
 
 <div class="section">
-  <div class="sec-title">增量路径建议 · 哪格做大 GMV、哪格提 TR</div>
-  <div class="lead">把公式拆开看，<b>提 TR 在数学上几乎总是占优</b>（因为它乘的是整个 GMV 盘子）。
-  但现实有约束——<b>TR 有健康上限</b>。按 TR 分档统计单客月均GMV：
-  20-35% 档最高（741万），≥50% 后显著下滑（50-80% 档 522万、≥80% 档仅 166万）。
-  <b>TR 过高说明生意靠买量驱动，商家一旦算不过账就会停投，平台收入不可持续。</b>
-  故本报告设定<b>健康 TR 区间 20%~35%</b>，并按「TR位置 + 单客可服务性」双条件判定主路径。</div>
-  <div class="pgrid">
-<div class="pc">
-  <div class="pc-h">
-    <div><b>高GMV·高投放</b><span class="pos">TR 在健康区间</span></div>
-    <span class="route gmv">主路径 · 做大 GMV</span>
-  </div>
-  <div class="pc-cmp">
-    <div class="pw "><span>路径A · 提 TR</span>
-      <em>TR 31.0% → 空间 0.0%</em><b>+0.0亿</b></div>
-    <div class="pw win"><span>路径B · GMV +10%</span>
-      <em>按当前 TR 31.0% 折算</em><b>+1.23亿</b></div>
-  </div>
-  <dl>
-    <dt>判据</dt><dd>TR 31.0% 已落在健康区间上沿，<b>提 TR 空间为 0</b>；而 GMV 每 +10% 即带来广告GMV <b>+1.23亿</b>，是四格中绝对增量最大的一格。</dd>
-    <dt>具体动作</dt><dd>① 看第二层哪条渠道占比最低 → 开缺位的内容场；② 扩货盘 / 提客单；③ 新客人群破圈；④ TR≥50% 的个别客户单独做投放结构诊断，控 CPA 提 ROI。</dd>
-    <dt class="x">明确不做</dt><dd class="x">不做无差别加投。该格是基本盘，TR 透支会直接损失压舱石客户。</dd>
-  </dl>
-</div>
-<div class="pc">
-  <div class="pc-h">
-    <div><b>高GMV·低投放</b><span class="pos">TR 远低于健康下沿</span></div>
-    <span class="route tr">主路径 · 提 TR</span>
-  </div>
-  <div class="pc-cmp">
-    <div class="pw win"><span>路径A · 提 TR</span>
-      <em>TR 3.6% → 空间 16.4%</em><b>+0.95亿</b></div>
-    <div class="pw "><span>路径B · GMV +10%</span>
-      <em>按当前 TR 3.6% 折算</em><b>+0.02亿</b></div>
-  </div>
-  <dl>
-    <dt>判据</dt><dd>TR 仅 3.6%，距健康下沿 20% 有 <b>16.4 个百分点</b>空间、对应广告GMV <b>+0.95亿</b>；而 GMV+10% 仅 +0.02亿。且 GMV 已由达人验证，<b>货不用再试，只缺品牌自投</b>。</dd>
-    <dt>具体动作</dt><dd>① 打通投放主体与结算；② 把达人已验证的爆款货盘做小额 ADQ 测试；③ 验证付费增量成立；④ 阶梯扩量。重微信豆（已有消耗）走"加量"，主动分销（零消耗）走"破冰"。</dd>
-    <dt class="x">明确不做</dt><dd class="x">不要求一次冲到行业均值。先验证增量再扩，避免商家算不过账。</dd>
-  </dl>
-</div>
-<div class="pc">
-  <div class="pc-h">
-    <div><b>低GMV·高投放</b><span class="pos">TR 已透支（超上限）</span></div>
-    <span class="route gmv">主路径 · 做大 GMV</span>
-  </div>
-  <div class="pc-cmp">
-    <div class="pw "><span>路径A · 提 TR</span>
-      <em>TR 47.9% → 空间 0.0%</em><b>+0.0亿</b></div>
-    <div class="pw win"><span>路径B · GMV +10%</span>
-      <em>按当前 TR 47.9% 折算</em><b>+0.3亿</b></div>
-  </div>
-  <dl>
-    <dt>判据</dt><dd>TR 47.9% 已超健康上限 35%，<b>TR 健康空间为 0</b>，提 TR 不可持续；只能把 GMV 做大来自然摊薄 TR（GMV+10% → +0.30亿）。</dd>
-    <dt>具体动作</dt><dd>① 先做转化漏斗与成本诊断，控 CPA；② 同步扩货盘/开新场把 GMV 做起来；③ 3个月内 ROI 不达标则削减预算，迁移至高GMV两格。</dd>
-    <dt class="x">明确不做</dt><dd class="x">不再加投。加投边际收益递减，且会加速商家亏损停投。</dd>
-  </dl>
-</div>
-<div class="pc">
-  <div class="pc-h">
-    <div><b>低GMV·低投放</b><span class="pos">TR 低于下沿但单客产出不足</span></div>
-    <span class="route both">主路径 · 提 TR（批量化）</span>
-  </div>
-  <div class="pc-cmp">
-    <div class="pw win"><span>路径A · 提 TR</span>
-      <em>TR 12.0% → 空间 8.0%</em><b>+1.35亿</b></div>
-    <div class="pw "><span>路径B · GMV +10%</span>
-      <em>按当前 TR 12.0% 折算</em><b>+0.2亿</b></div>
-  </div>
-  <dl>
-    <dt>判据</dt><dd>TR 12.0% 有 8 个百分点空间、对应 <b>+1.35亿</b>，数学上不小；但单客月均 GMV 仅 110万（中位 61万），<b>单客人力投入产出不成立</b>。</dd>
-    <dt>具体动作</dt><dd>① 产品化/自助化：行业批量方案、达人矩阵、微信豆低成本试投、服务商承接；② 月均 GMV 接近 500万门槛者优先孵化，跑通后升级至高GMV层。</dd>
-    <dt class="x">明确不做</dt><dd class="x">不占用销售单客人力。193家逐一服务的成本远超收益。</dd>
-  </dl>
-</div></div>
-  <div class="callout"><b>一句话总结四格的打法：</b><br>
-  · <b>高GMV·高投放（31家/39.64亿）</b>→ <span class="hl">做大 GMV</span>，TR 已在健康区间，别再加投，去开缺位的场；<br>
-  · <b>高GMV·低投放（9家/5.81亿）</b>→ <span class="hl">提 TR</span>，最高优先级，货已被达人验证，只缺品牌自投；<br>
-  · <b>低GMV·高投放（34家/6.24亿）</b>→ <span class="hl">做大 GMV</span>，TR 47.9% 已透支，先诊断控本再扩盘；<br>
-  · <b>低GMV·低投放（193家/16.91亿）</b>→ <span class="hl">提 TR 但批量化</span>，单客产出不足，靠产品化覆盖。<br>
-  <b>资源分配结论：</b>人力优先压在<b>高GMV两格（40家，占 66.2% 的 GMV）</b>；
-  低GMV·低投放 193家走自助化，不占销售单客人力。</div>
-</div>
-
-<div class="section">
-  <div class="sec-title">分层规模与渗透对比</div>
+  <div class="sec-title">规模、成本与渗透对比</div>
   <div class="grid2">
     <div class="card"><div id="bar" class="chart"></div></div>
     <div class="card"><div id="sc" class="chart"></div></div>
   </div>
-  <div class="note">左图：各层 GMV 与广告GMV 规模对比（柱）+ 广告TR（线）。
+  <div class="note">左图：各层 GMV 与广告费用规模对比（柱）+ 广告TR（线）。
   右图：全体 267 家客户在「月均GMV × ADQ日耗」坐标上的落点，双对数轴；
   橙色虚线为 500万 与 10,000元 两条分层门槛。</div>
 </div>
 
 <div class="section">
   <div class="sec-title">两层交叉 · 第一层 × 第二层</div>
-  <div class="lead">每格里再看客户的生意模式：<b>重直播还是重短视频、自营还是分销</b>。
+  <div class="lead">每格里再看生意模式：<b>重直播还是重短视频、自营还是分销</b>。
   单元格上方为家数、下方为 GMV（亿），<b>GMV≥4亿的格子高亮</b>。</div>
   <div class="card" style="padding:16px;"><table><thead><tr><th>第一层 \ 第二层</th><th class="num">货架型</th><th class="num">重直播&amp;分销型</th><th class="num">重直播·自营</th><th class="num">重短视频&amp;分销型</th><th class="num">重短视频·自营</th><th class="num">合计</th></tr></thead><tbody><tr><td><span class="lv q1">高GMV·高投放</span></td><td class="num">3<div style="font-size:10.5px;color:#A0AEC0;">1.64亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">4<div style="font-size:10.5px;color:#A0AEC0;">4.79亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">17<div style="font-size:10.5px;color:#A0AEC0;">16.3亿</div></td><td class="num">2<div style="font-size:10.5px;color:#A0AEC0;">1.93亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">5<div style="font-size:10.5px;color:#A0AEC0;">14.98亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">31<div style="font-size:10.5px;color:#A0AEC0;">39.64亿</div></td></tr><tr><td><span class="lv q2">高GMV·低投放</span></td><td class="num">2<div style="font-size:10.5px;color:#A0AEC0;">0.99亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">7<div style="font-size:10.5px;color:#A0AEC0;">4.81亿</div></td><td class="num" style="color:#CBD5E0;">—</td><td class="num" style="color:#CBD5E0;">—</td><td class="num" style="color:#CBD5E0;">—</td><td class="num" style="background:#FFFAF0;font-weight:600;">9<div style="font-size:10.5px;color:#A0AEC0;">5.8亿</div></td></tr><tr><td><span class="lv q3">低GMV·高投放</span></td><td class="num">9<div style="font-size:10.5px;color:#A0AEC0;">1.29亿</div></td><td class="num">1<div style="font-size:10.5px;color:#A0AEC0;">0.1亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">22<div style="font-size:10.5px;color:#A0AEC0;">4.19亿</div></td><td class="num" style="color:#CBD5E0;">—</td><td class="num">2<div style="font-size:10.5px;color:#A0AEC0;">0.66亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">34<div style="font-size:10.5px;color:#A0AEC0;">6.24亿</div></td></tr><tr><td><span class="lv q4">低GMV·低投放</span></td><td class="num">36<div style="font-size:10.5px;color:#A0AEC0;">2.45亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">97<div style="font-size:10.5px;color:#A0AEC0;">7.76亿</div></td><td class="num">23<div style="font-size:10.5px;color:#A0AEC0;">2.5亿</div></td><td class="num">35<div style="font-size:10.5px;color:#A0AEC0;">3.54亿</div></td><td class="num">2<div style="font-size:10.5px;color:#A0AEC0;">0.65亿</div></td><td class="num" style="background:#FFFAF0;font-weight:600;">193<div style="font-size:10.5px;color:#A0AEC0;">16.9亿</div></td></tr><tr><td><b>合计</b></td><td class="num">50<div style="font-size:10.5px;color:#A0AEC0;">6.37亿</div></td><td class="num">109<div style="font-size:10.5px;color:#A0AEC0;">17.46亿</div></td><td class="num">62<div style="font-size:10.5px;color:#A0AEC0;">22.99亿</div></td><td class="num">37<div style="font-size:10.5px;color:#A0AEC0;">5.47亿</div></td><td class="num">9<div style="font-size:10.5px;color:#A0AEC0;">16.29亿</div></td><td class="num">267<div style="font-size:10.5px;color:#A0AEC0;">68.58亿</div></td></tr></tbody></table></div>
-  <div class="callout"><b>交叉表读出的三个结论：</b><br>
-  ① <b>高GMV·高投放 31家</b>里，重直播自营 17家 / 重短视频自营 5家 —— <b>自营型占七成</b>，
-  是已经跑通「自己投、自己卖」的成熟客户；<br>
-  ② <b>高GMV·低投放 9家 全部是分销</b>（重直播分销7 + 货架2），<b>自营0家</b> ——
-  印证了这格的本质：<b>GMV是达人跑出来的，品牌自己没投</b>；<br>
-  ③ <b>低GMV·低投放 193家</b>里重直播分销就占97家，是典型的长尾达人带货客户，适合批量化而非单客服务。</div>
+  <div class="callout"><b>三个结论：</b>
+  ① 高GMV·高投放 31家中重直播自营 17家 + 重短视频自营 5家，<b>自营型占七成</b>，是跑通「自投自卖」的成熟客户；
+  ② <b>高GMV·低投放 9家全部是分销、自营 0家</b>——印证本质：GMV 是达人跑出来的，品牌自己没投；
+  ③ 低GMV·低投放 193家中重直播分销占 97家，典型长尾达人带货，适合批量化而非单客服务。</div>
 </div>
 
 <div class="section">
-  <div class="sec-title">提渗透主战场 · 高GMV·低投放 9家</div>
-  <div class="lead">这 9 家合计 GMV <b>5.81亿</b>，但广告GMV仅 <b>0.21亿</b>、
-  TR 只有 <b>3.6%</b>。<b>货已经被市场验证过，缺的只是品牌自己投起来</b>——
-  这是确定性最高的增量池。若 TR 提至 20%，广告GMV 增量约 <b style="color:#DD6B20;">+9,545万</b>。</div>
+  <div class="sec-title">做大 TR 主战场 · 高GMV·低投放 9家</div>
+  <div class="lead">这 9 家合计 GMV <b>5.81亿</b>，广告费用仅 <b>0.04亿</b>、
+  <b>TR 只有 0.70%</b>，但投放 ROI 高达 <b>5.08</b>——
+  <b>说明投得少不是因为投不出效果，而是根本没投</b>。
+  若 TR 提至高投放客户均值水平，广告费用增量约 <b style="color:#DD6B20;">+11,728万</b>。</div>
   <div class="card" style="padding:16px;">
     <div class="scroll"><table><thead><tr>
       <th>品牌</th><th>三级行业</th><th class="num">月均GMV(万)</th><th class="num">总GMV(万)</th>
-      <th class="num">日耗(元)</th><th class="num">广告GMV(万)</th><th class="num">当前TR</th>
-      <th class="num">TR→20%增量</th><th>第二层</th><th>微豆标签</th>
-    </tr></thead><tbody><tr><td><b>本来果坊</b></td><td class="cat" style="font-size:11.5px;">生鲜</td><td class="num">1,755</td><td class="num">14,041</td><td class="num">0</td><td class="num">395</td><td class="num"><span class="hl">2.8%</span></td><td class="num"><b style="color:#DD6B20;">+2,413万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag p">主动分销</span></td></tr><tr><td><b>天海藏</b></td><td class="cat" style="font-size:11.5px;">生鲜</td><td class="num">1,315</td><td class="num">10,520</td><td class="num">0</td><td class="num">12</td><td class="num"><span class="hl">0.1%</span></td><td class="num"><b style="color:#DD6B20;">+2,092万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag p">主动分销</span></td></tr><tr><td><b>自然搭档</b></td><td class="cat" style="font-size:11.5px;">生鲜</td><td class="num">644</td><td class="num">5,150</td><td class="num">0</td><td class="num">37</td><td class="num"><span class="hl">0.7%</span></td><td class="num"><b style="color:#DD6B20;">+993万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag p">主动分销</span></td></tr><tr><td><b>百威</b></td><td class="cat" style="font-size:11.5px;">啤酒</td><td class="num">640</td><td class="num">5,124</td><td class="num">2,481</td><td class="num">4</td><td class="num"><span class="hl">0.1%</span></td><td class="num"><b style="color:#DD6B20;">+1,021万</b></td><td style="font-size:11.5px;">货架型</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>金味</b></td><td class="cat" style="font-size:11.5px;">冲调品</td><td class="num">609</td><td class="num">4,869</td><td class="num">6,982</td><td class="num">839</td><td class="num"><span class="hl">17.2%</span></td><td class="num"><b style="color:#DD6B20;">+135万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>百草味</b></td><td class="cat" style="font-size:11.5px;">休闲食品</td><td class="num">600</td><td class="num">4,800</td><td class="num">199</td><td class="num">36</td><td class="num"><span class="hl">0.7%</span></td><td class="num"><b style="color:#DD6B20;">+924万</b></td><td style="font-size:11.5px;">货架型</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>晟麦</b></td><td class="cat" style="font-size:11.5px;">粮油调味速食</td><td class="num">592</td><td class="num">4,738</td><td class="num">1,111</td><td class="num">180</td><td class="num"><span class="hl">3.8%</span></td><td class="num"><b style="color:#DD6B20;">+767万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>五谷磨房</b></td><td class="cat" style="font-size:11.5px;">冲调品</td><td class="num">559</td><td class="num">4,472</td><td class="num">5,846</td><td class="num">404</td><td class="num"><span class="hl">9.0%</span></td><td class="num"><b style="color:#DD6B20;">+490万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>佳沛</b></td><td class="cat" style="font-size:11.5px;">生鲜</td><td class="num">543</td><td class="num">4,342</td><td class="num">125</td><td class="num">158</td><td class="num"><span class="hl">3.6%</span></td><td class="num"><b style="color:#DD6B20;">+710万</b></td><td style="font-size:11.5px;">重直播&amp;分销型</td><td><span class="tag o">重微信豆</span></td></tr></tbody></table></div>
+      <th class="num">广告费用(万)</th><th class="num">广告TR</th><th class="num">广告GMV占比</th>
+      <th class="num">TR提至均值增量</th><th>第二层</th><th>微豆标签</th>
+    </tr></thead><tbody><tr><td><b>本来果坊</b></td><td style="font-size:11.5px;">生鲜</td><td class="num">1,755</td><td class="num">14,041</td><td class="num">0.0</td><td class="num"><span class="hl">0.00%</span></td><td class="num">2.8%</td><td class="num"><b style="color:#DD6B20;">+2,935万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">主动分销</span></td></tr><tr><td><b>天海藏</b></td><td style="font-size:11.5px;">生鲜</td><td class="num">1,315</td><td class="num">10,520</td><td class="num">0.0</td><td class="num"><span class="hl">0.00%</span></td><td class="num">0.1%</td><td class="num"><b style="color:#DD6B20;">+2,199万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">主动分销</span></td></tr><tr><td><b>自然搭档</b></td><td style="font-size:11.5px;">生鲜</td><td class="num">644</td><td class="num">5,150</td><td class="num">0.0</td><td class="num"><span class="hl">0.00%</span></td><td class="num">0.7%</td><td class="num"><b style="color:#DD6B20;">+1,076万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">主动分销</span></td></tr><tr><td><b>百威</b></td><td style="font-size:11.5px;">啤酒</td><td class="num">640</td><td class="num">5,124</td><td class="num">60.3</td><td class="num"><span class="hl">1.18%</span></td><td class="num">0.1%</td><td class="num"><b style="color:#DD6B20;">+1,011万</b></td><td style="font-size:11.5px;">货架</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>金味</b></td><td style="font-size:11.5px;">冲调品</td><td class="num">609</td><td class="num">4,869</td><td class="num">169.7</td><td class="num"><span class="hl">3.49%</span></td><td class="num">17.2%</td><td class="num"><b style="color:#DD6B20;">+848万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>百草味</b></td><td style="font-size:11.5px;">休闲食品</td><td class="num">600</td><td class="num">4,800</td><td class="num">4.8</td><td class="num"><span class="hl">0.10%</span></td><td class="num">0.7%</td><td class="num"><b style="color:#DD6B20;">+998万</b></td><td style="font-size:11.5px;">货架</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>晟麦</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">592</td><td class="num">4,738</td><td class="num">27.0</td><td class="num"><span class="hl">0.57%</span></td><td class="num">3.8%</td><td class="num"><b style="color:#DD6B20;">+963万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>五谷磨房</b></td><td style="font-size:11.5px;">冲调品</td><td class="num">559</td><td class="num">4,472</td><td class="num">142.1</td><td class="num"><span class="hl">3.18%</span></td><td class="num">9.0%</td><td class="num"><b style="color:#DD6B20;">+793万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">重微信豆</span></td></tr><tr><td><b>佳沛</b></td><td style="font-size:11.5px;">生鲜</td><td class="num">543</td><td class="num">4,342</td><td class="num">3.0</td><td class="num"><span class="hl">0.07%</span></td><td class="num">3.6%</td><td class="num"><b style="color:#DD6B20;">+905万</b></td><td style="font-size:11.5px;">重直播&amp;分销</td><td><span class="tag o">重微信豆</span></td></tr></tbody></table></div>
   </div>
-  <div class="note">增量测算口径：月均GMV×8个月×20% − 当前广告GMV。<b>仅为空间测算，非收入预测或承诺</b>；
-  实际可达水平受客户利润结构、货盘可投性与投放主体打通情况约束。
-  微豆标签：重微信豆=ADQ四字段级联匹配命中&gt;0（有消耗但未达自营门槛）；主动分销=匹配命中=0。</div>
+  <div class="note">增量测算口径：总GMV × 高投放组平均TR − 当前广告费用。<b>仅为空间测算，非收入预测或承诺</b>；
+  实际可达水平受客户利润结构、货盘可投性与投放主体打通情况约束。</div>
 </div>
 
 <div class="section">
-  <div class="sec-title">ROI风险池 · 高投放中 TR 最高的 15 家</div>
-  <div class="lead">TR 过高不是好事——<b>TR≥80% 意味着生意几乎全靠买量</b>，商家一旦算不过账就会停投，
-  平台收入不可持续。<b>红底行为 TR≥80% 的预警客户</b>，需优先做投放结构诊断与成本管控。</div>
+  <div class="sec-title">ROI 风险池 · 高投放中 TR 最高的 15 家</div>
+  <div class="lead"><b>TR 高不等于好</b>——TR 是客户为做生意付出的广告成本率，过高说明生意靠买量驱动。
+  <b>红底行为投放 ROI &lt; 1 的客户</b>：广告GMV 还不够覆盖广告费用，商家在亏钱买量，随时可能停投。</div>
   <div class="card" style="padding:16px;">
     <div class="scroll"><table><thead><tr>
-      <th>品牌</th><th>三级行业</th><th class="num">月均GMV(万)</th><th class="num">日耗(元)</th>
-      <th class="num">广告GMV(万)</th><th class="num">广告TR</th><th>第一层</th><th>第二层</th>
-    </tr></thead><tbody><tr style="background:#FFF5F5;"><td><b>健尔马</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">193</td><td class="num">54,645</td><td class="num">1,463</td><td class="num"><b style="color:#C0504D;">94.6%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr style="background:#FFF5F5;"><td><b>轻启力</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">138</td><td class="num">57,221</td><td class="num">1,018</td><td class="num"><b style="color:#C0504D;">91.9%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">货架型</td></tr><tr style="background:#FFF5F5;"><td><b>益倍萃</b></td><td style="font-size:11.5px;">休闲食品</td><td class="num">83</td><td class="num">14,977</td><td class="num">573</td><td class="num"><b style="color:#C0504D;">86.2%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr style="background:#FFF5F5;"><td><b>多燕瘦</b></td><td style="font-size:11.5px;">膳食营养</td><td class="num">81</td><td class="num">518,888</td><td class="num">553</td><td class="num"><b style="color:#C0504D;">85.3%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">货架型</td></tr><tr style="background:#FFF5F5;"><td><b>卫仕</b></td><td style="font-size:11.5px;">宠物</td><td class="num">684</td><td class="num">112,829</td><td class="num">4,666</td><td class="num"><b style="color:#C0504D;">85.3%</b></td><td><span class="lv q1">高GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr style="background:#FFF5F5;"><td><b>参小妹</b></td><td style="font-size:11.5px;">生鲜</td><td class="num">133</td><td class="num">17,049</td><td class="num">899</td><td class="num"><b style="color:#C0504D;">84.2%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr style="background:#FFF5F5;"><td><b>哈药</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">161</td><td class="num">37,403</td><td class="num">1,052</td><td class="num"><b style="color:#C0504D;">81.8%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr><td><b>汤臣倍健</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">300</td><td class="num">107,630</td><td class="num">1,855</td><td class="num"><b style="color:#C0504D;">77.3%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr><td><b>馥食集</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">379</td><td class="num">89,504</td><td class="num">2,342</td><td class="num"><b style="color:#C0504D;">77.2%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">货架型</td></tr><tr><td><b>览翠</b></td><td style="font-size:11.5px;">葡萄酒</td><td class="num">61</td><td class="num">15,140</td><td class="num">371</td><td class="num"><b style="color:#C0504D;">76.5%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">货架型</td></tr><tr><td><b>华大营养</b></td><td style="font-size:11.5px;">膳食营养</td><td class="num">2,755</td><td class="num">228,040</td><td class="num">16,833</td><td class="num"><b style="color:#C0504D;">76.4%</b></td><td><span class="lv q1">高GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr><td><b>空刻</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">179</td><td class="num">17,097</td><td class="num">1,059</td><td class="num"><b style="color:#C0504D;">73.9%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr><tr><td><b>手艺人</b></td><td style="font-size:11.5px;">白酒</td><td class="num">629</td><td class="num">95,020</td><td class="num">3,675</td><td class="num"><b style="color:#C0504D;">73.0%</b></td><td><span class="lv q1">高GMV·高投放</span></td><td style="font-size:11.5px;">货架型</td></tr><tr><td><b>特仑苏</b></td><td style="font-size:11.5px;">乳制品</td><td class="num">25</td><td class="num">51,404</td><td class="num">118</td><td class="num"><b style="color:#C0504D;">59.5%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">货架型</td></tr><tr><td><b>黄金搭档</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">366</td><td class="num">49,888</td><td class="num">1,643</td><td class="num"><b style="color:#C0504D;">56.2%</b></td><td><span class="lv q3">低GMV·高投放</span></td><td style="font-size:11.5px;">重直播·自营</td></tr></tbody></table></div>
+      <th>品牌</th><th>三级行业</th><th class="num">月均GMV(万)</th><th class="num">广告费用(万)</th>
+      <th class="num">广告TR</th><th class="num">广告GMV占比</th><th class="num">投放ROI</th><th>第一层</th>
+    </tr></thead><tbody><tr style="background:#FFF5F5;"><td><b>健安喜</b></td><td style="font-size:11.5px;">海外保健食品</td><td class="num">1</td><td class="num">1,139.7</td><td class="num"><b style="color:#C0504D;">18995.0%</b></td><td class="num">5.0%</td><td class="num"><b style="color:#C53030;">0.00</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>多燕瘦</b></td><td style="font-size:11.5px;">膳食营养</td><td class="num">81</td><td class="num">12,609.0</td><td class="num"><b style="color:#C0504D;">1945.5%</b></td><td class="num">85.3%</td><td class="num"><b style="color:#C53030;">0.04</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>特仑苏</b></td><td style="font-size:11.5px;">乳制品</td><td class="num">25</td><td class="num">1,249.1</td><td class="num"><b style="color:#C0504D;">629.6%</b></td><td class="num">59.5%</td><td class="num"><b style="color:#C53030;">0.09</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>敖东</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">118</td><td class="num">5,254.5</td><td class="num"><b style="color:#C0504D;">555.5%</b></td><td class="num">31.7%</td><td class="num"><b style="color:#C53030;">0.06</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>修正</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">59</td><td class="num">1,359.9</td><td class="num"><b style="color:#C0504D;">290.2%</b></td><td class="num">22.3%</td><td class="num"><b style="color:#C53030;">0.08</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>格力高</b></td><td style="font-size:11.5px;">休闲食品</td><td class="num">25</td><td class="num">555.6</td><td class="num"><b style="color:#C0504D;">281.2%</b></td><td class="num">34.1%</td><td class="num"><b style="color:#C53030;">0.12</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>疆小娃</b></td><td style="font-size:11.5px;">休闲食品</td><td class="num">155</td><td class="num">1,717.8</td><td class="num"><b style="color:#C0504D;">138.7%</b></td><td class="num">21.8%</td><td class="num"><b style="color:#C53030;">0.16</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>一鸣</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">131</td><td class="num">1,431.4</td><td class="num"><b style="color:#C0504D;">136.7%</b></td><td class="num">4.5%</td><td class="num"><b style="color:#C53030;">0.03</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>轻启力</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">138</td><td class="num">1,390.5</td><td class="num"><b style="color:#C0504D;">125.5%</b></td><td class="num">91.9%</td><td class="num"><b style="color:#C53030;">0.73</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>汤臣倍健</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">300</td><td class="num">2,615.4</td><td class="num"><b style="color:#C0504D;">109.0%</b></td><td class="num">77.3%</td><td class="num"><b style="color:#C53030;">0.71</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr><td><b>健尔马</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">193</td><td class="num">1,327.9</td><td class="num"><b style="color:#C0504D;">85.9%</b></td><td class="num">94.6%</td><td class="num"><b style="color:#38A169;">1.10</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr><td><b>览翠</b></td><td style="font-size:11.5px;">葡萄酒</td><td class="num">61</td><td class="num">367.9</td><td class="num"><b style="color:#C0504D;">75.9%</b></td><td class="num">76.5%</td><td class="num"><b style="color:#38A169;">1.01</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr><td><b>馥食集</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">379</td><td class="num">2,175.0</td><td class="num"><b style="color:#C0504D;">71.7%</b></td><td class="num">77.2%</td><td class="num"><b style="color:#38A169;">1.08</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr><td><b>哈药</b></td><td style="font-size:11.5px;">保健食品</td><td class="num">161</td><td class="num">908.9</td><td class="num"><b style="color:#C0504D;">70.7%</b></td><td class="num">81.8%</td><td class="num"><b style="color:#38A169;">1.16</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr><tr style="background:#FFF5F5;"><td><b>林小生</b></td><td style="font-size:11.5px;">粮油调味速食</td><td class="num">142</td><td class="num">673.8</td><td class="num"><b style="color:#C0504D;">59.5%</b></td><td class="num">51.0%</td><td class="num"><b style="color:#C53030;">0.86</b></td><td><span class="lv q3">低GMV·高投放</span></td></tr></tbody></table></div>
   </div>
 </div>
 
 <div class="section">
   <div class="sec-title">第二层 · 五象限客群（逻辑不变）</div>
-  <div class="lead">五象限判定<b>完全沿用原口径</b>：重直播/重短视频/货架 = 直播、短视频、其他三渠道 GMV 占比 argmax；
-  自营/分销 = 广告GMV占比≥20% 且 广告GMV≥100万。最右列显示每个客群在第一层四格中的分布。</div>
+  <div class="lead">五象限判定<b>完全沿用原口径</b>：重直播/重短视频/货架 = 三渠道 GMV 占比 argmax；
+  自营/分销 = 广告GMV占比≥20% 且 广告GMV≥100万。最右列为该客群在第一层四格中的分布。</div>
   <div class="card" style="padding:16px;">
     <table><thead><tr>
-      <th>客户象限</th><th class="num">家数</th><th class="num">GMV(亿)</th><th class="num">广告TR</th>
-      <th class="num">直播占比</th><th class="num">短视频占比</th><th>第一层分布</th>
-    </tr></thead><tbody><tr><td><b style="color:#2C5282;">重直播&amp;自营型</b></td><td class="num">62</td><td class="num">22.99</td><td class="num">43.3%</td><td class="num">77%</td><td class="num">6%</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 17</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 22</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 23</span></td></tr><tr><td><b style="color:#2C5282;">重短视频&amp;自营型</b></td><td class="num">9</td><td class="num">16.3</td><td class="num">22.9%</td><td class="num">29%</td><td class="num">54%</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 5</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 2</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 2</span></td></tr><tr><td><b style="color:#2C5282;">货架型</b></td><td class="num">50</td><td class="num">6.38</td><td class="num">30.9%</td><td class="num">23%</td><td class="num">14%</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 3</span><span class="lv q2" style="margin:1px 3px 1px 0;">高GMV/低投放 2</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 9</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 36</span></td></tr><tr><td><b style="color:#2C5282;">合计</b></td><td class="num">121</td><td class="num">45.67</td><td class="num">25.5%</td><td class="num"></td><td class="num"></td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 25</span><span class="lv q2" style="margin:1px 3px 1px 0;">高GMV/低投放 2</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 33</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 61</span></td></tr></tbody></table>
+      <th>客户象限</th><th class="num">家数</th><th class="num">GMV(亿)</th><th class="num">广告费用(万)</th>
+      <th class="num">广告TR</th><th class="num">广告GMV占比</th><th class="num">投放ROI</th><th>第一层分布</th>
+    </tr></thead><tbody><tr><td><b style="color:#2C5282;">重直播&amp;自营型</b></td><td class="num">62</td><td class="num">22.99</td><td class="num">54,160</td><td class="num"><b>23.56%</b></td><td class="num">43.3%</td><td class="num">1.84</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 17</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 22</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 23</span></td></tr><tr><td><b style="color:#2C5282;">重短视频&amp;自营型</b></td><td class="num">9</td><td class="num">16.3</td><td class="num">14,779</td><td class="num"><b>9.07%</b></td><td class="num">22.9%</td><td class="num">2.53</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 5</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 2</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 2</span></td></tr><tr><td><b style="color:#2C5282;">货架型</b></td><td class="num">50</td><td class="num">6.38</td><td class="num">26,750</td><td class="num"><b>41.93%</b></td><td class="num">30.9%</td><td class="num">0.74</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 3</span><span class="lv q2" style="margin:1px 3px 1px 0;">高GMV/低投放 2</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 9</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 36</span></td></tr><tr><td><b style="color:#2C5282;">合计</b></td><td class="num">121</td><td class="num">45.67</td><td class="num">95,689</td><td class="num"><b>14.94%</b></td><td class="num">25.5%</td><td class="num">1.71</td><td><span class="lv q1" style="margin:1px 3px 1px 0;">高GMV/高投放 25</span><span class="lv q2" style="margin:1px 3px 1px 0;">高GMV/低投放 2</span><span class="lv q3" style="margin:1px 3px 1px 0;">低GMV/高投放 33</span><span class="lv q4" style="margin:1px 3px 1px 0;">低GMV/低投放 61</span></td></tr></tbody></table>
   </div>
 </div>
 
 <div class="disc">
   <b>口径与边界说明</b>
   <ol>
-    <li>第一层【GMV×投放】：高GMV = 月均GMV ≥ 500万（区间GMV÷8）；高投放 = ADQ日均消耗 ≥ 10,000元。两条线均为绝对量口径。</li>
-    <li>第二层【五象限】逻辑未作任何改动：三渠道 GMV 占比 argmax 定内容场归属；自营 = 广告GMV占比≥20% 且 广告GMV≥100万，其余为分销。</li>
-    <li>两层互不冲突：第一层的「投放档」是投入规模（日耗），第二层的「自营/分销」是渗透率（TR），分别回答不同问题。</li>
-    <li>本版 v4.3 旧口径（总GMV 1003万 / 广告占比20%）已全面下线，报告与底表中所有「高GMV」表述均已按新口径统一。</li>
+    <li><b>广告TR = ADQ广告费用 ÷ 总GMV</b>（平台 take rate）；<b>广告GMV占比 = 广告GMV ÷ 总GMV</b>（广告成交渗透率）；
+    <b>投放ROI = 广告GMV ÷ 广告费用</b>。此前版本误将第二者标注为 TR，本版已全部修正重算。</li>
+    <li>第一层【GMV×投放】：高GMV = 月均GMV ≥ 500万（区间GMV÷8）；高投放 = ADQ日均消耗 ≥ 10,000元。</li>
+    <li>第二层【五象限】逻辑未作改动：三渠道 GMV 占比 argmax 定内容场；自营 = 广告GMV占比≥20% 且 广告GMV≥100万。</li>
+    <li>增量路径为统一大逻辑：高投放→做大GMV，低投放→提TR。不以单格细化动作替代客户实际诊断。</li>
     <li>增量测算仅为口径空间，不构成收入预测、对客报价或返点承诺；消耗为平台侧代理指标，不等同于商家经营成功。</li>
     <li>缺数据≠差。缺主体/合作/工具账单时仅保留标签，不作事实认定。</li>
   </ol>
 </div>
-<div class="note">数据窗口 2026年1-8月（ISO周 2026W01~2026W36）｜ 客户 267 家 / GMV 68.60亿 ｜
-配套底表：0917-K800报告完整整合表_v44.xlsx（26 sheets）、0917-K800五象限客群分析_v44.xlsx（3 sheets）｜
-v4.4 · 2026-10-08 ｜ 原 v4.3 报告与底表完整保留，未作覆盖</div>
+<div class="note">数据窗口 2026年1-8月（ISO周 2026W01~2026W36）｜ 客户 267 家 / GMV 68.60亿 /
+广告费用 10.25亿 / 广告TR 14.94% ｜ 配套底表：0917-K800报告完整整合表_v44.xlsx（29 sheets）｜
+v4.4.2 · 2026-10-09</div>
 
 </div>
 
 <script>
-const BAR = {"cats": ["高GMV·高投放", "高GMV·低投放", "低GMV·高投放", "低GMV·低投放"], "gmv": [39.64, 5.81, 6.24, 16.91], "ad": [12.29, 0.21, 2.99, 2.03], "tr": [31.0, 3.6, 47.9, 12.0]};
-const SC = [[15673.2, 460979.0, "诺特兰德", "高GMV·高投放", 0.208], [2755.1, 228040.0, "华大营养", "高GMV·高投放", 0.7637], [2293.0, 18576.0, "三只松鼠", "高GMV·高投放", 0.118], [1940.6, 176567.0, "万益蓝", "高GMV·高投放", 0.5217], [1869.7, 58097.0, "叮叮懒人菜", "高GMV·高投放", 0.3454], [1836.0, 24994.0, "认养一头牛", "高GMV·高投放", 0.1928], [1584.2, 23889.0, "永和豆浆", "高GMV·高投放", 0.2316], [1554.4, 64039.0, "五个女博士", "高GMV·高投放", 0.2427], [1491.8, 89943.0, "原始黄金", "高GMV·高投放", 0.5154], [1482.0, 42154.0, "大希地", "高GMV·高投放", 0.25], [1342.7, 14787.0, "南方黑芝麻", "高GMV·高投放", 0.1428], [1321.8, 23958.0, "不集", "高GMV·高投放", 0.1354], [1172.7, 36964.0, "四只猫", "高GMV·高投放", 0.2073], [1088.8, 11023.0, "喜纯", "高GMV·高投放", 0.1245], [1084.7, 86637.0, "华北制药", "高GMV·高投放", 0.4072], [997.9, 38146.0, "锋味派", "高GMV·高投放", 0.4196], [852.3, 66888.0, "轻上", "高GMV·高投放", 0.5297], [826.2, 96830.0, "五粮液", "高GMV·高投放", 0.3523], [802.6, 64462.0, "江中", "高GMV·高投放", 0.4129], [791.8, 30798.0, "海天", "高GMV·高投放", 0.2526], [787.2, 32218.0, "福月德", "高GMV·高投放", 0.4199], [757.5, 36207.0, "笑厨", "高GMV·高投放", 0.4705], [684.1, 112829.0, "卫仕", "高GMV·高投放", 0.8526], [635.3, 75003.0, "蒙牛", "高GMV·高投放", 0.3025], [629.0, 95020.0, "手艺人", "高GMV·高投放", 0.7302], [590.6, 17572.0, "椰谷", "高GMV·高投放", 0.314], [571.1, 49731.0, "劲家庄", "高GMV·高投放", 0.458], [565.4, 19246.0, "碧翠园", "高GMV·高投放", 0.3252], [536.9, 10790.0, "沙漠一号", "高GMV·高投放", 0.251], [519.9, 26737.0, "康师傅", "高GMV·高投放", 0.3453], [513.8, 18194.0, "伊利", "高GMV·高投放", 0.1518], [1755.1, 0.0, "本来果坊", "高GMV·低投放", 0.0281], [1315.0, 0.0, "天海藏", "高GMV·低投放", 0.0012], [643.7, 0.0, "自然搭档", "高GMV·低投放", 0.0073], [640.5, 2481.0, "百威", "高GMV·低投放", 0.0007], [608.7, 6982.0, "金味", "高GMV·低投放", 0.1723], [600.0, 199.0, "百草味", "高GMV·低投放", 0.0074], [592.2, 1111.0, "晟麦", "高GMV·低投放", 0.0381], [559.1, 5846.0, "五谷磨房", "高GMV·低投放", 0.0904], [542.8, 125.0, "佳沛", "高GMV·低投放", 0.0365], [479.4, 12384.0, "德芙", "低GMV·高投放", 0.2207], [473.5, 14202.0, "美赞臣", "低GMV·高投放", 0.231], [462.9, 41529.0, "燕之屋", "低GMV·高投放", 0.3162], [425.4, 20162.0, "楼外楼", "低GMV·高投放", 0.3917], [423.9, 12780.0, "彩虹星球", "低GMV·高投放", 0.539], [397.0, 28897.0, "春光", "低GMV·高投放", 0.5328], [379.2, 89504.0, "馥食集", "低GMV·高投放", 0.7722], [377.1, 17154.0, "中茶", "低GMV·高投放", 0.4066], [365.6, 49888.0, "黄金搭档", "低GMV·高投放", 0.5617], [354.4, 18359.0, "帝月", "低GMV·高投放", 0.3148], [299.9, 107630.0, "汤臣倍健", "低GMV·高投放", 0.7732], [289.0, 17051.0, "八马", "低GMV·高投放", 0.4836], [282.3, 13442.0, "纯耕", "低GMV·高投放", 0.3657], [279.9, 17811.0, "袋鼠先生", "低GMV·高投放", 0.5457], [266.2, 10812.0, "维维", "低GMV·高投放", 0.3341], [196.9, 11127.0, "思念", "低GMV·高投放", 0.4118], [193.3, 54645.0, "健尔马", "低GMV·高投放", 0.9459], [190.9, 18261.0, "小仙炖", "低GMV·高投放", 0.4571], [179.2, 17097.0, "空刻", "低GMV·高投放", 0.7385], [177.4, 11248.0, "官栈", "低GMV·高投放", 0.3543], [160.7, 37403.0, "哈药", "低GMV·高投放", 0.8182], [154.8, 70693.0, "疆小娃", "低GMV·高投放", 0.2184], [141.5, 27729.0, "林小生", "低GMV·高投放", 0.5098], [138.5, 57221.0, "轻启力", "低GMV·高投放", 0.9192], [133.4, 17049.0, "参小妹", "低GMV·高投放", 0.8424], [130.9, 58905.0, "一鸣", "低GMV·高投放", 0.0445], [118.2, 216234.0, "敖东", "低GMV·高投放", 0.3173], [83.1, 14977.0, "益倍萃", "低GMV·高投放", 0.8622], [81.0, 518888.0, "多燕瘦", "低GMV·高投放", 0.8528], [60.6, 15140.0, "览翠", "低GMV·高投放", 0.7649], [58.6, 55962.0, "修正", "低GMV·高投放", 0.2229], [24.8, 51404.0, "特仑苏", "低GMV·高投放", 0.5953], [24.7, 22864.0, "格力高", "低GMV·高投放", 0.3411], [0.8, 46903.0, "健安喜", "低GMV·高投放", 0.0488], [477.4, 3174.0, "onlytree", "低GMV·低投放", 0.0775], [456.5, 1752.0, "君乐宝", "低GMV·低投放", 0.019], [436.4, 0.0, "世壮", "低GMV·低投放", 0.125], [421.5, 7637.0, "加点滋味", "低GMV·低投放", 0.2356], [417.8, 2103.0, "小黄象", "低GMV·低投放", 0.0708], [415.6, 0.0, "下厨房", "低GMV·低投放", 0.0083], [388.5, 5479.0, "乖不二", "低GMV·低投放", 0.4496], [383.2, 8297.0, "洽洽", "低GMV·低投放", 0.167], [371.5, 0.0, "童涵春堂1783", "低GMV·低投放", 0.0359], [356.4, 8741.0, "白象", "低GMV·低投放", 0.2546], [353.5, 2723.0, "习酒", "低GMV·低投放", 0.0741], [352.7, 2115.0, "良品铺子", "低GMV·低投放", 0.0269], [342.6, 4020.0, "青岛啤酒", "低GMV·低投放", 0.0513], [340.3, 461.0, "盼盼", "低GMV·低投放", 0.013], [324.1, 134.0, "雪兰", "低GMV·低投放", 0.0021], [322.9, 0.0, "江中食疗", "低GMV·低投放", 0.1209], [302.0, 0.0, "鲁花", "低GMV·低投放", 0.0018], [297.6, 312.0, "九芝堂", "低GMV·低投放", 0.0104], [286.8, 825.0, "国联 水产", "低GMV·低投放", 0.0934], [270.6, 2218.0, "今麦郎", "低GMV·低投放", 0.1211], [263.3, 6447.0, "榴芒一刻", "低GMV·低投放", 0.2221], [263.1, 6252.0, "朵娜贝拉", "低GMV·低投放", 0.2109], [259.3, 1031.0, "FIBOO", "低GMV·低投放", 0.0471], [257.4, 3437.0, "脆升升", "低GMV·低投放", 0.0718], [249.1, 3026.0, "十月稻田", "低GMV·低投放", 0.115], [245.0, 1936.0, "程意严选", "低GMV·低投放", 0.3973], [236.2, 1405.0, "一念草木中", "低GMV·低投放", 0.3425], [230.2, 448.0, "天山", "低GMV·低投放", 0.0519], [227.1, 0.0, "小野轻煮", "低GMV·低投放", 0.0411], [225.8, 1560.0, "麻六记", "低GMV·低投放", 0.0768], [225.6, 3073.0, "谷本日记", "低GMV·低投放", 0.128], [222.7, 0.0, "百年堂", "低GMV·低投放", 0.0543], [219.4, 0.0, "金龙鱼", "低GMV·低投放", 0.0133], [216.8, 0.0, "美荻斯", "低GMV·低投放", 0.0005], [211.5, 0.0, "双汇", "低GMV·低投放", 0.0014], [204.9, 866.0, "古井贡酒", "低GMV·低投放", 0.3488], [204.3, 0.0, "犇西诗", "低GMV·低投放", 0.0018], [203.7, 7129.0, "皇上皇", "低GMV·低投放", 0.2703], [201.5, 1233.0, "三全", "低GMV·低投放", 0.0847], [199.1, 3887.0, "北大荒", "低GMV·低投放", 0.1037], [196.3, 947.0, "李锦记", "低GMV·低投放", 0.0544], [195.2, 3596.0, "七小七", "低GMV·低投放", 0.1839], [195.2, 3225.0, "海底捞", "低GMV·低投放", 0.1721], [189.3, 0.0, "本来生活", "低GMV·低投放", 0.1121], [186.2, 1488.0, "咖世家", "低GMV·低投放", 0.059], [182.8, 0.0, "郭师傅", "低GMV·低投放", 0.0065], [172.4, 279.0, "光明", "低GMV·低投放", 0.0256], [170.9, 4468.0, "旺旺", "低GMV·低投放", 0.0009], [170.1, 635.0, "九阳豆浆", "低GMV·低投放", 0.3189], [167.5, 0.0, "脱骨侠", "低GMV·低投放", 0.0006], [166.5, 138.0, "华美", "低GMV·低投放", 0.0207], [165.0, 0.0, "皇家小虎", "低GMV·低投放", 0.0012], [161.8, 460.0, "大白兔", "低GMV·低投放", 0.0511], [161.1, 2219.0, "野人日记", "低GMV·低投放", 0.1369], [157.7, 3145.0, "麦富迪", "低GMV·低投放", 0.2128], [155.4, 0.0, "鲜蜂队", "低GMV·低投放", 0.0015], [151.6, 1866.0, "飞鹤", "低GMV·低投放", 0.0405], [145.9, 466.0, "盐津铺子", "低GMV·低投放", 0.0545], [145.2, 572.0, "西麦", "低GMV·低投放", 0.0363], [143.3, 4473.0, "费列罗", "低GMV·低投放", 0.2217], [139.6, 634.0, "宁之春", "低GMV·低投放", 0.0365], [135.7, 7560.0, "泸州老窖", "低GMV·低投放", 0.3697], [131.2, 5586.0, "椰泰", "低GMV·低投放", 0.8195], [131.1, 656.0, "福东海", "低GMV·低投放", 0.0204], [130.5, 429.0, "每日博士", "低GMV·低投放", 0.0081], [126.9, 3783.0, "享食者", "低GMV·低投放", 0.2829], [126.1, 6499.0, "农夫山泉", "低GMV·低投放", 0.415], [125.4, 3566.0, "会稽山", "低GMV·低投放", 0.3098], [121.6, 0.0, "圣农", "低GMV·低投放", 0.0155], [118.6, 208.0, "好想你", "低GMV·低投放", 0.0208], [114.2, 2830.0, "同庆楼", "低GMV·低投放", 0.2406], [111.1, 0.0, "华弘草芝堂", "低GMV·低投放", 0.0054], [108.4, 0.0, "鲨鱼菲特", "低GMV·低投放", 0.013], [103.3, 0.0, "泰森", "低GMV·低投放", 0.0055], [103.1, 7616.0, "汾酒", "低GMV·低投放", 0.1], [99.2, 1581.0, "FoYes", "低GMV·低投放", 0.1699], [93.7, 0.0, "雷允上", "低GMV·低投放", 0.0339], [91.9, 879.0, "三养", "低GMV·低投放", 0.0409], [88.7, 0.0, "丙田", "低GMV·低投放", 0.0043], [87.0, 0.0, "戈壁工坊", "低GMV·低投放", 0.0044], [86.7, 368.0, "徐福记", "低GMV·低投放", 0.0867], [84.8, 3212.0, "瑞琪奥兰", "低GMV·低投放", 0.2785], [82.3, 104.0, "科尔沁", "低GMV·低投放", 0.0272], [80.9, 8232.0, "阴山优麦", "低GMV·低投放", 0.6154], [80.8, 1426.0, "新希望", "低GMV·低投放", 0.0413], [80.4, 0.0, "怡宝", "低GMV·低投放", 0.0025], [76.8, 310.0, "沃隆", "低GMV·低投放", 0.083], [75.5, 5148.0, "山猫超人", "低GMV·低投放", 0.6841], [73.4, 968.0, "嘉华", "低GMV·低投放", 0.1901], [72.3, 1585.0, "张一元", "低GMV·低投放", 0.3388], [70.6, 6525.0, "慢严舒柠", "低GMV·低投放", 0.4544], [68.5, 661.0, "狮峰", "低GMV·低投放", 0.2031], [67.6, 3859.0, "燕之坊", "低GMV·低投放", 0.3571], [67.0, 954.0, "黄天鹅", "低GMV·低投放", 0.1355], [63.6, 2338.0, "悦鲜活", "低GMV·低投放", 0.3673], [63.0, 108.0, "暴肌独角兽", "低GMV·低投放", 0.0197], [60.9, 113.0, "双钱", "低GMV·低投放", 0.0559], [60.7, 0.0, "仲景", "低GMV·低投放", 0.0398], [59.7, 0.0, "紫燕百味鸡", "低GMV·低投放", 0.001], [59.0, 0.0, "王小卤", "低GMV·低投放", 0.0461], [57.7, 0.0, "福牌阿胶", "低GMV·低投放", 0.0907], [56.7, 2585.0, "保乐力加", "低GMV·低投放", 0.0298], [56.6, 122.0, "卫龙", "低GMV·低投放", 0.0339], [55.5, 0.0, "葡记", "低GMV·低投放", 0.0017], [53.7, 1696.0, "洋河", "低GMV·低投放", 0.2532], [53.4, 887.0, "统一", "低GMV·低投放", 0.115], [52.4, 283.0, "茅台酱香酒", "低GMV·低投放", 0.003], [51.4, 0.0, "几片海", "低GMV·低投放", 0.0057], [51.4, 0.0, "欢乐果园joytree", "低GMV·低投放", 0.1446], [49.1, 0.0, "陈李济", "低GMV·低投放", 0.0129], [48.9, 0.0, "臭宝", "低GMV·低投放", 0.0117], [48.8, 0.0, "邹三和", "低GMV·低投放", 0.0545], [44.6, 0.0, "广州酒家", "低GMV·低投放", 0.0556], [44.5, 0.0, "蔡林记", "低GMV·低投放", 0.0261], [44.2, 415.0, "豆柴", "低GMV·低投放", 0.1638], [43.3, 3455.0, "松鹤楼", "低GMV·低投放", 0.6329], [42.1, 666.0, "潘祥记", "低GMV·低投放", 0.1393], [40.5, 1266.0, "每日鲜语", "低GMV·低投放", 0.0778], [40.4, 0.0, "五芳斋", "低GMV·低投放", 0.0149], [40.1, 0.0, "褚橙", "低GMV·低投放", 0.0206], [39.9, 0.0, "藤桥", "低GMV·低投放", 0.0722], [38.7, 884.0, "康比特CPT", "低GMV·低投放", 0.2394], [38.6, 943.0, "呜咔实验室", "低GMV·低投放", 0.9282], [37.1, 0.0, "秭归脐橙", "低GMV·低投放", 0.0653], [37.0, 112.0, "白大师", "低GMV·低投放", 0.186], [36.8, 858.0, "厨邦", "低GMV·低投放", 0.2552], [35.0, 267.0, "乡盛", "低GMV·低投放", 0.1225], [34.9, 121.0, "张飞", "低GMV·低投放", 0.0699], [34.6, 4091.0, "奔富", "低GMV·低投放", 0.0411], [32.5, 0.0, "茶口乐", "低GMV·低投放", 0.0131], [32.1, 300.0, "晓芹", "低GMV·低投放", 0.0367], [31.8, 0.0, "乐事", "低GMV·低投放", 0.0274], [31.5, 0.0, "佐丹力", "低GMV·低投放", 0.0135], [31.4, 1084.0, "凤球唛", "低GMV·低投放", 0.1446], [30.0, 1061.0, "满小饱", "低GMV·低投放", 0.2635], [28.0, 1406.0, "华祥苑", "低GMV·低投放", 0.3012], [27.9, 126.0, "欣和", "低GMV·低投放", 0.0005], [26.2, 1780.0, "小罐茶", "低GMV·低投放", 0.4555], [25.8, 499.0, "稻香村", "低GMV·低投放", 0.0372], [25.0, 0.0, "大喜大", "低GMV·低投放", 0.0726], [23.9, 0.0, "修文食品", "低GMV·低投放", 0.0001], [22.7, 0.0, "朕宅", "低GMV·低投放", 0.0292], [22.6, 266.0, "路易拉菲", "低GMV·低投放", 0.0018], [22.4, 0.0, "百瑞源", "低GMV·低投放", 0.0058], [20.9, 106.0, "李子柒", "低GMV·低投放", 0.0391], [20.6, 130.0, "大马碧富", "低GMV·低投放", 0.115], [19.8, 107.0, "binking", "低GMV·低投放", 0.0641], [19.7, 0.0, "九度七", "低GMV·低投放", 0.01], [19.4, 341.0, "美心", "低GMV·低投放", 0.0005], [19.4, 0.0, "周黑鸭", "低GMV·低投放", 0.0555], [18.2, 0.0, "金豆芽", "低GMV·低投放", 0.0067], [17.3, 1148.0, "海文铭", "低GMV·低投放", 0.4471], [16.0, 0.0, "红塔", "低GMV·低投放", 0.0024], [16.0, 0.0, "福口居", "低GMV·低投放", 0.0741], [15.7, 263.0, "阳澄锦绍", "低GMV·低投放", 0.2723], [14.8, 1594.0, "茅台", "低GMV·低投放", 0.0137], [13.9, 459.0, "民和", "低GMV·低投放", 0.1447], [13.7, 0.0, "康维他", "低GMV·低投放", 0.0125], [13.7, 0.0, "德州扒鸡", "低GMV·低投放", 0.0178], [12.9, 0.0, "利口福", "低GMV·低投放", 0.011], [12.7, 0.0, "豪客来轻烹", "低GMV·低投放", 0.0015], [12.1, 0.0, "方回春堂", "低GMV·低投放", 0.0002], [11.8, 4034.0, "雀巢", "低GMV·低投放", 0.0008], [11.8, 4045.0, "健力多", "低GMV·低投放", 0.8259], [11.7, 1106.0, "步天歌", "低GMV·低投放", 0.5934], [11.6, 304.0, "喜之郎", "低GMV·低投放", 0.0009], [11.6, 1498.0, "舜华", "低GMV·低投放", 0.057], [9.2, 0.0, "月盛斋", "低GMV·低投放", 0.0306], [5.6, 138.0, "智力", "低GMV·低投放", 0.2162], [5.6, 0.0, "馋小乖", "低GMV·低投放", 0.0576], [5.5, 388.0, "苏状元", "低GMV·低投放", 0.7051], [5.1, 0.0, "安井", "低GMV·低投放", 0.0002], [4.9, 2051.0, "格兰菲迪", "低GMV·低投放", 0.3911], [4.8, 0.0, "老金磨方", "低GMV·低投放", 0.0323], [4.7, 0.0, "荣业", "低GMV·低投放", 0.0026], [4.2, 0.0, "邻小言", "低GMV·低投放", 0.0084], [3.9, 934.0, "来伊份", "低GMV·低投放", 0.1008], [3.6, 0.0, "东北农嫂", "低GMV·低投放", 0.0374], [3.6, 7187.0, "999", "低GMV·低投放", 0.156], [3.3, 0.0, "正新", "低GMV·低投放", 0.002], [2.9, 3136.0, "剑南春", "低GMV·低投放", 0.0], [2.7, 0.0, "益节MoveFree", "低GMV·低投放", 0.0557], [2.4, 0.0, "if溢福", "低GMV·低投放", 0.0169], [1.8, 0.0, "颜值百分百", "低GMV·低投放", 0.0397], [1.8, 0.0, "宛禾米线", "低GMV·低投放", 0.0256], [1.8, 0.0, "麦吉士", "低GMV·低投放", 0.1396], [1.3, 401.0, "马爹利", "低GMV·低投放", 0.0], [1.0, 0.0, "金华火腿", "低GMV·低投放", 0.1895], [0.4, 616.0, "沁州黄小米", "低GMV·低投放", 0.0075], [0.4, 0.0, "圣迪乐", "低GMV·低投放", 0.0186], [0.2, 0.0, "枣粮先生", "低GMV·低投放", 0.0], [0.2, 1789.0, "瀛洲渡", "低GMV·低投放", 0.0068], [0.0, 0.0, "天福号", "低GMV·低投放", 0.0]];
+const BAR = {"cats": ["高GMV·高投放", "高GMV·低投放", "低GMV·高投放", "低GMV·低投放"], "gmv": [39.64, 5.81, 6.24, 16.91], "cost": [5.23, 0.04, 4.36, 0.62], "tr": [13.19, 0.7, 69.87, 3.65]};
+const SC = [[460979.0, 15673.2, "诺特兰德", "高GMV·高投放", 8.93], [228040.0, 2755.1, "华大营养", "高GMV·高投放", 25.14], [18576.0, 2293.0, "三只松鼠", "高GMV·高投放", 2.46], [176567.0, 1940.6, "万益蓝", "高GMV·高投放", 27.64], [58097.0, 1869.7, "叮叮懒人菜", "高GMV·高投放", 9.44], [24994.0, 1836.0, "认养一头牛", "高GMV·高投放", 4.14], [23889.0, 1584.2, "永和豆浆", "高GMV·高投放", 4.58], [64039.0, 1554.4, "五个女博士", "高GMV·高投放", 12.51], [89943.0, 1491.8, "原始黄金", "高GMV·高投放", 18.31], [42154.0, 1482.0, "大希地", "高GMV·高投放", 8.64], [14787.0, 1342.7, "南方黑芝麻", "高GMV·高投放", 3.34], [23958.0, 1321.8, "不集", "高GMV·高投放", 5.51], [36964.0, 1172.7, "四只猫", "高GMV·高投放", 9.57], [11023.0, 1088.8, "喜纯", "高GMV·高投放", 3.08], [86637.0, 1084.7, "华北制药", "高GMV·高投放", 24.26], [38146.0, 997.9, "锋味派", "高GMV·高投放", 11.61], [66888.0, 852.3, "轻上", "高GMV·高投放", 23.84], [96830.0, 826.2, "五粮液", "高GMV·高投放", 35.6], [64462.0, 802.6, "江中", "高GMV·高投放", 24.39], [30798.0, 791.8, "海天", "高GMV·高投放", 11.81], [32218.0, 787.2, "福月德", "高GMV·高投放", 12.43], [36207.0, 757.5, "笑厨", "高GMV·高投放", 14.52], [112829.0, 684.1, "卫仕", "高GMV·高投放", 50.1], [75003.0, 635.3, "蒙牛", "高GMV·高投放", 35.86], [95020.0, 629.0, "手艺人", "高GMV·高投放", 45.88], [17572.0, 590.6, "椰谷", "高GMV·高投放", 9.04], [49731.0, 571.1, "劲家庄", "高GMV·高投放", 26.45], [19246.0, 565.4, "碧翠园", "高GMV·高投放", 10.34], [10790.0, 536.9, "沙漠一号", "高GMV·高投放", 6.1], [26737.0, 519.9, "康师傅", "高GMV·高投放", 15.62], [18194.0, 513.8, "伊利", "高GMV·高投放", 10.76], [0.0, 1755.1, "本来果坊", "高GMV·低投放", 0.0], [0.0, 1315.0, "天海藏", "高GMV·低投放", 0.0], [0.0, 643.7, "自然搭档", "高GMV·低投放", 0.0], [2481.0, 640.5, "百威", "高GMV·低投放", 1.18], [6982.0, 608.7, "金味", "高GMV·低投放", 3.49], [199.0, 600.0, "百草味", "高GMV·低投放", 0.1], [1111.0, 592.2, "晟麦", "高GMV·低投放", 0.57], [5846.0, 559.1, "五谷磨房", "高GMV·低投放", 3.18], [125.0, 542.8, "佳沛", "高GMV·低投放", 0.07], [12384.0, 479.4, "德芙", "低GMV·高投放", 7.85], [14202.0, 473.5, "美赞臣", "低GMV·高投放", 9.11], [41529.0, 462.9, "燕之屋", "低GMV·高投放", 27.25], [20162.0, 425.4, "楼外楼", "低GMV·高投放", 14.39], [12780.0, 423.9, "彩虹星球", "低GMV·高投放", 9.16], [28897.0, 397.0, "春光", "低GMV·高投放", 22.11], [89504.0, 379.2, "馥食集", "低GMV·高投放", 71.7], [17154.0, 377.1, "中茶", "低GMV·高投放", 13.82], [49888.0, 365.6, "黄金搭档", "低GMV·高投放", 41.45], [18359.0, 354.4, "帝月", "低GMV·高投放", 15.73], [107630.0, 299.9, "汤臣倍健", "低GMV·高投放", 109.02], [17051.0, 289.0, "八马", "低GMV·高投放", 17.92], [13442.0, 282.3, "纯耕", "低GMV·高投放", 14.46], [17811.0, 279.9, "袋鼠先生", "低GMV·高投放", 19.33], [10812.0, 266.2, "维维", "低GMV·高投放", 12.34], [11127.0, 196.9, "思念", "低GMV·高投放", 17.17], [54645.0, 193.3, "健尔马", "低GMV·高投放", 85.86], [18261.0, 190.9, "小仙炖", "低GMV·高投放", 29.06], [17097.0, 179.2, "空刻", "低GMV·高投放", 28.98], [11248.0, 177.4, "官栈", "低GMV·高投放", 19.26], [37403.0, 160.7, "哈药", "低GMV·高投放", 70.68], [70693.0, 154.8, "疆小娃", "低GMV·高投放", 138.73], [27729.0, 141.5, "林小生", "低GMV·高投放", 59.54], [57221.0, 138.5, "轻启力", "低GMV·高投放", 125.52], [17049.0, 133.4, "参小妹", "低GMV·高投放", 38.82], [58905.0, 130.9, "一鸣", "低GMV·高投放", 136.74], [216234.0, 118.2, "敖东", "低GMV·高投放", 555.5], [14977.0, 83.1, "益倍萃", "低GMV·高投放", 54.74], [518888.0, 81.0, "多燕瘦", "低GMV·高投放", 1945.53], [15140.0, 60.6, "览翠", "低GMV·高投放", 75.89], [55962.0, 58.6, "修正", "低GMV·高投放", 290.2], [51404.0, 24.8, "特仑苏", "低GMV·高投放", 629.59], [22864.0, 24.7, "格力高", "低GMV·高投放", 281.17], [46903.0, 0.8, "健安喜", "低GMV·高投放", 18995.0], [3174.0, 477.4, "onlytree", "低GMV·低投放", 2.02], [1752.0, 456.5, "君乐宝", "低GMV·低投放", 1.17], [0.0, 436.4, "世壮", "低GMV·低投放", 0.0], [7637.0, 421.5, "加点滋味", "低GMV·低投放", 5.5], [2103.0, 417.8, "小黄象", "低GMV·低投放", 1.53], [0.0, 415.6, "下厨房", "低GMV·低投放", 0.0], [5479.0, 388.5, "乖不二", "低GMV·低投放", 4.28], [8297.0, 383.2, "洽洽", "低GMV·低投放", 6.58], [0.0, 371.5, "童涵春堂1783", "低GMV·低投放", 0.0], [8741.0, 356.4, "白象", "低GMV·低投放", 7.45], [2723.0, 353.5, "习酒", "低GMV·低投放", 2.34], [2115.0, 352.7, "良品铺子", "低GMV·低投放", 1.82], [4020.0, 342.6, "青岛啤酒", "低GMV·低投放", 3.57], [461.0, 340.3, "盼盼", "低GMV·低投放", 0.41], [134.0, 324.1, "雪兰", "低GMV·低投放", 0.13], [0.0, 322.9, "江中食疗", "低GMV·低投放", 0.0], [0.0, 302.0, "鲁花", "低GMV·低投放", 0.0], [312.0, 297.6, "九芝堂", "低GMV·低投放", 0.32], [825.0, 286.8, "国联 水产", "低GMV·低投放", 0.87], [2218.0, 270.6, "今麦郎", "低GMV·低投放", 2.49], [6447.0, 263.3, "榴芒一刻", "低GMV·低投放", 7.44], [6252.0, 263.1, "朵娜贝拉", "低GMV·低投放", 7.22], [1031.0, 259.3, "FIBOO", "低GMV·低投放", 1.21], [3437.0, 257.4, "脆升升", "低GMV·低投放", 4.05], [3026.0, 249.1, "十月稻田", "低GMV·低投放", 3.69], [1936.0, 245.0, "程意严选", "低GMV·低投放", 2.4], [1405.0, 236.2, "一念草木中", "低GMV·低投放", 1.8], [448.0, 230.2, "天山", "低GMV·低投放", 0.59], [0.0, 227.1, "小野轻煮", "低GMV·低投放", 0.0], [1560.0, 225.8, "麻六记", "低GMV·低投放", 2.1], [3073.0, 225.6, "谷本日记", "低GMV·低投放", 4.14], [0.0, 222.7, "百年堂", "低GMV·低投放", 0.0], [0.0, 219.4, "金龙鱼", "低GMV·低投放", 0.0], [0.0, 216.8, "美荻斯", "低GMV·低投放", 0.0], [0.0, 211.5, "双汇", "低GMV·低投放", 0.0], [866.0, 204.9, "古井贡酒", "低GMV·低投放", 1.28], [0.0, 204.3, "犇西诗", "低GMV·低投放", 0.0], [7129.0, 203.7, "皇上皇", "低GMV·低投放", 10.63], [1233.0, 201.5, "三全", "低GMV·低投放", 1.86], [3887.0, 199.1, "北大荒", "低GMV·低投放", 5.93], [947.0, 196.3, "李锦记", "低GMV·低投放", 1.46], [3596.0, 195.2, "七小七", "低GMV·低投放", 5.6], [3225.0, 195.2, "海底捞", "低GMV·低投放", 5.02], [0.0, 189.3, "本来生活", "低GMV·低投放", 0.0], [1488.0, 186.2, "咖世家", "低GMV·低投放", 2.43], [0.0, 182.8, "郭师傅", "低GMV·低投放", 0.0], [279.0, 172.4, "光明", "低GMV·低投放", 0.49], [4468.0, 170.9, "旺旺", "低GMV·低投放", 7.94], [635.0, 170.1, "九阳豆浆", "低GMV·低投放", 1.13], [0.0, 167.5, "脱骨侠", "低GMV·低投放", 0.0], [138.0, 166.5, "华美", "低GMV·低投放", 0.26], [0.0, 165.0, "皇家小虎", "低GMV·低投放", 0.0], [460.0, 161.8, "大白兔", "低GMV·低投放", 0.87], [2219.0, 161.1, "野人日记", "低GMV·低投放", 4.18], [3145.0, 157.7, "麦富迪", "低GMV·低投放", 6.05], [0.0, 155.4, "鲜蜂队", "低GMV·低投放", 0.0], [1866.0, 151.6, "飞鹤", "低GMV·低投放", 3.74], [466.0, 145.9, "盐津铺子", "低GMV·低投放", 0.97], [572.0, 145.2, "西麦", "低GMV·低投放", 1.2], [4473.0, 143.3, "费列罗", "低GMV·低投放", 9.49], [634.0, 139.6, "宁之春", "低GMV·低投放", 1.38], [7560.0, 135.7, "泸州老窖", "低GMV·低投放", 16.93], [5586.0, 131.2, "椰泰", "低GMV·低投放", 12.93], [656.0, 131.1, "福东海", "低GMV·低投放", 1.52], [429.0, 130.5, "每日博士", "低GMV·低投放", 1.0], [3783.0, 126.9, "享食者", "低GMV·低投放", 9.05], [6499.0, 126.1, "农夫山泉", "低GMV·低投放", 15.65], [3566.0, 125.4, "会稽山", "低GMV·低投放", 8.64], [0.0, 121.6, "圣农", "低GMV·低投放", 0.0], [208.0, 118.6, "好想你", "低GMV·低投放", 0.54], [2830.0, 114.2, "同庆楼", "低GMV·低投放", 7.53], [0.0, 111.1, "华弘草芝堂", "低GMV·低投放", 0.0], [0.0, 108.4, "鲨鱼菲特", "低GMV·低投放", 0.0], [0.0, 103.3, "泰森", "低GMV·低投放", 0.0], [7616.0, 103.1, "汾酒", "低GMV·低投放", 22.43], [1581.0, 99.2, "FoYes", "低GMV·低投放", 4.84], [0.0, 93.7, "雷允上", "低GMV·低投放", 0.0], [879.0, 91.9, "三养", "低GMV·低投放", 2.91], [0.0, 88.7, "丙田", "低GMV·低投放", 0.0], [0.0, 87.0, "戈壁工坊", "低GMV·低投放", 0.0], [368.0, 86.7, "徐福记", "低GMV·低投放", 1.28], [3212.0, 84.8, "瑞琪奥兰", "低GMV·低投放", 11.51], [104.0, 82.3, "科尔沁", "低GMV·低投放", 0.38], [8232.0, 80.9, "阴山优麦", "低GMV·低投放", 30.88], [1426.0, 80.8, "新希望", "低GMV·低投放", 5.36], [0.0, 80.4, "怡宝", "低GMV·低投放", 0.0], [310.0, 76.8, "沃隆", "低GMV·低投放", 1.22], [5148.0, 75.5, "山猫超人", "低GMV·低投放", 20.71], [968.0, 73.4, "嘉华", "低GMV·低投放", 4.0], [1585.0, 72.3, "张一元", "低GMV·低投放", 6.66], [6525.0, 70.6, "慢严舒柠", "低GMV·低投放", 28.07], [661.0, 68.5, "狮峰", "低GMV·低投放", 2.94], [3859.0, 67.6, "燕之坊", "低GMV·低投放", 17.34], [954.0, 67.0, "黄天鹅", "低GMV·低投放", 4.33], [2338.0, 63.6, "悦鲜活", "低GMV·低投放", 11.16], [108.0, 63.0, "暴肌独角兽", "低GMV·低投放", 0.52], [113.0, 60.9, "双钱", "低GMV·低投放", 0.55], [0.0, 60.7, "仲景", "低GMV·低投放", 0.0], [0.0, 59.7, "紫燕百味鸡", "低GMV·低投放", 0.0], [0.0, 59.0, "王小卤", "低GMV·低投放", 0.0], [0.0, 57.7, "福牌阿胶", "低GMV·低投放", 0.0], [2585.0, 56.7, "保乐力加", "低GMV·低投放", 13.84], [122.0, 56.6, "卫龙", "低GMV·低投放", 0.66], [0.0, 55.5, "葡记", "低GMV·低投放", 0.0], [1696.0, 53.7, "洋河", "低GMV·低投放", 9.59], [887.0, 53.4, "统一", "低GMV·低投放", 5.03], [283.0, 52.4, "茅台酱香酒", "低GMV·低投放", 1.65], [0.0, 51.4, "几片海", "低GMV·低投放", 0.0], [0.0, 51.4, "欢乐果园joytree", "低GMV·低投放", 0.0], [0.0, 49.1, "陈李济", "低GMV·低投放", 0.0], [0.0, 48.9, "臭宝", "低GMV·低投放", 0.0], [0.0, 48.8, "邹三和", "低GMV·低投放", 0.0], [0.0, 44.6, "广州酒家", "低GMV·低投放", 0.0], [0.0, 44.5, "蔡林记", "低GMV·低投放", 0.0], [415.0, 44.2, "豆柴", "低GMV·低投放", 2.86], [3455.0, 43.3, "松鹤楼", "低GMV·低投放", 24.23], [666.0, 42.1, "潘祥记", "低GMV·低投放", 4.81], [1266.0, 40.5, "每日鲜语", "低GMV·低投放", 9.49], [0.0, 40.4, "五芳斋", "低GMV·低投放", 0.0], [0.0, 40.1, "褚橙", "低GMV·低投放", 0.0], [0.0, 39.9, "藤桥", "低GMV·低投放", 0.0], [884.0, 38.7, "康比特CPT", "低GMV·低投放", 6.94], [943.0, 38.6, "呜咔实验室", "低GMV·低投放", 7.41], [0.0, 37.1, "秭归脐橙", "低GMV·低投放", 0.0], [112.0, 37.0, "白大师", "低GMV·低投放", 0.91], [858.0, 36.8, "厨邦", "低GMV·低投放", 7.1], [267.0, 35.0, "乡盛", "低GMV·低投放", 2.32], [121.0, 34.9, "张飞", "低GMV·低投放", 1.04], [4091.0, 34.6, "奔富", "低GMV·低投放", 35.95], [0.0, 32.5, "茶口乐", "低GMV·低投放", 0.0], [300.0, 32.1, "晓芹", "低GMV·低投放", 2.84], [0.0, 31.8, "乐事", "低GMV·低投放", 0.0], [0.0, 31.5, "佐丹力", "低GMV·低投放", 0.0], [1084.0, 31.4, "凤球唛", "低GMV·低投放", 10.47], [1061.0, 30.0, "满小饱", "低GMV·低投放", 10.74], [1406.0, 28.0, "华祥苑", "低GMV·低投放", 15.27], [126.0, 27.9, "欣和", "低GMV·低投放", 1.39], [1780.0, 26.2, "小罐茶", "低GMV·低投放", 20.68], [499.0, 25.8, "稻香村", "低GMV·低投放", 5.87], [0.0, 25.0, "大喜大", "低GMV·低投放", 0.0], [0.0, 23.9, "修文食品", "低GMV·低投放", 0.0], [0.0, 22.7, "朕宅", "低GMV·低投放", 0.0], [266.0, 22.6, "路易拉菲", "低GMV·低投放", 3.59], [0.0, 22.4, "百瑞源", "低GMV·低投放", 0.0], [106.0, 20.9, "李子柒", "低GMV·低投放", 1.55], [130.0, 20.6, "大马碧富", "低GMV·低投放", 1.94], [107.0, 19.8, "binking", "低GMV·低投放", 1.65], [0.0, 19.7, "九度七", "低GMV·低投放", 0.0], [341.0, 19.4, "美心", "低GMV·低投放", 5.34], [0.0, 19.4, "周黑鸭", "低GMV·低投放", 0.0], [0.0, 18.2, "金豆芽", "低GMV·低投放", 0.0], [1148.0, 17.3, "海文铭", "低GMV·低投放", 20.13], [0.0, 16.0, "红塔", "低GMV·低投放", 0.0], [0.0, 16.0, "福口居", "低GMV·低投放", 0.0], [263.0, 15.7, "阳澄锦绍", "低GMV·低投放", 5.11], [1594.0, 14.8, "茅台", "低GMV·低投放", 32.6], [459.0, 13.9, "民和", "低GMV·低投放", 10.07], [0.0, 13.7, "康维他", "低GMV·低投放", 0.0], [0.0, 13.7, "德州扒鸡", "低GMV·低投放", 0.0], [0.0, 12.9, "利口福", "低GMV·低投放", 0.0], [0.0, 12.7, "豪客来轻烹", "低GMV·低投放", 0.0], [0.0, 12.1, "方回春堂", "低GMV·低投放", 0.0], [4034.0, 11.8, "雀巢", "低GMV·低投放", 103.7], [4045.0, 11.8, "健力多", "低GMV·低投放", 104.46], [1106.0, 11.7, "步天歌", "低GMV·低投放", 28.74], [304.0, 11.6, "喜之郎", "低GMV·低投放", 7.98], [1498.0, 11.6, "舜华", "低GMV·低投放", 39.31], [0.0, 9.2, "月盛斋", "低GMV·低投放", 0.0], [138.0, 5.6, "智力", "低GMV·低投放", 7.35], [0.0, 5.6, "馋小乖", "低GMV·低投放", 0.0], [388.0, 5.5, "苏状元", "低GMV·低投放", 21.27], [0.0, 5.1, "安井", "低GMV·低投放", 0.0], [2051.0, 4.9, "格兰菲迪", "低GMV·低投放", 127.04], [0.0, 4.8, "老金磨方", "低GMV·低投放", 0.0], [0.0, 4.7, "荣业", "低GMV·低投放", 0.0], [0.0, 4.2, "邻小言", "低GMV·低投放", 0.0], [934.0, 3.9, "来伊份", "低GMV·低投放", 73.23], [0.0, 3.6, "东北农嫂", "低GMV·低投放", 0.0], [7187.0, 3.6, "999", "低GMV·低投放", 612.98], [0.0, 3.3, "正新", "低GMV·低投放", 0.0], [3136.0, 2.9, "剑南春", "低GMV·低投放", 334.21], [0.0, 2.7, "益节MoveFree", "低GMV·低投放", 0.0], [0.0, 2.4, "if溢福", "低GMV·低投放", 0.0], [0.0, 1.8, "颜值百分百", "低GMV·低投放", 0.0], [0.0, 1.8, "宛禾米线", "低GMV·低投放", 0.0], [0.0, 1.8, "麦吉士", "低GMV·低投放", 0.0], [401.0, 1.3, "马爹利", "低GMV·低投放", 92.45], [0.0, 1.0, "金华火腿", "低GMV·低投放", 0.0], [616.0, 0.4, "沁州黄小米", "低GMV·低投放", 454.55], [0.0, 0.4, "圣迪乐", "低GMV·低投放", 0.0], [0.0, 0.2, "枣粮先生", "低GMV·低投放", 0.0], [1789.0, 0.2, "瀛洲渡", "低GMV·低投放", 3346.15], [0.0, 0.0, "天福号", "低GMV·低投放", 0.0]];
 const QC = {'高GMV·高投放':'#38A169','高GMV·低投放':'#DD6B20','低GMV·高投放':'#C0504D','低GMV·低投放':'#A0AEC0'};
 
 echarts.init(document.getElementById('bar')).setOption({
   tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-  legend:{data:['总GMV(亿)','广告GMV(亿)','广告TR(%)'],bottom:0,textStyle:{fontSize:11.5}},
-  grid:{left:50,right:50,top:26,bottom:46},
+  legend:{data:['总GMV(亿)','广告费用(亿)','广告TR(%)'],bottom:0,textStyle:{fontSize:11.5}},
+  grid:{left:50,right:52,top:26,bottom:46},
   xAxis:{type:'category',data:BAR.cats,axisLabel:{fontSize:11,interval:0}},
   yAxis:[{type:'value',name:'亿元',nameTextStyle:{fontSize:11},axisLabel:{fontSize:11}},
-         {type:'value',name:'TR%',max:60,nameTextStyle:{fontSize:11},axisLabel:{fontSize:11,formatter:'{value}%'}}],
+         {type:'value',name:'TR%',max:80,nameTextStyle:{fontSize:11},axisLabel:{fontSize:11,formatter:'{value}%'}}],
   series:[
     {name:'总GMV(亿)',type:'bar',data:BAR.gmv,itemStyle:{color:'#2B6CB0',borderRadius:[5,5,0,0]},barMaxWidth:40},
-    {name:'广告GMV(亿)',type:'bar',data:BAR.ad,itemStyle:{color:'#DD6B20',borderRadius:[5,5,0,0]},barMaxWidth:40},
+    {name:'广告费用(亿)',type:'bar',data:BAR.cost,itemStyle:{color:'#DD6B20',borderRadius:[5,5,0,0]},barMaxWidth:40},
     {name:'广告TR(%)',type:'line',yAxisIndex:1,data:BAR.tr,smooth:true,
-      itemStyle:{color:'#805AD5'},lineStyle:{width:3},symbolSize:9}
+      itemStyle:{color:'#C0504D'},lineStyle:{width:3},symbolSize:9,
+      label:{show:true,fontSize:10.5,formatter:p=>p.value+'%',color:'#C0504D'}}
   ]
 });
 
 echarts.init(document.getElementById('sc')).setOption({
-  tooltip:{formatter:p=>`<b>${p.data[2]}</b><br>${p.data[3]}<br>月均GMV ${p.data[0].toLocaleString()}万<br>日耗 ${p.data[1].toLocaleString()}元<br>TR ${(p.data[4]*100).toFixed(1)}%`},
+  tooltip:{formatter:p=>`<b>${p.data[2]}</b><br>${p.data[3]}<br>月均GMV ${p.data[0].toLocaleString()}万<br>日耗 ${p.data[1].toLocaleString()}元<br>广告TR ${p.data[4]}%`},
   grid:{left:62,right:22,top:26,bottom:46},
   xAxis:{type:'log',name:'月均GMV(万)',nameLocation:'middle',nameGap:28,nameTextStyle:{fontSize:11},
     axisLabel:{fontSize:10.5},splitLine:{lineStyle:{color:'#F0F4F8'}}},
   yAxis:{type:'log',name:'ADQ日均消耗(元)',nameTextStyle:{fontSize:11},
     axisLabel:{fontSize:10.5},splitLine:{lineStyle:{color:'#F0F4F8'}}},
   series:[{
-    type:'scatter',symbolSize:9,data:SC.filter(d=>d[0]>0&&d[1]>0),
+    type:'scatter',symbolSize:9,
+    data:SC.filter(d=>d[0]>0&&d[1]>0).map(d=>[d[1],d[0],d[2],d[3],d[4]]),
     itemStyle:{color:p=>QC[p.data[3]]||'#A0AEC0',opacity:.74},
     markLine:{silent:true,symbol:'none',lineStyle:{color:'#DD6B20',type:'dashed',width:1.5},
       label:{fontSize:10.5,color:'#C05621'},
@@ -473,7 +426,7 @@ echarts.init(document.getElementById('sc')).setOption({
   }]
 });
 window.addEventListener('resize',()=>{
-  document.querySelectorAll('.chart').forEach(e=>echarts.getInstanceByDom(e)&&echarts.getInstanceByDom(e).resize());
+  document.querySelectorAll('.chart').forEach(e=>{const i=echarts.getInstanceByDom(e); i&&i.resize();});
 });
 </script>
 </body>
