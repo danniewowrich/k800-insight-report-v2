@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>K800 客户分层报告 v4.4.2 · GMV×投放 两层分层</title>
+<title>K800 客户分层报告 v4.4.3 · GMV×投放 两层分层</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 :root{--blue:#2B6CB0;--blue-d:#2C5282;--blue-dd:#1A365D;--orange:#DD6B20;--bg:#F7FAFC;
@@ -76,6 +76,7 @@ border-top:1px dashed #E2E8F0;border-bottom:1px dashed #E2E8F0;}
 color:#fff;margin-bottom:7px;}
 .q .route.gmv{background:linear-gradient(135deg,#2B6CB0,#2C5282);}
 .q .route.tr{background:linear-gradient(135deg,#DD6B20,#C05621);}
+.q .route.zm{background:linear-gradient(135deg,#6B46C1,#553C9A);}
 .q .comp{margin-top:11px;padding-top:10px;border-top:1px dashed #E2E8F0;font-size:11.8px;color:var(--t3);}
 .tag{display:inline-block;background:#EBF8FF;color:var(--blue);padding:2px 8px;border-radius:6px;
 font-size:11.5px;margin:2px 4px 2px 0;}
@@ -149,7 +150,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
 <div class="wrap">
 
 <div class="hero">
-  <h1>K800 食品饮料客户 · 分层报告 v4.4.2</h1>
+  <h1>K800 食品饮料客户 · 分层报告 v4.4.3</h1>
   <div class="sub">口径 2026年1-8月（ISO周 2026W01~2026W36）。
   <b>第一层「GMV × 投放」</b>（月均GMV≥500万 / ADQ日耗≥10,000元）定「打什么」，
   <b>第二层五象限</b>（逻辑不变）定「怎么打」。
@@ -179,7 +180,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
     <div class="f2">增量 = <em>ΔGMV × TR</em>（做大盘子）　＋　<em>GMV × ΔTR</em>（提高渗透）</div>
     <div class="f3">广告TR = ADQ广告费用 ÷ 总GMV　｜　广告GMV占比 = 广告GMV ÷ 总GMV　｜　投放ROI = 广告GMV ÷ 广告费用</div>
   </div>
-  <div class="callout warn"><b>⚠ 口径修正说明（v4.4.2）</b>
+  <div class="callout warn"><b>⚠ 口径修正说明（v4.4.2 · 路径修订 v4.4.3）</b>
   此前版本把「广告GMV ÷ 总GMV」标注为广告TR，实为<b>广告成交渗透率</b>，并非平台 take rate。
   本版修正为 <b>广告TR = 广告费用 ÷ 总GMV</b>：全体 267 家广告费用 10.25亿 ÷ 总GMV 68.60亿 = <b>14.94%</b>，
   而原误用指标为 25.54%，<b>两者相差约 1.7 倍</b>。报告与底表所有相关数值均已按新口径重算。</div>
@@ -201,21 +202,21 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
   <div class="lead">不按格展开细化动作，<b>只记一条规则</b>：客户投放到不到位，决定他走哪条路。</div>
   <div class="logic">
     <div class="lg a">
-      <div class="cond">低投放客户</div>
+      <div class="cond">低投放客户（202家 · GMV 22.72亿 · TR 2.90%）</div>
       <div class="arrow">↓</div>
-      <div class="act">做大 TR</div>
-      <div class="why">投放缺位，GMV 主要来自自然流与达人分销。增量来自<b>提高广告渗透</b>——
-      把已经被市场验证的生意转化为付费投放。</div>
+      <div class="act">做大 TR ／ 做大 GMV</div>
+      <div class="why"><b>高GMV·低投放 9家 → 做大 TR</b>（货已验证、ROI 5.08，只缺自投）；
+      <b>低GMV·低投放 193家 → 做大 GMV</b>——盘子太小，先批量化把生意做大，再谈渗透。</div>
       <div class="who"><b>202 家</b>　GMV 22.72亿　
       广告费用 0.66亿　TR 2.90%</div>
     </div>
     <div class="vs">VS</div>
     <div class="lg b">
-      <div class="cond">高投放客户</div>
+      <div class="cond">高投放客户（65家 · GMV 45.88亿 · TR 20.90%）</div>
       <div class="arrow">↓</div>
-      <div class="act">做大 GMV</div>
-      <div class="why">投放能力已建立，再加投边际收益递减。增量来自<b>把 GMV 盘子做大</b>——
-      GMV 增长后按现有 TR 自然带来广告费用增长。</div>
+      <div class="act">做大 GMV ＋ 标杆打造</div>
+      <div class="why">投放能力已建立，再加投边际收益递减。增量来自<b>把 GMV 盘子做大</b>；
+      其中 <b>高GMV·高投放 31家 → 深度陪跑、生态标杆打造</b>，低GMV·高投放 34家先控本再扩盘。</div>
       <div class="who"><b>65 家</b>　GMV 45.88亿　
       广告费用 9.59亿　TR 20.90%</div>
     </div>
@@ -236,7 +237,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
   <div class="rowlab b"><span class="rt">第一排 · 高投放客户</span>
     <span class="rd">65家 · GMV 45.88亿 · 广告费用 9.59亿 ·
     TR 20.90%</span>
-    <span class="rr gmv">增量路径 · 做大 GMV</span></div>
+    <span class="rr gmv">增量路径 · 生态标杆 / 做大 GMV</span></div>
   <div class="qgrid">
 <div class="q q1">
   <div class="qh"><h3>高GMV·高投放</h3><span class="pill">基本盘 · 压舱石</span></div>
@@ -253,7 +254,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
     <div class="sh"><span>广告TR（费用/GMV）</span><div class="bar r"><i style="width:13.2%"></i></div><b>13.19%</b></div>
     <div class="sh"><span>广告GMV占比</span><div class="bar p"><i style="width:31.0%"></i></div><b>31.0%</b></div>
   </div>
-  <div class="act"><span class="route gmv">增量主路径 · 做大 GMV</span><br>GMV 与投放双强，贡献 <b>57.8% 的 GMV、51.0% 的广告费用</b>，是压舱石。投放 ROI 2.35 健康，<b>投放能力已建立</b>——增量应来自把 GMV 盘子做大。</div>
+  <div class="act"><span class="route zm">增量主路径 · 深度陪跑 · 生态标杆</span><br>GMV 与投放双强，贡献 <b>57.8% 的 GMV、51.0% 的广告费用</b>，是压舱石。投放 ROI 2.35 健康，<b>投放能力已建立</b>——增量应来自把 GMV 盘子做大。</div>
   <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&自营 17</span>　<span class="tag">重短视频&自营 5</span>　<span class="tag">重直播&分销 4</span>　<span class="tag">货架 3</span>　<span class="tag">重短视频&分销 2</span><br>
   <b style="color:#4A5568;">广告费用：</b>5.23亿　
   <b style="color:#4A5568;">户均日耗：</b>69,397元　
@@ -286,7 +287,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
   <div class="rowlab a"><span class="rt">第二排 · 低投放客户</span>
     <span class="rd">202家 · GMV 22.72亿 · 广告费用 0.66亿 ·
     TR 2.90%</span>
-    <span class="rr tr">增量路径 · 做大 TR</span></div>
+    <span class="rr tr">增量路径 · 做大 TR / 做大 GMV</span></div>
   <div class="qgrid">
 <div class="q q2">
   <div class="qh"><h3>高GMV·低投放</h3><span class="pill">提渗透 · 主战场</span></div>
@@ -325,7 +326,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
     <div class="sh"><span>广告TR（费用/GMV）</span><div class="bar r"><i style="width:3.6%"></i></div><b>3.65%</b></div>
     <div class="sh"><span>广告GMV占比</span><div class="bar p"><i style="width:12.0%"></i></div><b>12.0%</b></div>
   </div>
-  <div class="act"><span class="route tr">增量主路径 · 做大 TR</span><br>双低。TR 3.65%、ROI 3.28，投放效率不差但体量小，193 家<b>单客月均 GMV 仅 110万（中位 61万）</b>，单客人力投入产出不成立。</div>
+  <div class="act"><span class="route gmv">增量主路径 · 做大 GMV</span><br>双低。TR 3.65%、ROI 3.28，投放效率不差但体量小，193 家<b>单客月均 GMV 仅 110万（中位 61万）</b>，单客人力投入产出不成立。</div>
   <div class="comp"><b style="color:#4A5568;">第二层构成：</b><span class="tag">重直播&分销 97</span>　<span class="tag">货架 36</span>　<span class="tag">重短视频&分销 35</span>　<span class="tag">重直播&自营 23</span>　<span class="tag">重短视频&自营 2</span><br>
   <b style="color:#4A5568;">广告费用：</b>0.62亿　
   <b style="color:#4A5568;">户均日耗：</b>1,318元　
@@ -452,7 +453,7 @@ box-shadow:0 4px 14px rgba(43,108,176,.3);transition:.2s;white-space:nowrap;}
 </div>
 <div class="note">数据窗口 2026年1-8月（ISO周 2026W01~2026W36）｜ 客户 267 家 / GMV 68.60亿 /
 广告费用 10.25亿 / 广告TR 14.94% ｜ 配套底表：0917-K800报告完整整合表_v44.xlsx（29 sheets）｜
-v4.4.2 · 2026-10-09</div>
+v4.4.3 · 2026-10-09</div>
 
 </div>
 
@@ -535,13 +536,13 @@ function scOption(){
       min:1, max:1000000, axisLabel:{fontSize:11, formatter:v=>v>=10000?(v/10000)+'万':v},
       splitLine:{lineStyle:{color:'#F0F4F8'}}},
     graphic:[
-      {type:'text', right:'10%', top:'7%', style:{text:'高GMV · 高投放\n做大 GMV', fontSize:12.5,
+      {type:'text', right:'10%', top:'7%', style:{text:'高GMV · 高投放\n深度陪跑·生态标杆', fontSize:12.5,
         fontWeight:'bold', fill:'#38A169', textAlign:'right', lineHeight:17}},
-      {type:'text', left:'13%', top:'7%', style:{text:'低GMV · 高投放\n⚠ ROI 风险区', fontSize:12.5,
+      {type:'text', left:'13%', top:'7%', style:{text:'低GMV · 高投放\n⚠ 风险区 · 做大 GMV', fontSize:12.5,
         fontWeight:'bold', fill:'#C0504D', lineHeight:17}},
       {type:'text', right:'10%', bottom:'17%', style:{text:'高GMV · 低投放\n★ 机会区 · 做大 TR', fontSize:12.5,
         fontWeight:'bold', fill:'#DD6B20', textAlign:'right', lineHeight:17}},
-      {type:'text', left:'13%', bottom:'17%', style:{text:'低GMV · 低投放\n长尾 · 批量化', fontSize:12.5,
+      {type:'text', left:'13%', bottom:'17%', style:{text:'低GMV · 低投放\n长尾 · 做大 GMV', fontSize:12.5,
         fontWeight:'bold', fill:'#A0AEC0', lineHeight:17}}
     ],
     series
