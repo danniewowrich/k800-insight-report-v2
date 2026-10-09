@@ -500,22 +500,29 @@ function scOption(){
       symbolSize: d=>Math.min(22, Math.max(6, Math.sqrt(d[0])/2.1)),
       itemStyle:{color:QC[q], opacity:q==='低GMV·低投放'?.35:.78, borderColor:'#fff', borderWidth:.6},
       label:{
-        show:true, position:p=>p.data.value[0]>=1500?'top':'right', distance:5, fontSize:10, fontWeight:600,
+        show:true, position:'right', distance:0, fontSize:10, fontWeight:600,
         color:QC[q], textBorderColor:'#fff', textBorderWidth:2.5,
         formatter:p=>p.data.lab ? p.data.name : ''
       },
-      labelLayout:{hideOverlap:true},
+      labelLayout: p=>{
+        const q2 = Q_BY_SI[p.seriesIndex];
+        if(!q2) return {};
+        const L = LPOS[q2+'|'+p.dataIndex];
+        if(!L) return {};
+        return {x:L[0], y:L[1], align:L[2], verticalAlign:L[3]};
+      },
       emphasis:{focus:'series', label:{show:true, fontSize:12.5},
         itemStyle:{opacity:1, borderWidth:2, borderColor:'#1A365D'}}
     };
   });
-  series[0].markLine = {
-    silent:true, symbol:'none', animation:false,
-    lineStyle:{color:'#DD6B20', type:'dashed', width:1.6},
-    label:{fontSize:11, fontWeight:600, color:'#C05621'},
-    data:[{xAxis:GMV_TH, label:{formatter:'月均 500 万'}},
-          {yAxis:SPEND_TH, label:{formatter:'日耗 1 万', position:'start'}}]
-  };
+  series.push({name:'_ml', type:'scatter', data:[], silent:true,
+    itemStyle:{opacity:0}, label:{show:false},
+    markLine:{ silent:true, symbol:'none', animation:false,
+      lineStyle:{color:'#DD6B20', type:'dashed', width:1.6},
+      label:{fontSize:11, fontWeight:600, color:'#C05621'},
+      data:[{xAxis:GMV_TH, label:{formatter:'月均 500 万'}},
+            {yAxis:SPEND_TH, label:{formatter:'日耗 1 万', position:'start'}}]}
+  });
   return {
     tooltip:{
       formatter:p=>`<b style="font-size:13px;">${p.data.name}</b><br>`+
@@ -537,9 +544,9 @@ function scOption(){
       min:1, max:1000000, axisLabel:{fontSize:11, formatter:v=>v>=10000?(v/10000)+'万':v},
       splitLine:{lineStyle:{color:'#F0F4F8'}}},
     graphic:[
-      {type:'text', right:'10%', top:'7%', style:{text:'高GMV · 高投放\n深度陪跑·生态标杆', fontSize:12.5,
+      {type:'text', right:'2.5%', top:'26%', style:{text:'高GMV · 高投放\n深度陪跑·生态标杆', fontSize:12.5,
         fontWeight:'bold', fill:'#38A169', textAlign:'right', lineHeight:17}},
-      {type:'text', left:'13%', top:'7%', style:{text:'低GMV · 高投放\n⚠ 风险区 · 做大 GMV', fontSize:12.5,
+      {type:'text', left:'2.5%', top:'7%', style:{text:'低GMV · 高投放\n⚠ 风险区 · 做大 GMV', fontSize:12.5,
         fontWeight:'bold', fill:'#C0504D', lineHeight:17}},
       {type:'text', right:'10%', bottom:'17%', style:{text:'高GMV · 低投放\n★ 机会区 · 做大 TR', fontSize:12.5,
         fontWeight:'bold', fill:'#DD6B20', textAlign:'right', lineHeight:17}},
@@ -549,18 +556,96 @@ function scOption(){
     series
   };
 }
+const Q_BY_SI = Object.keys(SCG);
+let LPOS = {};
+
 scChart.setOption(scOption());
+
+/* ================= 智能标签布局引擎 =================
+   两遍渲染：先取所有点像素坐标，再按GMV优先级为每个标签在候选位中
+   找不与已有标签/气泡重叠的位置；找不到的高价值点强制显示，长尾隐藏 */
+
+
+function computeLPOS(){
+  LPOS = {};
+  const allDots = [];
+  Q_BY_SI.forEach((q,si)=>{
+    SCG[q].forEach(d=>{
+      const px = scChart.convertToPixel({seriesIndex:si}, [Math.max(d[0],0.1), Math.max(d[1],1)]);
+      if(px && !isNaN(px[0])) allDots.push(px);
+    });
+  });
+  const pts = [];
+  Q_BY_SI.forEach((q,si)=>{
+    const n = lblCount(q);
+    SCG[q].forEach((d,i)=>{
+      if(i>=n) return;
+      const px = scChart.convertToPixel({seriesIndex:si}, [Math.max(d[0],0.1), Math.max(d[1],1)]);
+      if(px && !isNaN(px[0])) pts.push({q, i, x:px[0], y:px[1], name:String(d[2]), gmv:Math.max(d[0],0.1)});
+    });
+  });
+  pts.sort((a,b)=>b.gmv-a.gmv);          /* 大客户先挑最好的位置 */
+  const placed = [];
+  const W = scChart.getWidth(), H = scChart.getHeight();
+  const GL=78, GR=W-116, GT=56, GB=H-62; /* 与 grid 一致 */
+  const boxW = t=>t.length*9.4+8, boxH = 13;
+  const hits = r => placed.some(o=>!(r.x+r.w+2<o.x||o.x+o.w+2<r.x||r.y+r.h+2<o.y||o.y+o.h+2<r.y))
+    || allDots.some(d=>d[0]>r.x-8&&d[0]<r.x+r.w+8&&d[1]>r.y-8&&d[1]<r.y+r.h+8);
+  const CAND = [
+    [13,-9,'left','bottom'],[13,0,'left','middle'],[13,9,'left','top'],
+    [-13,-9,'right','bottom'],[-13,0,'right','middle'],[-13,9,'right','top'],
+    [0,-15,'center','bottom'],[0,11,'center','top'],
+    [22,-18,'left','bottom'],[22,15,'left','top'],
+    [-22,-18,'right','bottom'],[-22,15,'right','top'],
+    [0,-26,'center','bottom'],[0,22,'center','top'],
+    [34,-9,'left','bottom'],[34,0,'left','middle'],[34,9,'left','top'],
+    [-34,-9,'right','bottom'],[-34,0,'right','middle'],[-34,9,'right','top'],
+    [46,-18,'left','bottom'],[-46,-18,'right','bottom'],
+    [0,-38,'center','bottom'],[0,32,'center','top'],
+    [13,20,'left','top'],[-13,20,'right','top'],[13,-20,'left','bottom'],[-13,-20,'right','bottom']
+  ];
+  pts.forEach(p=>{
+    const w = boxW(p.name), h = boxH;
+    let fin = null;
+    for(const c of CAND){
+      const dx=c[0], dy=c[1], al=c[2], va=c[3];
+      const x0 = al==='left'?p.x+dx : al==='right'?p.x+dx-w : p.x-w/2;
+      const y0 = va==='bottom'?p.y+dy-h : va==='top'?p.y+dy : p.y+dy-h/2;
+      if(x0<GL-20||x0+w>GR+4||y0<GT-8||y0+h>GB+8) continue;
+      if(!hits({x:x0,y:y0,w:w,h:h})){ fin=[p.x+dx,p.y+dy,al,va]; placed.push({x:x0,y:y0,w:w,h:h}); break; }
+    }
+    if(!fin){
+      /* 兜底：重叠也要露出名字；靠右缘优先放左侧，避免压到角落注解 */
+      if(p.gmv >= GMV_TH || p.i < 15){
+        const fx = p.x > (GL+GR)/2 ? p.x-13 : p.x+13;
+        const fa = p.x > (GL+GR)/2 ? 'right' : 'left';
+        fin = [fx, p.y, fa, 'middle'];
+      } else {
+        fin = [-9999, -9999, 'left', 'top'];   /* 长尾放不下则隐藏 */
+      }
+    }
+    LPOS[p.q+'|'+p.i] = fin;
+  });
+}
+
+function refreshSc(){
+  computeLPOS();
+  scChart.setOption(scOption(), true);
+}
+setTimeout(refreshSc, 80);
 
 function setLbl(n){
   LBL_MODE = n;
   document.querySelectorAll('.scbtn').forEach(b=>b.classList.toggle('active', +b.dataset.n === n));
-  scChart.setOption(scOption(), true);
+  refreshSc();
 }
 
 window.addEventListener('resize',()=>{
-  [document.getElementById('bar'), document.getElementById('sc')].forEach(e=>{
+  [document.getElementById('bar')].forEach(e=>{
     const i = e && echarts.getInstanceByDom(e); i && i.resize();
   });
+  scChart.resize();
+  refreshSc();
 });
 </script>
 </body>
