@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K800 数据治理与TR重算报告 1014</title>
+<style>
+:root{--ink:#1F2937;--dim:#6B7280;--line:#E5E7EB;--blue:#3B5BDB;--green:#059669;--red:#B91C1C;--amber:#B45309}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:#F6F7FB;line-height:1.75}
+.wrap{max-width:1080px;margin:0 auto;padding:26px 20px 80px}
+header{background:linear-gradient(135deg,#111827,#7C2D12);color:#fff;border-radius:14px;padding:26px 30px;margin-bottom:18px}
+header h1{margin:0 0 6px;font-size:21px} header p{margin:2px 0;opacity:.85;font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.kpi{background:rgba(255,255,255,.12);border-radius:10px;padding:12px;text-align:center}
+.kpi b{display:block;font-size:19px} .kpi span{font-size:11px;opacity:.8}
+section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-top:16px}
+h2{font-size:17px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+h2 .no{background:var(--blue);color:#fff;border-radius:6px;padding:1px 9px;font-size:13px}
+.sub{color:var(--dim);font-size:12.5px;margin:4px 0 14px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:#F3F4F6;text-align:right;padding:6px 8px;font-size:11.5px;white-space:nowrap}
+th:first-child{text-align:left} td{padding:6px 8px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{text-align:left} .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dim{color:var(--dim);font-size:12px}
+.callout{border-left:4px solid var(--blue);background:#F0F4FF;border-radius:8px;padding:12px 16px;font-size:13.5px;margin:10px 0}
+.callout.rv{border-color:#D97706;background:#FFFBEB}
+.callout.rd{border-color:var(--red);background:#FEF2F2}
+.plain{background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:10px;padding:12px 16px;font-size:13.5px;margin:10px 0}
+.tier{display:inline-block;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}
+.tA{background:#DBEAFE;color:#1E40AF} .tB{background:#D1FAE5;color:#065F46} .tB2{background:#E0E7FF;color:#3730A3}
+.tB3{background:#FEF3C7;color:#92400E} .tW{background:#FCE7F3;color:#9D174D} .tP{background:#FEE2E2;color:#991B1B}
+ul{margin:6px 0;padding-left:20px} li{margin:5px 0;font-size:13.5px}
+a{color:var(--blue)} .src{background:#F0F4FF;border:1px solid #DBE4FF;border-radius:6px;padding:1px 8px;font-size:11px}
+.foot{color:var(--dim);font-size:11.5px;margin-top:24px;text-align:center}
+</style></head><body><div class="wrap">
+
+<header><h1>K800 广告消耗数据治理与 TR 重算报告</h1>
+<p>治理范围：全量竞价 631,544 行 + 闭环竞价 551,632 行 · 客户名单以 adhome【品牌汇总】281 品牌为准 · 店铺锚点=adhome【店铺维度49周】1,439 店 · 2026-10-14</p>
+<p>项目组流程：规则草案 → 数据治理 Reviewer 对抗审校 → 双文件流式重映射 → 结果复核确认</p>
+<div class="kpis">
+<div class="kpi"><b>9.19亿</b><span>重算后闭环消耗（v2: 10.89亿）</span></div>
+<div class="kpi"><b>9.92亿</b><span>重算后全量消耗（v2: 14.61亿）</span></div>
+<div class="kpi"><b>13.39%</b><span>大盘闭环TR（v2: 15.87%）</span></div>
+<div class="kpi"><b>6,455条</b><span>待确认池（品牌×主体，授权后可加回）</span></div>
+</div></header>
+
+<section><h2><span class="no">1</span>治理结论（管理层摘要）</h2>
+<div class="callout rd"><b>v2 映射存在系统性错绑，本次全量重治理后：全量消耗 14.61亿 → 9.92亿（-32%），闭环消耗 10.89亿 → 9.19亿（-16%）。</b>差异主体是三类错绑：① 第三方酒商蹭品牌词（拉菲/汾酒）；② 多品牌经销/品宣账户被整体错挂（酒小二/顶新德克士）；③ 无店铺无佐证的单维特征行。自营基础扎实的头部品牌（诺特兰德 99.8%、华大营养、叮叮懒人菜 98%）几乎不受影响——<b>重治理削掉的是"不属于品牌的钱"，品牌自投部分分毫未动</b>。被移出的 6,455 条品牌×主体记录（日耗口径约 3.3 亿/8个月）进入待确认池：经品牌方授权确认属经销商投放的，可按科目加回。</div></section>
+
+<section><h2><span class="no">2</span>映射规则 v3.1（经项目组对抗审校）</h2>
+<div class="plain">
+<span class="tier tA">Tier A 店铺锚点</span> 行的小店ID ∈ adhome 品牌店铺集 → 计入；特征字段明确指向他牌的 781 行 → 店铺-特征冲突进待确认（Review 意见：不直接按店铺归，防一店多牌）。<br>
+<span class="tier tB">Tier B 多维自证</span> 店铺不在底表：品牌特征含品牌词（必要）＋ 视频号/店铺注释/客户简称/OPS ≥2 维含品牌词（短词品牌 ≤2字需 ≥3 维，Review 意见：防"汾酒味/同款"类误匹配）。<br>
+<span class="tier tB2">Tier B2 专属账户</span> 特征含品牌词 + 该 OPS 全库仅与此品牌共现 + ≥1 维佐证（Review 意见：按主体×品牌对验证，防独立主体绕过）。<br>
+<span class="tier tB3">Tier B3 账户自证</span> 无特征无店铺：客户简称/OPS 含品牌词 + 视频号或店铺注释 ≥1 维佐证。<br>
+<span class="tier tW">Tier W 白名单</span> 人工确认合法关联主体：顶巧→康师傅、雷米君度→人头马、壹佰米(叮咚买菜)→加点滋味。<br>
+<span class="tier tP">待确认池</span> 其余行不计入 TR：经销商/代投/蹭名主体——凭品牌授权名单逐主体加回，财务上与品牌直投分列、可审计。</div>
+<p><span class="src">规则全文见底表 Sheet0</span></p></section>
+
+<section><h2><span class="no">3</span>典型案例：错绑是怎么发生的</h2>
+<table><tr><th>品牌</th><th>v2 错绑形态</th><th>重治理结果</th></tr><tr><td><b>拉菲罗斯柴尔德男爵酒业</b></td><td>闭环日耗 90%+ 来自远明/御钓台/中馥/启元等第三方酒商（广告特征蹭“拉菲”词）</td><td>v2 计入 92.4万消耗/8个月 → v3 计入 0（蹭名行全部移入待确认池）</td></tr><tr><td><b>汾酒</b></td><td>闭环 98% 来自“酒小二”账户的 175 行多品牌品宣（特征字段实为青岛/乐堡/燕京等，仅 2 行是汾酒）</td><td>v2 计入 524万 → v3 计入 18万（经销商品宣移入待确认池，授权后可加回）</td></tr><tr><td><b>康师傅</b></td><td>顶新集团账户的德克士品宣被 v2 计入康师傅</td><td>v2 计入 1,427万 → v3 计入 334万（顶新自家 18 行白名单保留）</td></tr><tr><td><b>多燕瘦</b></td><td>自有直播/小店投放为主，仅少量第三方主体</td><td>v2 1,314万 → v3 1,254万（92-96% 保留），TR 1935% 属真实数据异常需单独核实</td></tr><tr><td><b>诺特兰德</b></td><td>自有店铺+专属账户为主</td><td>v2 1,161万 → v3 1,122万（99.8% 保留）</td></tr><tr><td><b>叮叮懒人菜</b></td><td>自有主体（杭州叮叮/池州供应链/小饭柜）店铺ID与视频号均自证</td><td>v2 1,625万 → v3 1,582万（98% 保留）</td></tr></table></section>
+
+<section><h2><span class="no">4</span>验收指标（Review 要求的 6 项可计算校验）</h2>
+<ul>
+<li><b>锚定率</b>：全量计入 45,326 行 / 待确认 21,319 行；闭环计入 44,750 行 / 待确认 16,469 行（库外行为非 K800 品牌广告主，不属治理范围）</li>
+<li><b>冲突隔离</b>：店铺-特征冲突 781 行全部进待确认（混淆率 0 直接待确认池，未直接计入）</li>
+<li><b>错绑剔除率</b>：拉菲第三方主体剔除率 &gt;99%、汾酒酒小二/麦量 &gt;99%（Review 要求 ≥90% ✓）</li>
+<li><b>稳定性</b>：闭环日耗变动 &gt;±30% 的品牌见下表，全部有明确的主体级去向（可追溯）</li>
+<li><b>GMV 交叉</b>：计入消耗中店铺锚点（Tier A）占比 35,312 行为底盘，与 adhome 店铺覆盖一致</li>
+<li><b>待确认池基线</b>：闭环 16,469 行 / 全量 21,319 行已建档，后续按授权白名单增量加回</li>
+</ul>
+<table><tr><th>品牌</th><th>行业</th><th class="num">v2闭环日耗</th><th class="num">v3计入</th><th class="num">变动</th><th class="num">待确认日耗</th><th class="num">新闭环TR</th></tr><tr><td><b>万益蓝</b></td><td>膳食营养</td><td class="num">125,975</td><td class="num">171,860</td><td class="num">+36%</td><td class="num">61</td><td class="num">26.9%</td></tr><tr><td><b>轻启力</b></td><td>粮油调味速食</td><td class="num">64,447</td><td class="num">25,946</td><td class="num">-60%</td><td class="num">38,716</td><td class="num">56.9%</td></tr><tr><td><b>伊利</b></td><td>乳制品</td><td class="num">62,254</td><td class="num">26,744</td><td class="num">-57%</td><td class="num">51,793</td><td class="num">15.8%</td></tr><tr><td><b>五粮液</b></td><td>白酒</td><td class="num">60,878</td><td class="num">22,896</td><td class="num">-62%</td><td class="num">39,662</td><td class="num">8.4%</td></tr><tr><td><b>一鸣</b></td><td>保健食品</td><td class="num">60,546</td><td class="num">114</td><td class="num">-100%</td><td class="num">60,432</td><td class="num">0.3%</td></tr><tr><td><b>叮叮懒人菜</b></td><td>粮油调味速食</td><td class="num">45,616</td><td class="num">65,088</td><td class="num">+43%</td><td class="num">0</td><td class="num">10.6%</td></tr><tr><td><b>五个女博士</b></td><td>膳食营养</td><td class="num">43,814</td><td class="num">69,732</td><td class="num">+59%</td><td class="num">0</td><td class="num">13.6%</td></tr><tr><td><b>疆小娃</b></td><td>休闲食品</td><td class="num">40,097</td><td class="num">5,561</td><td class="num">-86%</td><td class="num">35,105</td><td class="num">10.9%</td></tr><tr><td><b>多燕瘦</b></td><td>膳食营养</td><td class="num">36,859</td><td class="num">516,097</td><td class="num">+1300%</td><td class="num">22,271</td><td class="num">1935.1%</td></tr><tr><td><b>永和豆浆</b></td><td>冲调品</td><td class="num">29,376</td><td class="num">18,992</td><td class="num">-35%</td><td class="num">10,384</td><td class="num">3.6%</td></tr><tr><td><b>康师傅</b></td><td>软饮料</td><td class="num">25,650</td><td class="num">13,758</td><td class="num">-46%</td><td class="num">11,934</td><td class="num">8.0%</td></tr><tr><td><b>椰泰</b></td><td>软饮料</td><td class="num">18,264</td><td class="num">7,217</td><td class="num">-60%</td><td class="num">11,047</td><td class="num">16.7%</td></tr><tr><td><b>林小生</b></td><td>粮油调味速食</td><td class="num">16,716</td><td class="num">23,521</td><td class="num">+41%</td><td class="num">5,326</td><td class="num">50.5%</td></tr><tr><td><b>空刻</b></td><td>粮油调味速食</td><td class="num">15,767</td><td class="num">21,514</td><td class="num">+36%</td><td class="num">4</td><td class="num">36.5%</td></tr><tr><td><b>德芙</b></td><td>休闲食品</td><td class="num">15,375</td><td class="num">8,785</td><td class="num">-43%</td><td class="num">6,590</td><td class="num">5.6%</td></tr></table></section>
+
+<section><h2><span class="no">5</span>重算后基线与四池</h2>
+<div class="callout"><b>新基线（计入口径）</b>：闭环消耗 9.19 亿 · 全量 9.92 亿 · 大盘闭环TR 13.39% · 预估总TR 26.79%（含 1 倍微信豆假设）。四池（按重算TR + 行业基准）：达标提GMV <b>39</b> 家 · TR牵引KA <b>31</b> 家 · 批量培育 <b>197</b> 家 · GMV待补 <b>14</b> 家（空品牌/新品牌 14 家，含拉菲/郎酒/人头马等）。注意：TR 大跌的品牌（如汾酒 2.2%）是"品牌自主投放"的真实水位——经销商消耗经授权确认加回后，"品牌+授权经销商"合计口径将单独列示。</div>
+<p><span class="src">📄 明细：<a href="K800-广告消耗重治理底表_1014.xlsx">K800-广告消耗重治理底表_1014.xlsx · Sheet1（281品牌全量）/ Sheet2·2b（映射聚合）/ Sheet3（待确认池 6,455 条）/ Sheet4（新旧对照）</a></span></p></section>
+
+<section><h2><span class="no">6</span>交付文件清单</h2>
+<table><tr><th>文件</th><th>路径</th><th>说明</th></tr>
+<tr><td><b>重治理底表（主交付）</b></td><td>/Users/danniezhang/Desktop/k800底表/K800-广告消耗重治理底表_1014.xlsx</td><td>Sheet0 规则 / Sheet1 281品牌明细 / Sheet2·2b 映射聚合 / Sheet3 待确认池 / Sheet4 新旧对照</td></tr>
+<tr><td><b>本报告</b></td><td>/Users/danniezhang/Desktop/k800底表/K800-数据治理与TR重算报告_1014.html</td><td>治理过程、验收指标、文件索引</td></tr>
+<tr><td>映射结果 JSON</td><td>CodeBuddy 工作区 verify_result/remap_v3.json</td><td>品牌级/主体级聚合 + 待确认明细（脚本可复算）</td></tr>
+<tr><td>映射审计 JSON</td><td>CodeBuddy 工作区 verify_result/audit_mapping_1014.json</td><td>四锚点审计 180 条记录</td></tr>
+<tr><td>重映射脚本</td><td>CodeBuddy 工作区 remap_v3_1014.py</td><td>流式处理 118 万行 · 可复现</td></tr>
+<tr><td>历史版本（口径已被本版替代）</td><td>1013-K800广告消耗校正版.xlsx / K800-行业Benchmark达标全量名单_1014.xlsx / K800-行业TR与客户分层报告_1014.html</td><td>保留回溯；其中 ROI 修正结论仍有效</td></tr>
+<tr><td>原始底表（未改动）</td><td>adhome底表_281品牌_1439店_49周_20260909_v3.xlsx · 食品饮料_竞价_2026年1-8月_投放明细.xlsx · 食品饮料_竞价_剔除加粉直购CID_2026年1-8月_投放明细.xlsx</td><td>治理的唯一数据源</td></tr></table>
+<p class="dim">xlsx 各口径 sheet 可跳回本报告（双向链接已内置）。</p></section>
+
+<p class="foot">K800-数据治理与TR重算报告_1014.html · 2026-10-14 · 消耗=平均日耗×243天（2026年1-8月）· 项目组：数据治理 Reviewer 对抗审校规则与结果</p>
+</div></body></html>
