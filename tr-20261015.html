@@ -28,16 +28,17 @@ th.hl{background:#FDE68A;color:#78350F}
 .callout{border-left:4px solid var(--blue);background:#F0F4FF;border-radius:8px;padding:12px 16px;font-size:13.5px;margin:10px 0}
 .gloss{background:#F9FAFB;border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:13px;margin:10px 0}
 .gloss b{color:var(--blue)}
-.pyr{text-align:center}
-.tier{display:inline-block;text-align:left;border-radius:12px;padding:12px 18px;margin:0 auto 6px;box-sizing:border-box}
-.tier h4{margin:0 0 4px;font-size:14px} .tier .meta{color:#92400E;font-weight:700;font-size:13px}
-.tier .act{font-size:12.5px;margin:4px 0}
-.tA{width:58%;background:#FFF7E6;border:2px solid #F59E0B}
-.tB{width:78%;background:#F0FDF4;border:2px solid #10B981}
-.tC{width:96%;background:#EFF6FF;border:2px solid #3B82F6}
-.tA .meta{color:#B45309} .tB .meta{color:#047857} .tC .meta{color:#1D4ED8}
-.side{font-size:11px;color:var(--dim);display:flex;justify-content:space-between;max-width:96%;margin:0 auto 4px}
-.dnote{max-width:96%;margin:8px auto 0;background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:10px;padding:10px 14px;font-size:12px;color:var(--dim);text-align:left}
+.qwrap{display:grid;grid-template-columns:64px 1fr 1fr;gap:10px;align-items:stretch}
+.qhead{font-size:12.5px;font-weight:700;color:#78350F;background:#FEF3C7;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px}
+.qside{font-size:12.5px;font-weight:700;color:#1E40AF;background:#DBEAFE;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px}
+.q{border-radius:12px;padding:13px 15px;border:2px solid;background:#fff}
+.q h4{margin:0 0 4px;font-size:13.5px} .q .meta{font-weight:700;font-size:12.5px;margin:2px 0}
+.q .act{font-size:12px;margin:5px 0}
+.qG{border-color:#10B981;background:#F0FDF4} .qG .meta{color:#047857}
+.qT{border-color:#F59E0B;background:#FFF7E6} .qT .meta{color:#B45309}
+.qJ{border-color:#3B82F6;background:#EFF6FF} .qJ .meta{color:#1D4ED8}
+.qD{border-color:#94A3B8;background:#F8FAFC} .qD .meta{color:#475569}
+.dnote{grid-column:1/4;background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:10px;padding:9px 14px;font-size:12px;color:var(--dim)}
 .foot{color:var(--dim);font-size:11.5px;margin-top:24px;text-align:center}
 .appendix{font-size:11.5px;color:var(--dim)}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.pools{grid-template-columns:1fr}}
@@ -156,23 +157,25 @@ th.hl{background:#FDE68A;color:#78350F}
 
 <section><h2><span class="no">3</span>四池名单与牵引方向（点击各池标题可跳名单）</h2>
 <div class="plain"><b>划分逻辑</b>：先按 <b>TR 是否达标</b>（客户预估TR vs 所在行业基准下限）切第一刀；未达标里再按 <b>月均GMV 是否 ≥500 万</b> 切第二刀（≥500万=池A 用 KA 人力 1v1，&lt;500万=池C 批量培育）；<b>池D 是例外通道</b>：闭环消耗≥100万且ROI&lt;1 的客户无论是否达标先进 D（品牌型/私域型模式，不做治理）。500 万线是平台服务经济性线，不是客户能力线。</div>
-<div class="pyr">
-<div class="side"><span>▲ 资源投入最重（KA 1v1）</span><span>客户数量最少</span></div>
-<div class="tier tA"><h4><a href="K800-行业TR分析与达标名单合并表_20261015.xlsx" target="_blank">塔尖 · 池A 未达标·月均≥500万 → TR牵引(KA)（26家 ↗）</a></h4>
-<div class="meta">GMV 33.8 亿 · 户均 GMV 1.30 亿</div>
-<div class="act">TR卡点归因透明化 + 竞媒TR对比 + 1v1预算迁移谈判</div>
-<div>代表：<span class="pill ">诺特兰德</span><span class="pill ">三只松鼠</span><span class="pill ">叮叮懒人菜</span><span class="pill ">认养一头牛</span><span class="pill ">本来果坊</span><span class="pill ">永和豆浆</span><span class="pill ">五个女博士</span><span class="pill ">大希地</span><span class="pill ">南方黑芝麻</span><span class="pill ">不集</span></div></div>
-<div class="tier tB"><h4><a href="K800-行业TR分析与达标名单合并表_20261015.xlsx" target="_blank">塔腰 · 池B 达标客户 → 提GMV（59家 ↗）</a></h4>
-<div class="meta">GMV 15.9 亿 · 已达行业基准，守住并做大</div>
-<div class="act">KA续约经营 + 重点陪跑</div>
-<div>代表：<span class="pill ">华大营养</span><span class="pill ">万益蓝</span><span class="pill ">原始黄金</span><span class="pill ">华北制药</span><span class="pill ">锋味派</span><span class="pill ">轻上</span><span class="pill ">五粮液</span><span class="pill ">福月德</span><span class="pill ">笑厨</span><span class="pill ">卫仕</span></div></div>
-<div class="tier tC"><h4><a href="K800-行业TR分析与达标名单合并表_20261015.xlsx" target="_blank">塔基 · 池C 未达标·月均&lt;500万 → 批量培育（179家 ↗）</a></h4>
-<div class="meta">GMV 18.7 亿 · 数量最多、单客最小，用产品化方式覆盖</div>
-<div class="act">按生意模式快照 + 生意场景分别培育；头部(P75)费比已证明"能投"（25.6%）</div></div>
-<div class="side"><span>▼ 批量/产品化覆盖（不占 KA 人力）</span><span>客户数量最多</span></div>
-<div class="dnote"><b>池D · 观察名单（不作为主要客群）</b>：ROI异常或品牌型/私域型客户 3 家（<span class="pill ">敖东</span><span class="pill ">修正</span><span class="pill ">览翠</span>）——前端亏损靠私域后端转化，或品牌型投放；只理解模式、不治理。名单见合并表 Sheet13。</div>
-</div></div>
-<p class="dim">各池完整名单：合并表 Sheet10（池A）/ Sheet11（池B）/ Sheet12（池C）/ Sheet13（池D），表头可返回本报告。</p></section>
+<div class="plain"><b>划分逻辑</b>：横轴 = 客户预估TR 是否达到所在行业基准下限（达标/未达标）；纵轴 = 月均GMV 是否 ≥500 万。四象限各配专属动作；ROI异常或品牌型/私域型客户（3家）为备注通道，不进四象限。</div>
+<div class="qwrap">
+<div class="qhead"></div><div class="qhead">TR 达标（已达行业基准）</div><div class="qhead">TR 未达标（低于行业基准）</div>
+<div class="qside">高GMV<br>月均≥500万</div>
+<div class="q qG"><h4>提 GMV（14家 ↗）</h4>
+<div class="meta">GMV 11.6 亿 · TR 已达标，做大盘子广告自然增长</div>
+<div class="act">KA 续约经营 + 重点陪跑 + ROI 护栏</div><div>代表：<span class="pill ">华大营养</span><span class="pill ">万益蓝</span><span class="pill ">原始黄金</span><span class="pill ">华北制药</span><span class="pill ">锋味派</span><span class="pill ">轻上</span></div></div>
+<div class="q qT"><h4>提 TR（26家 ↗）</h4>
+<div class="meta">GMV 33.8 亿 · 货盘已验证、费比未到位，增量杠杆最大</div>
+<div class="act">TR卡点归因透明化 + 竞媒TR对比 + 1v1 预算迁移谈判</div><div>代表：<span class="pill ">诺特兰德</span><span class="pill ">三只松鼠</span><span class="pill ">叮叮懒人菜</span><span class="pill ">认养一头牛</span><span class="pill ">本来果坊</span><span class="pill ">永和豆浆</span></div></div>
+<div class="qside">低GMV<br>月均&lt;500万</div>
+<div class="q qJ"><h4>GMV 跃迁至 500 万+（45家 ↗）</h4>
+<div class="meta">GMV 4.3 亿 · 费比健康但盘子太小</div>
+<div class="act">达标打法模板化复制，助其 GMV 跃过 500 万线</div><div>代表：<span class="pill ">楼外楼</span><span class="pill ">春光</span><span class="pill ">馥食集</span><span class="pill ">汤臣倍健</span><span class="pill ">八马</span><span class="pill ">袋鼠先生</span></div></div>
+<div class="q qD"><h4>同时提 GMV + TR（179家 ↗）</h4>
+<div class="meta">GMV 18.7 亿 · 双低客群，数量最多</div>
+<div class="act">按生意模式快照 + 生意场景分别培育（批量/产品化，不占 KA 人力）</div><div>代表：<span class="pill ">德芙</span><span class="pill ">onlytree</span><span class="pill ">美赞臣</span><span class="pill ">燕之屋</span><span class="pill ">君乐宝</span><span class="pill ">世壮</span></div></div>
+<div class="dnote"><b>备注 · ROI异常或品牌型/私域型客户（3家，不进四象限）</b>：<span class="pill ">敖东</span><span class="pill ">修正</span><span class="pill ">览翠</span> —— 前端亏损靠私域后端转化或品牌型投放，只理解模式、不治理。各象限完整名单见合并表 Sheet8「四象限」列（可筛选），Sheet10-13 为旧池名单存档。</div>
+</div><p class="dim">四象限名单：合并表 Sheet8 按「四象限」列筛选即可；Sheet10-13 为历史池名单存档，表头可返回本报告。</p></section>
 
 <section class="appendix"><h2><span class="no">附</span>数据治理备注</h2>
 <p><b>历史报告</b>：<a href="https://danniewowrich.github.io/k800-insight-report-v2/" target="_blank">K800 食品饮料客户·生意洞察报告·20260916 ↗</a> ｜ <a href="https://danniewowrich.github.io/k800-insight-report-v2/layer-v44.html" target="_blank">1012版本（GMV×投放象限耦合版）·分层报告 v4.4.3 ↗</a></p>
