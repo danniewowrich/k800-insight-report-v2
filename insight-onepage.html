@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K800 食品饮料行业 · 品牌商业治理沙盘 (Food & Beverage Brand Commercial Governance Sandbox)</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: PingFang SC alternative & Playfair Display for premium serif contrast -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-paper: #FAF9F6;
+            --color-navy: #0A192F;
+            --color-gold: #C19A6B;
+            --color-gold-light: #EADBC8;
+            --color-charcoal: #1F2937;
+            --color-grey: #6B7280;
+            --color-border: #E5E7EB;
+        }
+        body {
+            background-color: var(--color-paper);
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: var(--color-charcoal);
+        }
+        .serif-title {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+        }
+        .border-gold-subtle {
+            border-color: var(--color-gold-light);
+        }
+        .text-navy {
+            color: var(--color-navy);
+        }
+        .bg-navy {
+            background-color: var(--color-navy);
+        }
+        .text-gold {
+            color: var(--color-gold);
+        }
+        .border-gold {
+            border-color: var(--color-gold);
+        }
+        .hover-gold-shadow:hover {
+            box-shadow: 0 10px 30px -5px rgba(193, 154, 107, 0.15);
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-[#EADBC8] selection:text-[#0A192F]">
+
+    <!-- 顶部状态条 & 行业导航 -->
+    <div class="bg-navy text-white text-xs px-6 py-2.5 flex justify-between items-center tracking-widest border-b border-[#C19A6B]/30 uppercase">
+        <div class="flex items-center space-x-4">
+            <span class="font-bold text-gold"><i class="fa-solid fa-layer-group mr-1"></i> K800 Governance Series</span>
+            <span class="text-gray-400">|</span>
+            <span class="text-gray-300">Food & Beverage Sector</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <span class="text-gray-300">Data Cycle: Oct 2026</span>
+            <span class="bg-[#C19A6B]/20 text-[#C19A6B] px-2 py-0.5 rounded border border-[#C19A6B]/40 font-semibold">One Page Edition</span>
+        </div>
+    </div>
+
+    <!-- 头部：大字报商业断言 (High Contrast Consulting Header) -->
+    <header class="max-w-7xl mx-auto px-6 pt-16 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end border-b border-gray-300 pb-12">
+            <div class="lg:col-span-2">
+                <span class="text-xs font-bold tracking-widest text-gold uppercase block mb-3">Governance Manifesto · 治理宣言</span>
+                <h1 class="serif-title text-4xl lg:text-5xl font-black text-navy leading-tight tracking-tight">
+                    K800 食品饮料行业<br>
+                    <span class="text-gold">品牌商业治理沙盘</span>
+                </h1>
+                <p class="text-gray-500 mt-4 max-w-xl text-sm leading-relaxed">
+                    任何一个没有被自证主体加回的广告消耗，都是在帮竞品和第三方分销商做免费的嫁衣。一味追求纸面 GMV，而在 TR 及格线下盲目狂奔，只是用低效消耗在给大盘“注水”。真实的品牌生意，必须从彻底清除未映射的消耗黑洞开始。
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gold-subtle shadow-sm lg:col-span-1">
+                <div class="text-xs text-gold font-bold tracking-wider mb-2 uppercase">Core Definition · 黄金基准</div>
+                <div class="serif-title text-2xl font-bold text-navy mb-2">行业自营TR中位数参考值</div>
+                <div class="bg-gray-50 p-3 rounded text-xs text-gray-600 font-mono leading-relaxed border-l-2 border-gold mb-3">
+                    行业自营TR中位数参考值 = 该行业「自营客户」闭环TR的中位数 × 2
+                </div>
+                <p class="text-xs text-gray-500">
+                    * 乘以 2 代表计入 1 倍微信豆消耗预估，以确保大盘“预估 TR”与自营基准同口径可比。
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体沙盘：2x2 客户分层治理沙盒 -->
+    <main class="max-w-7xl mx-auto px-6 pb-16">
+        
+        <!-- 象限介绍与牵引动作 -->
+        <section class="mb-14">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="h-6 w-1.5 bg-navy"></div>
+                <h2 class="serif-title text-2xl font-bold text-navy">双轴 2x2 商业治理沙盘</h2>
+                <span class="text-xs text-gray-400 font-mono font-bold">GRID ARCHITECTURE</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- 卡片：高GMV低TR (提TR/KA) -->
+                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-red-50 text-red-700 text-xs px-3 py-1 rounded font-bold border border-red-200 uppercase tracking-wider">
+                                <i class="fa-solid fa-arrow-trend-up mr-1"></i> 高 GMV · 低 TR (提 TR)
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">KA Quadrant</span>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：一鸣食品、李子园</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            <strong>痛点诊断：</strong>月均 GMV 跨越 500 万大关，具备极佳的渠道动销与品牌货盘基础。然而预估 TR（广告率）却严重低于行业自营 TR 中位数参考值。这表明品牌极度依赖长尾分销商，自身广告流量撬动比例失调。
+                        </p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
+                            <strong>更致命的是</strong>，在 ADQ 和闭环数据中，有大量属于品牌的授权主体（如关联分销或拼单主体）散落在“未映射明细”中，没有被“盘单加回”，导致纸面 TR 严重失真，显示为不达标。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-4 mt-4">
+                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
+                            <li><strong>解冻并加回：</strong>彻底核对明细，解除原合并单元格写入异常，将“待确认”主体消耗全量盘点并“加回”；</li>
+                            <li><strong>销售推进授权：</strong>KA 团队必须在微信后台对分销商和自有授权主体做强制绑定，提升已计入 TR 比率；</li>
+                            <li><strong>微信豆专项：</strong>追加 1 倍微信豆投放预估，快速提升达标率。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 卡片：高GMV高TR (提GMV) -->
+                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded font-bold border border-green-200 uppercase tracking-wider">
+                                <i class="fa-solid fa-circle-check mr-1"></i> 高 GMV · 高 TR (提 GMV)
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">Benchmark Quadrant</span>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：好想你</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            <strong>痛点诊断：</strong>GMV 与 TR 均完美超出平台及格线。这是食品饮料大盘里的黄金资产与标杆，品牌自证比例极高，渠道控盘度极强。
+                        </p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
+                            <strong>主要挑战：</strong>面临流量红利饱和，如何拓宽货盘矩阵，避免因竞争对手恶意抢注或低效消耗被动蚕食份额。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-4 mt-4">
+                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
+                            <li><strong>ROI 监控：</strong>监控 ROI 异动或品牌型、私域型异动，防止流量空转；</li>
+                            <li><strong>货盘扩容：</strong>引导品牌从单一爆品向短视频货架、品类矩阵延展，做大 GMV 绝对值；</li>
+                            <li><strong>时空复盘：</strong>定期与 0916 及 1012 历史数据联动复盘，维持头部标杆席位。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 卡片：低GMV高TR (提GMV) -->
+                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded font-bold border border-blue-200 uppercase tracking-wider">
+                                <i class="fa-solid fa-circle-arrow-up mr-1"></i> 低 GMV · 高 TR (提 GMV / 跃迁)
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">Transition Quadrant</span>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：品类细分小而美品牌</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            <strong>痛点诊断：</strong>TR 表现活跃，但受到货盘和供应链产能制约，月均 GMV 无法突破 500 万大关，无法充分享受平台服务和商业化的经济性红利。
+                        </p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
+                            <strong>瓶颈：</strong>高 TR 下的获客成本（CAC）较高，由于缺乏直播矩阵或大主播承接，复购和后端动销严重滞后。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-4 mt-4">
+                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
+                            <li><strong>提升商品力：</strong>优化详情页与直播承接，将公域大 TR 流量沉淀为高复购私域资产；</li>
+                            <li><strong>直播渗透：</strong>倾斜短视频和自播激励，牵引 GMV 跃迁至 500W+；</li>
+                            <li><strong>对账合规：</strong>确保品牌自证率维持在 80% 以上，防止消耗失真。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 卡片：低GMV低TR (同时提GMV+TR) -->
+                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded font-bold border border-gray-200 uppercase tracking-wider">
+                                <i class="fa-solid fa-rectangle-list mr-1"></i> 低 GMV · 低 TR (长尾观察)
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">Longtail Quadrant</span>
+                        </div>
+                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：长尾/纯第三方分销商</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            <strong>痛点诊断：</strong>体量极小且毫无广告自证消耗，对平台而言经济杠杆低。通常依赖拼单或者无授权的第三方分销主体。
+                        </p>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
+                            <strong>治理阻碍：</strong>团队精力有限。此类长尾名单（位于 Sheet 12 中）不应过多占用 KA 的日常人力，否则会导致团队“动作变形”。
+                        </p>
+                    </div>
+                    <div class="border-t border-gray-100 pt-4 mt-4">
+                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
+                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
+                            <li><strong>自助式治理：</strong>提供标准的品牌自证与对账操作模版，由分销客户自主线上提报；</li>
+                            <li><strong>自动化判定：</strong>后台对账脚本执行全自动匹配，减少人工沟通损耗。</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 痛点：TOP3 待确认主体消耗对品牌 TR 的黑洞蚕食 -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+            
+            <div class="lg:col-span-1 bg-navy text-white p-8 rounded-lg border border-gold/30 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-gold uppercase block mb-2">DANGER ALERTS · 治理痛点</span>
+                    <h2 class="serif-title text-2xl font-black mb-4">
+                        待确认主体：<br>
+                        正在蚕食<br>
+                        品牌TR的健康黑洞
+                    </h2>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-6">
+                        那些因为“缺乏授权书”或“拼单关系未确立”而遗留在待确认池中的流量（如ADQ和闭环部分非直营主体），其消耗金额虽然是品牌在平台上真实投放的，但由于没有完成“盘单自证”，在算法中直接被丢弃或计为 0。
+                    </p>
+                </div>
+                <div class="bg-white/5 p-4 rounded border border-white/10 text-xs">
+                    <div class="font-bold text-gold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> 对账核心铁律</div>
+                    未自证主体对品牌 TR 的“黑洞蚕食”，导致大量大牌的预估 TR 凭空折损 20%-40%，KA 推进的首要任务必须是“完成自证，解冻加回”！
+                </div>
+            </div>
+
+            <!-- 数据结构收敛大盘表 (1b 表映射数据复刻) -->
+            <div class="lg:col-span-2 bg-white p-8 rounded-lg border border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="serif-title text-xl font-bold text-navy">1b-客户总览与映射 · 核心商业指标 (Oct 15)</h3>
+                    <span class="text-xs text-[#10B981] font-mono font-bold bg-[#10B981]/10 px-2 py-1 rounded">100% 对账还原</span>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed mb-6">
+                    通过合并 ADQ 映射与闭环映射，将原本散落在好几个 Sheet 里的零碎广告对账数据彻底收敛合并，实现每客户一行。数据无尾差、无重复计数。
+                </p>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-navy font-bold uppercase tracking-wider border-b border-gray-200">
+                                <th class="p-3">核心品牌</th>
+                                <th class="p-3">月均GMV</th>
+                                <th class="p-3">直播占比</th>
+                                <th class="p-3">自证比例</th>
+                                <th class="p-3">主体映射现状（已映射 / 未映射明细）</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 text-gray-700">
+                            <tr>
+                                <td class="p-3 font-bold text-navy">一鸣食品</td>
+                                <td class="p-3">540.2 万</td>
+                                <td class="p-3 text-gold">42.5%</td>
+                                <td class="p-3">78.2%</td>
+                                <td class="p-3">
+                                    <span class="text-[#10B981]"><i class="fa-solid fa-circle-check mr-1"></i>温州一鸣自营、电商</span> <br> 
+                                    <span class="text-red-500"><i class="fa-solid fa-circle-exclamation mr-1"></i>待自证：杭州/台州配送、分销商A</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-navy">李子园</td>
+                                <td class="p-3">710.8 万</td>
+                                <td class="p-3 text-gold">31.2%</td>
+                                <td class="p-3">64.5%</td>
+                                <td class="p-3">
+                                    <span class="text-[#10B981]"><i class="fa-solid fa-circle-check mr-1"></i>金华李子园旗舰店</span> <br> 
+                                    <span class="text-red-500"><i class="fa-solid fa-circle-exclamation mr-1"></i>待自证：第三方代理、散货代购主体</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-navy">好想你</td>
+                                <td class="p-3 font-bold text-green-600">820.5 万</td>
+                                <td class="p-3 text-gold">65.8%</td>
+                                <td class="p-3">91.8%</td>
+                                <td class="p-3">
+                                    <span class="text-[#10B981]"><i class="fa-solid fa-circle-check mr-1"></i>郑州好想你食品、自营全网</span> <br> 
+                                    <span class="text-gray-400"><i class="fa-solid fa-circle-info mr-1"></i>无大额待自证</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 历史时空全景闭环 (Temporal Portal) -->
+        <section class="border-t border-gray-300 pt-12">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="h-6 w-1.5 bg-navy"></div>
+                <h2 class="serif-title text-2xl font-bold text-navy">K800 全周期历史时空闭环</h2>
+                <span class="text-xs text-gray-400 font-mono font-bold">TEMPORAL PORTAL</span>
+            </div>
+            
+            <p class="text-xs text-gray-500 mb-8 max-w-2xl leading-relaxed">
+                食品饮料大盘治理是一个持续演进的过程。本页面作为最新的“1015 四象限治理圣经”置于首位。您可以点击下方卡片无缝在各历史版本报告和名单表之间进行跳转，实现全周期的逻辑大闭环。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- 卡片一：0916 版本 -->
+                <a href="https://danniewowrich.github.io/k800-insight-report-v2/" target="_blank" class="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs text-gray-400 font-mono mb-2">September 16, 2026</div>
+                        <h4 class="serif-title text-lg font-bold text-navy mb-2">K800 食品饮料客户<br>生意洞察报告 · 20260916</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                            探讨首期客户底表画像、微信豆原始大盘映射、大客户分销盘单自证第一版公式定义。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold font-bold flex items-center">
+                        前往 0916 报告 <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </a>
+
+                <!-- 卡片二：1012 版本 -->
+                <a href="https://danniewowrich.github.io/k800-insight-report-v2/layer-v44.html" target="_blank" class="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs text-gray-400 font-mono mb-2">October 12, 2026</div>
+                        <h4 class="serif-title text-lg font-bold text-navy mb-2">K800 食品饮料客户<br>分层报告 v4.4.3 (1012版本)</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                            引入“GMV × 投放象限耦合”分层雏形，将客户分为A/B/C/D四个池进行名单隔离与牵引。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold font-bold flex items-center">
+                        前往 1012 报告 <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </div>
+                </a>
+
+                <!-- 卡片三：1015 版本 -->
+                <a href="https://danniewowrich.github.io/k800-insight-report-v2/tr-20261015.html" target="_blank" class="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs text-gray-400 font-mono mb-2">October 15, 2026</div>
+                        <h4 class="serif-title text-lg font-bold text-navy mb-2">K800 行业TR与分层报告<br>1015 全量达标合并版</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+                            四象限名单合并表，大标题升级更正，去池化重构，展现四象限高低GMV提效路径。
+                        </p>
+                    </div>
+                    <div class="text-xs text-gold font-bold flex items-center">
+                        前往 1015 报告 <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部注脚 (Consulting Footer) -->
+    <footer class="bg-navy text-gray-400 py-12 px-6 border-t border-gold/20 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div class="text-center md:text-left">
+                <div class="text-white font-bold text-sm tracking-widest text-gold mb-1">K800 STRATEGIC INTEL</div>
+                <div>© 2026 CodeBuddyCN Consulting Project. All rights reserved.</div>
+            </div>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="/Users/danniezhang/Desktop/k800底表/K800-报告完整整合表_终版_20261015.xlsx" class="hover:text-gold transition-colors"><i class="fa-solid fa-file-excel mr-1"></i> 本地底表 (1b汇总)</a>
+                <span>|</span>
+                <a href="/Users/danniezhang/Desktop/K800-行业TR与客户分层报告_20261015.html" class="hover:text-gold transition-colors"><i class="fa-solid fa-file-code mr-1"></i> 本地 1015 报告</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
