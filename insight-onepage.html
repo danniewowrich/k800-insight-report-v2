@@ -1,374 +1,445 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K800 食品饮料行业 · 品牌商业治理沙盘 (Food & Beverage Brand Commercial Governance Sandbox)</title>
-    <!-- Tailwind CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: PingFang SC alternative & Playfair Display for premium serif contrast -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-paper: #FAF9F6;
-            --color-navy: #0A192F;
-            --color-gold: #C19A6B;
-            --color-gold-light: #EADBC8;
-            --color-charcoal: #1F2937;
-            --color-grey: #6B7280;
-            --color-border: #E5E7EB;
-        }
-        body {
-            background-color: var(--color-paper);
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            color: var(--color-charcoal);
-        }
-        .serif-title {
-            font-family: 'Noto Serif SC', 'Playfair Display', serif;
-        }
-        .border-gold-subtle {
-            border-color: var(--color-gold-light);
-        }
-        .text-navy {
-            color: var(--color-navy);
-        }
-        .bg-navy {
-            background-color: var(--color-navy);
-        }
-        .text-gold {
-            color: var(--color-gold);
-        }
-        .border-gold {
-            border-color: var(--color-gold);
-        }
-        .hover-gold-shadow:hover {
-            box-shadow: 0 10px 30px -5px rgba(193, 154, 107, 0.15);
-            border-color: var(--color-gold);
-            transform: translateY(-2px);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>业务洞察 · 回归收入本质的增长方法论 · One Page</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF9F6;
+    --navy: #0A192F;
+    --navy-soft: #16283F;
+    --gold: #C19A6B;
+    --gold-light: #EADBC8;
+    --ink: #1F2937;
+    --ink-soft: #6B7280;
+    --line: #E2DED6;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    background-image: radial-gradient(#efece5 1px, transparent 1px);
+    background-size: 26px 26px;
+    color: var(--ink);
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Noto Serif SC', 'Songti SC', serif; }
+  .text-navy { color: var(--navy); }
+  .text-gold { color: var(--gold); }
+  .bg-navy { background: var(--navy); }
+  .border-gold { border-color: var(--gold); }
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    box-shadow: 0 14px 34px -12px rgba(10,25,47,.14);
+  }
+  .kicker { letter-spacing: .35em; text-transform: uppercase; }
+  .rule { height: 1px; background: var(--line); }
+  .step-arrow { color: var(--gold); font-size: 12px; }
+  .quad-cell {
+    background: #F5F2EC;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    transition: background .3s ease;
+  }
+  .quad-cell:hover { background: var(--gold-light); }
+  .timeline-node {
+    width: 30px; height: 30px; border-radius: 9999px;
+    background: var(--navy); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(10,25,47,.08);
+  }
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp .7s ease forwards; }
+  .d1 { animation-delay: .05s } .d2 { animation-delay: .15s } .d3 { animation-delay: .25s }
+  .d4 { animation-delay: .35s } .d5 { animation-delay: .45s } .d6 { animation-delay: .55s }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+</style>
 </head>
-<body class="min-h-screen antialiased selection:bg-[#EADBC8] selection:text-[#0A192F]">
+<body>
 
-    <!-- 顶部状态条 & 行业导航 -->
-    <div class="bg-navy text-white text-xs px-6 py-2.5 flex justify-between items-center tracking-widest border-b border-[#C19A6B]/30 uppercase">
-        <div class="flex items-center space-x-4">
-            <span class="font-bold text-gold"><i class="fa-solid fa-layer-group mr-1"></i> K800 Governance Series</span>
-            <span class="text-gray-400">|</span>
-            <span class="text-gray-300">Food & Beverage Sector</span>
+<!-- ═══════════ 顶部条 ═══════════ -->
+<div class="bg-navy text-white/90 text-xs px-6 py-2.5 flex justify-between items-center kicker">
+  <div class="flex items-center space-x-3">
+    <span class="text-gold font-bold"><i class="fa-solid fa-compass-drafting mr-1.5"></i>业务洞察 · Business Insight</span>
+    <span class="text-white/25">|</span>
+    <span class="text-white/60">食品饮料 · K800</span>
+  </div>
+  <div class="flex items-center space-x-5">
+    <span class="text-white/60">2026.10</span>
+    <span class="text-gold border border-gold/40 bg-gold/10 px-2 py-0.5 rounded">One Page</span>
+  </div>
+</div>
+
+<!-- ═══════════ 头部断言区 ═══════════ -->
+<header class="max-w-6xl mx-auto px-6 pt-14 pb-10">
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-end border-b pb-10 fade-up d1" style="border-color: var(--line);">
+    <div class="lg:col-span-3">
+      <div class="text-gold kicker text-xs font-bold mb-4">Diagnosis First · 回归收入本质</div>
+      <h1 class="serif text-navy font-black leading-tight" style="font-size: 36px;">
+        从案例百花齐放，<br>到<span class="text-gold">规模化、可复制</span>的收入增长
+      </h1>
+      <p class="mt-5 leading-relaxed" style="color: var(--ink-soft); max-width: 560px;">
+        行业不缺打法，缺的是能复制的打法。当增长回到收入公式本身——把客户按生意体量与生意模式聚类，让策略前置、诊断先行，收入才有可预期性。
+      </p>
+    </div>
+    <div class="lg:col-span-2">
+      <div class="bg-navy rounded-xl p-6 border" style="border-color: rgba(193,154,107,.35);">
+        <div class="text-gold kicker text-[10px] font-bold mb-3">Revenue Essence · 收入本质</div>
+        <div class="serif text-white text-center py-2 font-bold" style="font-size: 20px;">
+          广告GMV <span class="text-gold">=</span> 生意GMV <span class="text-gold">×</span> 广告TR
         </div>
-        <div class="flex items-center space-x-6">
-            <span class="text-gray-300">Data Cycle: Oct 2026</span>
-            <span class="bg-[#C19A6B]/20 text-[#C19A6B] px-2 py-0.5 rounded border border-[#C19A6B]/40 font-semibold">One Page Edition</span>
+        <div class="rule my-4" style="background: rgba(255,255,255,.12);"></div>
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <div class="bg-white/5 rounded-lg py-2.5 border" style="border-color: rgba(255,255,255,.1);">
+            <div class="text-gold font-bold text-sm">提 TR</div>
+            <div class="text-white/60 text-xs mt-0.5">短期收入</div>
+          </div>
+          <div class="bg-white/5 rounded-lg py-2.5 border" style="border-color: rgba(255,255,255,.1);">
+            <div class="text-gold font-bold text-sm">提 GMV</div>
+            <div class="text-white/60 text-xs mt-0.5">长期 / 稳定收入</div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 pb-16">
+
+  <!-- ═══════════ 01 · 痛点诊断 ═══════════ -->
+  <section class="mb-14 fade-up d2">
+    <div class="flex items-center space-x-3 mb-6">
+      <div style="width: 5px; height: 22px; background: var(--navy);"></div>
+      <h2 class="serif text-navy font-bold" style="font-size: 20px;">两个卡住收入的痛点</h2>
+      <span class="text-xs kicker font-bold" style="color: var(--ink-soft);">Pain Points</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="card p-7 relative overflow-hidden">
+        <div class="serif absolute -top-3 -right-1 text-7xl font-black select-none" style="color: var(--gold-light);">01</div>
+        <div class="relative">
+          <div class="text-xs font-bold text-gold kicker mb-2">规模化之困</div>
+          <h3 class="serif text-navy font-bold mb-3" style="font-size: 17px;">行业案例百花齐放，规模化收入难</h3>
+          <p class="leading-relaxed mb-4" style="color: var(--ink-soft);">
+            现有案例大多是<strong class="text-navy">单点打法</strong>，成功的个性化因素较多——如杨博士矩阵号模式、益美滋 KOC 模式；或是起量之后的归因与总结。
+          </p>
+          <div class="border-l-2 pl-3 py-1.5 text-xs leading-relaxed" style="border-color: var(--gold); background: #F8F5EF; color: var(--ink-soft);">
+            结果：客户之间的<strong class="text-navy">复制性不高</strong>，打法始终相对被动。
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-7 relative overflow-hidden">
+        <div class="serif absolute -top-3 -right-1 text-7xl font-black select-none" style="color: var(--gold-light);">02</div>
+        <div class="relative">
+          <div class="text-xs font-bold text-gold kicker mb-2">下钻之浅</div>
+          <h3 class="serif text-navy font-bold mb-3" style="font-size: 17px;">收入卡点与路径，下钻不够</h3>
+          <div class="space-y-3 text-xs leading-relaxed">
+            <div class="flex gap-3">
+              <span class="font-bold text-navy bg-gold/10 border border-gold/30 rounded px-2 py-0.5 h-fit flex-shrink-0">短期</span>
+              <p style="color: var(--ink-soft);">现有工具难被真正理解、难落到实处。</p>
+            </div>
+            <div class="flex gap-3">
+              <span class="font-bold text-navy bg-gold/10 border border-gold/30 rounded px-2 py-0.5 h-fit flex-shrink-0">长期</span>
+              <p style="color: var(--ink-soft);">对客户生意阶段、生意模式<strong class="text-navy">没有实感</strong>；一线打法颗粒度粗、停留在宏观层面，只能被动等待客户自己调整。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ 02 · 四个关键思辨 ═══════════ -->
+  <section class="mb-14 fade-up d3">
+    <div class="flex items-center space-x-3 mb-6">
+      <div style="width: 5px; height: 22px; background: var(--navy);"></div>
+      <h2 class="serif text-navy font-bold" style="font-size: 20px;">回归公式后，必须回答的四个问题</h2>
+      <span class="text-xs kicker font-bold" style="color: var(--ink-soft);">Key Questions</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+
+      <div class="card p-5 flex flex-col">
+        <div class="serif text-navy font-bold leading-snug mb-3" style="font-size: 15px;">哪些客户该提 TR，哪些该提 GMV？</div>
+        <div class="mt-auto pt-3 border-t" style="border-color: var(--line);">
+          <span class="text-gold text-xs font-bold"><i class="fa-solid fa-arrow-right mr-1"></i>需要做客群分类</span>
+        </div>
+      </div>
+
+      <div class="card p-5 flex flex-col">
+        <div class="serif text-navy font-bold leading-snug mb-3" style="font-size: 15px;">提 TR 与提 GMV 的抓手分别是什么？</div>
+        <div class="mt-auto pt-3 border-t" style="border-color: var(--line);">
+          <span class="text-gold text-xs font-bold"><i class="fa-solid fa-arrow-right mr-1"></i>生意模式聚类</span>
+          <span class="text-xs ml-1" style="color: var(--ink-soft);">直播/短视频 · 自营/分销</span>
+        </div>
+      </div>
+
+      <div class="card p-5 flex flex-col">
+        <div class="serif text-navy font-bold leading-snug mb-3" style="font-size: 15px;">抓手是运营工具、广告资源，还是小店政策？如何组合成有说服力的策略，而不是拍脑袋？</div>
+        <div class="mt-auto pt-3 border-t" style="border-color: var(--line);">
+          <span class="text-gold text-xs font-bold"><i class="fa-solid fa-arrow-right mr-1"></i>从数据诊断，到策略与行动计划</span>
+        </div>
+      </div>
+
+      <div class="card p-5 flex flex-col">
+        <div class="serif text-navy font-bold leading-snug mb-3" style="font-size: 15px;">怎么让策略可复制？</div>
+        <div class="mt-auto pt-3 border-t" style="border-color: var(--line);">
+          <span class="text-gold text-xs font-bold"><i class="fa-solid fa-arrow-right mr-1"></i>从依赖个人经验，到工具化</span>
+          <span class="text-xs ml-1" style="color: var(--ink-soft);">诊断 + 策略产品化</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ 03 · 解决方案 ═══════════ -->
+  <section class="mb-14 fade-up d4">
+    <div class="flex items-center space-x-3 mb-6">
+      <div style="width: 5px; height: 22px; background: var(--navy);"></div>
+      <h2 class="serif text-navy font-bold" style="font-size: 20px;">解决方案：聚类 + 策略前置化</h2>
+      <span class="text-xs kicker font-bold" style="color: var(--ink-soft);">Solution</span>
     </div>
 
-    <!-- 头部：大字报商业断言 (High Contrast Consulting Header) -->
-    <header class="max-w-7xl mx-auto px-6 pt-16 pb-12">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end border-b border-gray-300 pb-12">
-            <div class="lg:col-span-2">
-                <span class="text-xs font-bold tracking-widest text-gold uppercase block mb-3">Governance Manifesto · 治理宣言</span>
-                <h1 class="serif-title text-4xl lg:text-5xl font-black text-navy leading-tight tracking-tight">
-                    K800 食品饮料行业<br>
-                    <span class="text-gold">品牌商业治理沙盘</span>
-                </h1>
-                <p class="text-gray-500 mt-4 max-w-xl text-sm leading-relaxed">
-                    任何一个没有被自证主体加回的广告消耗，都是在帮竞品和第三方分销商做免费的嫁衣。一味追求纸面 GMV，而在 TR 及格线下盲目狂奔，只是用低效消耗在给大盘“注水”。真实的品牌生意，必须从彻底清除未映射的消耗黑洞开始。
-                </p>
-            </div>
-            <div class="bg-white p-6 rounded-lg border border-gold-subtle shadow-sm lg:col-span-1">
-                <div class="text-xs text-gold font-bold tracking-wider mb-2 uppercase">Core Definition · 黄金基准</div>
-                <div class="serif-title text-2xl font-bold text-navy mb-2">行业自营TR中位数参考值</div>
-                <div class="bg-gray-50 p-3 rounded text-xs text-gray-600 font-mono leading-relaxed border-l-2 border-gold mb-3">
-                    行业自营TR中位数参考值 = 该行业「自营客户」闭环TR的中位数 × 2
-                </div>
-                <p class="text-xs text-gray-500">
-                    * 乘以 2 代表计入 1 倍微信豆消耗预估，以确保大盘“预估 TR”与自营基准同口径可比。
-                </p>
-            </div>
+    <!-- 目标 + 路径 -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <div class="card p-6 lg:col-span-1">
+        <div class="text-xs font-bold text-gold kicker mb-2">业务目标</div>
+        <p class="serif text-navy font-bold leading-snug mb-3" style="font-size: 16px;">客户与打法更加聚类，策略前置化</p>
+        <p class="text-xs leading-relaxed" style="color: var(--ink-soft);">
+          从而提升<strong class="text-navy">收入可预期性</strong>——来源可预期、规模可预期。
+        </p>
+      </div>
+      <div class="card p-6 lg:col-span-2">
+        <div class="text-xs font-bold text-gold kicker mb-4">实现路径</div>
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <span class="bg-navy text-white rounded-md px-3 py-2 font-medium">最大公约数逻辑<br><span class="text-white/60 font-normal">客户聚类</span></span>
+          <i class="fa-solid fa-arrow-right step-arrow"></i>
+          <span class="bg-navy text-white rounded-md px-3 py-2 font-medium">抓头部<br><span class="text-white/60 font-normal">找共性</span></span>
+          <i class="fa-solid fa-arrow-right step-arrow"></i>
+          <span class="bg-navy text-white rounded-md px-3 py-2 font-medium">解决问题<br><span class="text-white/60 font-normal">拿到结果</span></span>
+          <i class="fa-solid fa-arrow-right step-arrow"></i>
+          <span class="bg-navy text-white rounded-md px-3 py-2 font-medium">基于结果<br><span class="text-white/60 font-normal">推导策略</span></span>
+          <i class="fa-solid fa-arrow-right step-arrow"></i>
+          <span class="rounded-md px-3 py-2 font-bold border-gold border text-navy" style="background: var(--gold-light);">复制到其他客户</span>
         </div>
-    </header>
+      </div>
+    </div>
 
-    <!-- 主体沙盘：2x2 客户分层治理沙盒 -->
-    <main class="max-w-7xl mx-auto px-6 pb-16">
-        
-        <!-- 象限介绍与牵引动作 -->
-        <section class="mb-14">
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="h-6 w-1.5 bg-navy"></div>
-                <h2 class="serif-title text-2xl font-bold text-navy">双轴 2x2 商业治理沙盘</h2>
-                <span class="text-xs text-gray-400 font-mono font-bold">GRID ARCHITECTURE</span>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- 卡片：高GMV低TR (提TR/KA) -->
-                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-red-50 text-red-700 text-xs px-3 py-1 rounded font-bold border border-red-200 uppercase tracking-wider">
-                                <i class="fa-solid fa-arrow-trend-up mr-1"></i> 高 GMV · 低 TR (提 TR)
-                            </span>
-                            <span class="text-xs text-gray-400 font-mono">KA Quadrant</span>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：一鸣食品、李子园</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                            <strong>痛点诊断：</strong>月均 GMV 跨越 500 万大关，具备极佳的渠道动销与品牌货盘基础。然而预估 TR（广告率）却严重低于行业自营 TR 中位数参考值。这表明品牌极度依赖长尾分销商，自身广告流量撬动比例失调。
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
-                            <strong>更致命的是</strong>，在 ADQ 和闭环数据中，有大量属于品牌的授权主体（如关联分销或拼单主体）散落在“未映射明细”中，没有被“盘单加回”，导致纸面 TR 严重失真，显示为不达标。
-                        </p>
-                    </div>
-                    <div class="border-t border-gray-100 pt-4 mt-4">
-                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
-                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
-                            <li><strong>解冻并加回：</strong>彻底核对明细，解除原合并单元格写入异常，将“待确认”主体消耗全量盘点并“加回”；</li>
-                            <li><strong>销售推进授权：</strong>KA 团队必须在微信后台对分销商和自有授权主体做强制绑定，提升已计入 TR 比率；</li>
-                            <li><strong>微信豆专项：</strong>追加 1 倍微信豆投放预估，快速提升达标率。</li>
-                        </ul>
-                    </div>
-                </div>
+    <!-- 客群对象 + 分层两步法 -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                <!-- 卡片：高GMV高TR (提GMV) -->
-                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded font-bold border border-green-200 uppercase tracking-wider">
-                                <i class="fa-solid fa-circle-check mr-1"></i> 高 GMV · 高 TR (提 GMV)
-                            </span>
-                            <span class="text-xs text-gray-400 font-mono">Benchmark Quadrant</span>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：好想你</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                            <strong>痛点诊断：</strong>GMV 与 TR 均完美超出平台及格线。这是食品饮料大盘里的黄金资产与标杆，品牌自证比例极高，渠道控盘度极强。
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
-                            <strong>主要挑战：</strong>面临流量红利饱和，如何拓宽货盘矩阵，避免因竞争对手恶意抢注或低效消耗被动蚕食份额。
-                        </p>
-                    </div>
-                    <div class="border-t border-gray-100 pt-4 mt-4">
-                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
-                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
-                            <li><strong>ROI 监控：</strong>监控 ROI 异动或品牌型、私域型异动，防止流量空转；</li>
-                            <li><strong>货盘扩容：</strong>引导品牌从单一爆品向短视频货架、品类矩阵延展，做大 GMV 绝对值；</li>
-                            <li><strong>时空复盘：</strong>定期与 0916 及 1012 历史数据联动复盘，维持头部标杆席位。</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="card p-6">
+        <div class="text-xs font-bold text-gold kicker mb-3">客群对象</div>
+        <div class="serif text-navy font-bold mb-3" style="font-size: 16px;">K800 + 重点热招</div>
+        <ul class="space-y-2 text-xs" style="color: var(--ink-soft);">
+          <li><i class="fa-solid fa-check text-gold mr-2"></i>小店签框为主</li>
+          <li><i class="fa-solid fa-check text-gold mr-2"></i>后期抓手多</li>
+          <li><i class="fa-solid fa-check text-gold mr-2"></i>配合度高</li>
+        </ul>
+      </div>
 
-                <!-- 卡片：低GMV高TR (提GMV) -->
-                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded font-bold border border-blue-200 uppercase tracking-wider">
-                                <i class="fa-solid fa-circle-arrow-up mr-1"></i> 低 GMV · 高 TR (提 GMV / 跃迁)
-                            </span>
-                            <span class="text-xs text-gray-400 font-mono">Transition Quadrant</span>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：品类细分小而美品牌</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                            <strong>痛点诊断：</strong>TR 表现活跃，但受到货盘和供应链产能制约，月均 GMV 无法突破 500 万大关，无法充分享受平台服务和商业化的经济性红利。
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
-                            <strong>瓶颈：</strong>高 TR 下的获客成本（CAC）较高，由于缺乏直播矩阵或大主播承接，复购和后端动销严重滞后。
-                        </p>
-                    </div>
-                    <div class="border-t border-gray-100 pt-4 mt-4">
-                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
-                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
-                            <li><strong>提升商品力：</strong>优化详情页与直播承接，将公域大 TR 流量沉淀为高复购私域资产；</li>
-                            <li><strong>直播渗透：</strong>倾斜短视频和自播激励，牵引 GMV 跃迁至 500W+；</li>
-                            <li><strong>对账合规：</strong>确保品牌自证率维持在 80% 以上，防止消耗失真。</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 卡片：低GMV低TR (同时提GMV+TR) -->
-                <div class="bg-white p-8 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded font-bold border border-gray-200 uppercase tracking-wider">
-                                <i class="fa-solid fa-rectangle-list mr-1"></i> 低 GMV · 低 TR (长尾观察)
-                            </span>
-                            <span class="text-xs text-gray-400 font-mono">Longtail Quadrant</span>
-                        </div>
-                        <h3 class="serif-title text-xl font-bold text-navy mb-3">典型代表：长尾/纯第三方分销商</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                            <strong>痛点诊断：</strong>体量极小且毫无广告自证消耗，对平台而言经济杠杆低。通常依赖拼单或者无授权的第三方分销主体。
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gold-subtle pl-3 bg-gray-50 py-2">
-                            <strong>治理阻碍：</strong>团队精力有限。此类长尾名单（位于 Sheet 12 中）不应过多占用 KA 的日常人力，否则会导致团队“动作变形”。
-                        </p>
-                    </div>
-                    <div class="border-t border-gray-100 pt-4 mt-4">
-                        <div class="text-xs font-bold text-navy mb-2">商业牵引动作：</div>
-                        <ul class="text-xs text-gray-600 space-y-1.5 list-disc list-inside">
-                            <li><strong>自助式治理：</strong>提供标准的品牌自证与对账操作模版，由分销客户自主线上提报；</li>
-                            <li><strong>自动化判定：</strong>后台对账脚本执行全自动匹配，减少人工沟通损耗。</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 痛点：TOP3 待确认主体消耗对品牌 TR 的黑洞蚕食 -->
-        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
-            
-            <div class="lg:col-span-1 bg-navy text-white p-8 rounded-lg border border-gold/30 flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold tracking-widest text-gold uppercase block mb-2">DANGER ALERTS · 治理痛点</span>
-                    <h2 class="serif-title text-2xl font-black mb-4">
-                        待确认主体：<br>
-                        正在蚕食<br>
-                        品牌TR的健康黑洞
-                    </h2>
-                    <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                        那些因为“缺乏授权书”或“拼单关系未确立”而遗留在待确认池中的流量（如ADQ和闭环部分非直营主体），其消耗金额虽然是品牌在平台上真实投放的，但由于没有完成“盘单自证”，在算法中直接被丢弃或计为 0。
-                    </p>
-                </div>
-                <div class="bg-white/5 p-4 rounded border border-white/10 text-xs">
-                    <div class="font-bold text-gold mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> 对账核心铁律</div>
-                    未自证主体对品牌 TR 的“黑洞蚕食”，导致大量大牌的预估 TR 凭空折损 20%-40%，KA 推进的首要任务必须是“完成自证，解冻加回”！
-                </div>
-            </div>
-
-            <!-- 数据结构收敛大盘表 (1b 表映射数据复刻) -->
-            <div class="lg:col-span-2 bg-white p-8 rounded-lg border border-gray-200">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="serif-title text-xl font-bold text-navy">1b-客户总览与映射 · 核心商业指标 (Oct 15)</h3>
-                    <span class="text-xs text-[#10B981] font-mono font-bold bg-[#10B981]/10 px-2 py-1 rounded">100% 对账还原</span>
-                </div>
-                <p class="text-xs text-gray-500 leading-relaxed mb-6">
-                    通过合并 ADQ 映射与闭环映射，将原本散落在好几个 Sheet 里的零碎广告对账数据彻底收敛合并，实现每客户一行。数据无尾差、无重复计数。
-                </p>
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-xs text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50 text-navy font-bold uppercase tracking-wider border-b border-gray-200">
-                                <th class="p-3">核心品牌</th>
-                                <th class="p-3">月均GMV</th>
-                                <th class="p-3">直播占比</th>
-                                <th class="p-3">自证比例</th>
-                                <th class="p-3">主体映射现状（已映射 / 未映射明细）</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100 text-gray-700">
-                            <tr>
-                                <td class="p-3 font-bold text-navy">一鸣食品</td>
-                                <td class="p-3">540.2 万</td>
-                                <td class="p-3 text-gold">42.5%</td>
-                                <td class="p-3">78.2%</td>
-                                <td class="p-3">
-                                    <span class="text-[#10B981]"><i class="fa-solid fa-circle-check mr-1"></i>温州一鸣自营、电商</span> <br> 
-                                    <span class="text-red-500"><i class="fa-solid fa-circle-exclamation mr-1"></i>待自证：杭州/台州配送、分销商A</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 font-bold text-navy">李子园</td>
-                                <td class="p-3">710.8 万</td>
-                                <td class="p-3 text-gold">31.2%</td>
-                                <td class="p-3">64.5%</td>
-                                <td class="p-3">
-                                    <span class="text-[#10B981]"><i class="fa-solid fa-circle-check mr-1"></i>金华李子园旗舰店</span> <br> 
-                                    <span class="text-red-500"><i class="fa-solid fa-circle-exclamation mr-1"></i>待自证：第三方代理、散货代购主体</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 font-bold text-navy">好想你</td>
-                                <td class="p-3 font-bold text-green-600">820.5 万</td>
-                                <td class="p-3 text-gold">65.8%</td>
-                                <td class="p-3">91.8%</td>
-                                <td class="p-3">
-                                    <span class="text-[#10B981]"><i class="fa-solid fa-circle-check mr-1"></i>郑州好想你食品、自营全网</span> <br> 
-                                    <span class="text-gray-400"><i class="fa-solid fa-circle-info mr-1"></i>无大额待自证</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- 历史时空全景闭环 (Temporal Portal) -->
-        <section class="border-t border-gray-300 pt-12">
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="h-6 w-1.5 bg-navy"></div>
-                <h2 class="serif-title text-2xl font-bold text-navy">K800 全周期历史时空闭环</h2>
-                <span class="text-xs text-gray-400 font-mono font-bold">TEMPORAL PORTAL</span>
-            </div>
-            
-            <p class="text-xs text-gray-500 mb-8 max-w-2xl leading-relaxed">
-                食品饮料大盘治理是一个持续演进的过程。本页面作为最新的“1015 四象限治理圣经”置于首位。您可以点击下方卡片无缝在各历史版本报告和名单表之间进行跳转，实现全周期的逻辑大闭环。
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- 卡片一：0916 版本 -->
-                <a href="https://danniewowrich.github.io/k800-insight-report-v2/" target="_blank" class="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs text-gray-400 font-mono mb-2">September 16, 2026</div>
-                        <h4 class="serif-title text-lg font-bold text-navy mb-2">K800 食品饮料客户<br>生意洞察报告 · 20260916</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
-                            探讨首期客户底表画像、微信豆原始大盘映射、大客户分销盘单自证第一版公式定义。
-                        </p>
-                    </div>
-                    <div class="text-xs text-gold font-bold flex items-center">
-                        前往 0916 报告 <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
-                    </div>
-                </a>
-
-                <!-- 卡片二：1012 版本 -->
-                <a href="https://danniewowrich.github.io/k800-insight-report-v2/layer-v44.html" target="_blank" class="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs text-gray-400 font-mono mb-2">October 12, 2026</div>
-                        <h4 class="serif-title text-lg font-bold text-navy mb-2">K800 食品饮料客户<br>分层报告 v4.4.3 (1012版本)</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
-                            引入“GMV × 投放象限耦合”分层雏形，将客户分为A/B/C/D四个池进行名单隔离与牵引。
-                        </p>
-                    </div>
-                    <div class="text-xs text-gold font-bold flex items-center">
-                        前往 1012 报告 <i class="fa-solid fa-arrow-right ml-1.5"></i>
-                    </div>
-                </a>
-
-                <!-- 卡片三：1015 版本 -->
-                <a href="https://danniewowrich.github.io/k800-insight-report-v2/tr-20261015.html" target="_blank" class="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover-gold-shadow flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs text-gray-400 font-mono mb-2">October 15, 2026</div>
-                        <h4 class="serif-title text-lg font-bold text-navy mb-2">K800 行业TR与分层报告<br>1015 全量达标合并版</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-4">
-                            四象限名单合并表，大标题升级更正，去池化重构，展现四象限高低GMV提效路径。
-                        </p>
-                    </div>
-                    <div class="text-xs text-gold font-bold flex items-center">
-                        前往 1015 报告 <i class="fa-solid fa-arrow-right ml-1.5"></i>
-                    </div>
-                </a>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 底部注脚 (Consulting Footer) -->
-    <footer class="bg-navy text-gray-400 py-12 px-6 border-t border-gold/20 text-xs">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <div class="text-center md:text-left">
-                <div class="text-white font-bold text-sm tracking-widest text-gold mb-1">K800 STRATEGIC INTEL</div>
-                <div>© 2026 CodeBuddyCN Consulting Project. All rights reserved.</div>
-            </div>
-            <div class="flex space-x-6 text-gray-400">
-                <a href="/Users/danniezhang/Desktop/k800底表/K800-报告完整整合表_终版_20261015.xlsx" class="hover:text-gold transition-colors"><i class="fa-solid fa-file-excel mr-1"></i> 本地底表 (1b汇总)</a>
-                <span>|</span>
-                <a href="/Users/danniezhang/Desktop/K800-行业TR与客户分层报告_20261015.html" class="hover:text-gold transition-colors"><i class="fa-solid fa-file-code mr-1"></i> 本地 1015 报告</a>
-            </div>
+      <div class="card p-6">
+        <div class="flex items-baseline justify-between mb-3">
+          <div class="text-xs font-bold text-gold kicker">客户分层 · 第一步</div>
+          <span class="text-[10px] rounded px-1.5 py-0.5 bg-navy text-white font-bold">潜力</span>
         </div>
-    </footer>
+        <div class="serif text-navy font-bold mb-1" style="font-size: 15px;">先看生意体量</div>
+        <p class="text-xs leading-relaxed mb-4" style="color: var(--ink-soft);">用 GMV × TR 逻辑，取 GMV、TR <strong class="text-navy">中位数</strong>作为划分边界，把客户拢到不同的生意阶段象限。</p>
+        <div class="grid grid-cols-2 gap-1.5 text-[10px] text-center">
+          <div class="quad-cell py-2.5">高GMV · 高TR</div>
+          <div class="quad-cell py-2.5">低GMV · 高TR</div>
+          <div class="quad-cell py-2.5">高GMV · 低TR</div>
+          <div class="quad-cell py-2.5">低GMV · 低TR</div>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="flex items-baseline justify-between mb-3">
+          <div class="text-xs font-bold text-gold kicker">客户分层 · 第二步</div>
+          <span class="text-[10px] rounded px-1.5 py-0.5 bg-navy text-white font-bold">切入点</span>
+        </div>
+        <div class="serif text-navy font-bold mb-1" style="font-size: 15px;">再看生意模式</div>
+        <p class="text-xs leading-relaxed mb-4" style="color: var(--ink-soft);">给客户做<strong class="text-navy">生意快照</strong>，看清生意渠道来源。</p>
+        <div class="grid grid-cols-2 gap-1.5 text-[10px] text-center">
+          <div class="quad-cell py-2.5">自营 × 直播</div>
+          <div class="quad-cell py-2.5">分销 × 直播</div>
+          <div class="quad-cell py-2.5">自营 × 短视频</div>
+          <div class="quad-cell py-2.5">分销 × 短视频</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ 04 · 进展与规划 ═══════════ -->
+  <section class="mb-14 fade-up d5">
+    <div class="flex items-center space-x-3 mb-6">
+      <div style="width: 5px; height: 22px; background: var(--navy);"></div>
+      <h2 class="serif text-navy font-bold" style="font-size: 20px;">进展与规划：正式启动后的 1–3 个月</h2>
+      <span class="text-xs kicker font-bold" style="color: var(--ink-soft);">Roadmap</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- 已完成 -->
+      <div class="card p-6 lg:col-span-1">
+        <div class="flex items-center space-x-2 mb-4">
+          <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background: rgba(16,185,129,.12); color: #10B981;"><i class="fa-solid fa-check"></i></span>
+          <div class="text-xs font-bold text-navy kicker">已完成</div>
+        </div>
+        <ul class="space-y-4 text-xs leading-relaxed">
+          <li class="flex gap-2.5">
+            <i class="fa-solid fa-circle-check mt-0.5" style="color: #10B981;"></i>
+            <div><strong class="text-navy">TR 分层报告 + 客户打标名单</strong><br><span style="color: var(--ink-soft);">GMV × TR 中位数象限已落表</span></div>
+          </li>
+          <li class="flex gap-2.5">
+            <i class="fa-solid fa-circle-check mt-0.5" style="color: #10B981;"></i>
+            <div><strong class="text-navy">标杆客户筛选标准</strong><br><span style="color: var(--ink-soft);">四象限客户都有覆盖 + 客户配合度（<strong class="text-gold">极其重要</strong>）</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 六步流程 -->
+      <div class="card p-6 lg:col-span-2">
+        <div class="flex items-center justify-between mb-5">
+          <div class="text-xs font-bold text-navy kicker">正式启动 · 六步流程</div>
+          <span class="text-[10px] rounded px-1.5 py-0.5 border border-gold/40 bg-gold/10 text-gold font-bold">1–3 个月</span>
+        </div>
+        <div class="space-y-0">
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-node">1</div>
+              <div class="flex-1 w-px" style="background: var(--line);"></div>
+            </div>
+            <div class="pb-5">
+              <div class="font-bold text-navy text-sm">客户需求对齐</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-node">2</div>
+              <div class="flex-1 w-px" style="background: var(--line);"></div>
+            </div>
+            <div class="pb-5">
+              <div class="font-bold text-navy text-sm">四力取数</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-node">3</div>
+              <div class="flex-1 w-px" style="background: var(--line);"></div>
+            </div>
+            <div class="pb-5">
+              <div class="font-bold text-navy text-sm">四力诊断框架输出</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-node">4</div>
+              <div class="flex-1 w-px" style="background: var(--line);"></div>
+            </div>
+            <div class="pb-5">
+              <div class="font-bold text-navy text-sm">客户侧沟通与落地</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-node">5</div>
+              <div class="flex-1 w-px" style="background: var(--line);"></div>
+            </div>
+            <div class="pb-5">
+              <div class="font-bold text-navy text-sm">客户生意 / 广告数据回收</div>
+              <div class="text-xs" style="color: var(--ink-soft);">线上化</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-node" style="background: var(--gold); box-shadow: 0 0 0 4px rgba(193,154,107,.18);">6</div>
+            </div>
+            <div>
+              <div class="font-bold text-navy text-sm">客群增长策略 SOP 交付</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 rounded-lg p-3.5 text-xs leading-relaxed border" style="background: var(--gold-light); border-color: var(--gold);">
+          <i class="fa-solid fa-thumbtack text-gold mr-1.5"></i><strong class="text-navy">同步推进：</strong>内部对应工具 / 资源<strong class="text-navy">产品化方案</strong>——从依赖个人经验，走向工具化。
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ 05 · 协作分工 ═══════════ -->
+  <section class="fade-up d6">
+    <div class="flex items-center space-x-3 mb-6">
+      <div style="width: 5px; height: 22px; background: var(--navy);"></div>
+      <h2 class="serif text-navy font-bold" style="font-size: 20px;">后续协作</h2>
+      <span class="text-xs kicker font-bold" style="color: var(--ink-soft);">Collaboration</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="card p-6">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style="background: rgba(10,25,47,.06);">
+          <i class="fa-solid fa-database text-navy text-sm"></i>
+        </div>
+        <div class="serif text-navy font-bold mb-2" style="font-size: 15px;">经营户</div>
+        <ul class="space-y-1.5 text-xs leading-relaxed" style="color: var(--ink-soft);">
+          <li>· 四力取数：短期人力，长期线上化</li>
+          <li>· 客户生意 / 广告数据回收（线上化）</li>
+        </ul>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style="background: rgba(10,25,47,.06);">
+          <i class="fa-solid fa-cart-plus text-navy text-sm"></i>
+        </div>
+        <div class="serif text-navy font-bold mb-2" style="font-size: 15px;">经营组</div>
+        <ul class="space-y-1.5 text-xs leading-relaxed" style="color: var(--ink-soft);">
+          <li>· 更多 GMV 抓手需要共建</li>
+        </ul>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style="background: rgba(10,25,47,.06);">
+          <i class="fa-solid fa-people-arrows text-navy text-sm"></i>
+        </div>
+        <div class="serif text-navy font-bold mb-2" style="font-size: 15px;">跨行业协同</div>
+        <ul class="space-y-1.5 text-xs leading-relaxed" style="color: var(--ink-soft);">
+          <li>· 跨行业销售 / 运营协同</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════ 页脚 ═══════════ -->
+<footer class="bg-navy text-white/50 text-xs">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="text-center md:text-left">
+      <div class="text-gold font-bold tracking-widest text-xs mb-1">BUSINESS INSIGHT · ONE PAGE</div>
+      <div>内容源自《业务洞察》文档 · 2026.10</div>
+    </div>
+    <div class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+      <a href="https://danniewowrich.github.io/k800-insight-report-v2/" target="_blank" class="hover:text-gold transition-colors"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>0916 洞察报告</a>
+      <a href="https://danniewowrich.github.io/k800-insight-report-v2/layer-v44.html" target="_blank" class="hover:text-gold transition-colors"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>1012 分层报告</a>
+      <a href="https://danniewowrich.github.io/k800-insight-report-v2/tr-20261015.html" target="_blank" class="hover:text-gold transition-colors"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>1015 TR 报告</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
