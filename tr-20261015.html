@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>K800 行业TR与客户分层报告1015 版本</title>
+<title>K800 行业TR与客户分层报告 · 截止1028</title>
 <style>
 :root{--ink:#1F2937;--dim:#6B7280;--line:#E5E7EB;--blue:#3B5BDB;--green:#059669;--amber:#B45309}
 *{box-sizing:border-box} body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:#F6F7FB;line-height:1.7}
@@ -51,15 +51,15 @@ th.hl{background:#FDE68A;color:#78350F}
 .cl .ktag{display:inline-block;background:#FEF3C7;border:1px solid #F59E0B;color:#92400E;border-radius:11px;padding:0 9px;font-size:11px;font-weight:700}
 .cl a.qs{margin-top:2px}
 .clB0{border-color:#10B981}.clB1{border-color:#F59E0B}.clB2{border-color:#3B82F6}.clB3{border-color:#94A3B8}.clB4{border-color:#8B5CF6}
-.wm{position:fixed;inset:0;z-index:9999;pointer-events:none;display:flex;flex-wrap:wrap;gap:110px 150px;align-content:space-around;justify-content:center;transform:rotate(-28deg) scale(1.5);overflow:hidden}
-.wm span{font-size:20px;font-weight:700;color:rgba(31,41,55,.055);letter-spacing:.18em;white-space:nowrap}
+.wm{position:fixed;inset:0;z-index:9999;pointer-events:none;display:flex;flex-wrap:wrap;gap:62px 82px;align-content:space-around;justify-content:center;transform:rotate(-28deg) scale(1.5);overflow:hidden}
+.wm span{font-size:17px;font-weight:700;color:rgba(31,41,55,.055);letter-spacing:.18em;white-space:nowrap}
 .foot{color:var(--dim);font-size:11.5px;margin-top:24px;text-align:center}
 .appendix{font-size:11.5px;color:var(--dim)}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}.pools{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
 
-<header><h1>K800 行业TR与客户分层报告1015 版本</h1>
-<p>腾讯广告·食品饮料 · 2026年1-8月 · 267家非空品牌 · 主口径=闭环 · 20261015 终版基线</p>
+<header><h1>K800 行业TR与客户分层报告 · 截止1028</h1>
+<p>腾讯广告·食品饮料 · 2026年1-8月 · 267家非空品牌 · 主口径=闭环 · 底表20261015 · 修订截止1028</p>
 <div class="kpis">
 <div class="kpi"><b>68.61亿</b><span>平台GMV</span></div>
 <div class="kpi"><b>12.00亿</b><span>广告消耗（全量）</span></div>
@@ -76,33 +76,21 @@ th.hl{background:#FDE68A;color:#78350F}
 <b>③ 四池牵引</b>：高GMV高TR→提GMV 14 家 · 高GMV低TR→提TR 26 家 · 低GMV高TR→GMV跃迁500万+ 47 家 · 低GMV低TR→同时提GMV+TR 180 家（ROI异常/品牌型 3 家单列观察，不进四象限）。
 <span class="src">📄 <a href="1015/K800-行业TR分析与达标名单合并表_20261015.xlsx">合并表（全部明细）</a> · <a href="K800-广告消耗终版底表_1015.xlsx">终版底表</a></span></div></section>
 
-<section><h2><span class="no">1</span>指标说明（先读这节，后面表格都能看懂）</h2>
+<section><h2><span class="no">1</span>指标说明（1 分钟看懂）</h2>
 <div class="gloss">
-<b>四个基础指标</b><br>
-· <b>闭环TR</b> = 闭环广告消耗 ÷ GMV（客户每卖 100 元货，投了多少闭环广告）<br>
-· <b>预估TR（闭环投放+微信豆投放）</b> = （闭环消耗 + 1倍微信豆预估）÷ GMV = 闭环TR × 2（微信豆按 1 倍假设，待实际数据回填）<br>
-· <b>投放TR</b> = 全量广告消耗 ÷ GMV（含加粉/直购/CID 站外链路）<br>
-· <b>ROI</b> = 每投 1 元带来的闭环成交（&lt;1 亏钱；已剔除未归因行重算）<br><br>
-<b>基准怎么来的（以行业为单位）</b><br>
-· <b>行业自营TR中位数参考值 = 该行业「自营客户」闭环TR的中位数 × 2</b>（×2 = 分子加入 1 倍闭环消耗的微信豆预估，与预估TR（闭环投放+微信豆投放）口径可比）<br>
-· 把该行业所有<b>自营客户</b>的预估TR（闭环投放+微信豆投放）从低到高排队：<br>
-· <b>中位数</b> = 排队中间那个客户的值 → <b>一半自营客户已做到</b>，是"被验证可达成"的及格线<br>
-· <b>P75（基准上限）</b> = 前 25% 头部客户做到的水平 → 冲刺参考，不是承诺<br>
-· 自营样本 &lt;4 家的行业 → 用大盘自营基准代替，标"小样本参考"<br><br>
-<b>谁跟谁比</b><br>
-· <b>行业层面</b>：行业整体预估TR（闭环投放+微信豆投放）（加权）vs 该行业的自营TR中位数参考值 → 差距 pt = 参考值 − 现状，正数即空间<br>
-· <b>客户层面</b>：客户自己的预估TR（闭环投放+微信豆投放） vs 其所在行业的行业自营TR中位数参考值 → 达标/未达标<br><br>
-<b>行业分类标签（第2节"行业分类"列）</b><br>
-· <b>已达标</b>：现状 ≥ 行业自营TR中位数参考值 ｜ <b>重点机会</b>：差距 ≥15pt 且自营样本 ≥4 家 ｜ <b>有提升空间</b>：差距 0~15pt ｜ <b>小样本参考</b>：自营样本 &lt;4 家（基准不可靠，<b>不判机会</b>）
+<b>几个TR是什么</b><br>
+· <b>闭环TR</b>：客户每卖 100 元货，投了多少闭环广告（闭环消耗 ÷ GMV）<br>
+· <b>预估TR（闭环投放+微信豆投放）</b>：闭环TR × 2 —— 再加上 1 倍微信豆的预估（微信豆实际数据待回填，先按 1 倍假设）<br>
+· <b>投放TR</b>：全量广告消耗 ÷ GMV（含加粉/直购/CID 站外链路）<br>
+· <b>ROI</b>：每投 1 元带来多少闭环成交，&lt;1 就是亏钱<br><br>
+<b>及格线怎么定</b>：把每个行业「自营客户」的预估TR（闭环投放+微信豆投放）从低到高排队，<b>中间那个客户的值，就是行业自营TR中位数参考值</b>——一半自营客户已经做到，说明是"被验证能达成"的水平。自营客户不足 4 家的行业改用大盘基准，标"小样本参考"（不作机会判断）。<br><br>
+<b>怎么算达标</b>：客户预估TR（闭环投放+微信豆投放）≥ 所在行业参考值 → <b>达标</b>；低于 → <b>未达标</b>。行业分类标签：<b>已达标</b>（现状≥参考值）｜<b>重点机会</b>（差距≥15pt 且样本足）｜<b>有提升空间</b>（差距&lt;15pt）｜<b>小样本参考</b>。各行业明细见 <a href="tr-industry-20261015.html" target="_blank" style="color:var(--blue)">行业全景页 ↗</a>。
 </div></section>
 
-<section><h2><span class="no">2</span>行业全景：闭环TR / 预估TR（闭环投放+微信豆投放） / 基准</h2>
-<div class="sub">对比口径：行业整体预估TR（闭环投放+微信豆投放） vs 该行业的自营TR中位数参考值（自营中位×2）。"分销近乎零投放"=分销加权闭环TR&lt;10%且自营/分销差≥5倍。</div>
-<table><tr><th>行业</th><th class="num">GMV亿</th><th class="num">品牌数</th><th class="hl">闭环TR现状</th><th class="hl">预估TR（闭环投放+微信豆投放）现状</th><th class="hl">行业自营TR中位数参考值</th><th class="num">自营品牌数</th><th class="num">分销品牌数</th><th>行业分类</th></tr><tr><td><b>膳食营养</b></td><td class="num">18.6</td><td class="num">11</td><td>21.8%</td><td>43.6%</td><td>39.3%</td><td class="num">7</td><td class="num">4</td><td class="tg"><span class="tOk">已达标</span></td></tr><tr><td><b>粮油调味速食</b></td><td class="num">12.12</td><td class="num">60</td><td>12.2%</td><td>24.4%</td><td>26.5%</td><td class="num">18</td><td class="num">42</td><td class="tg"><span class="tMid">有提升空间</span>；分销近乎零投放</td></tr><tr><td><b>休闲食品</b></td><td class="num">8.26</td><td class="num">59</td><td>8.4%</td><td>16.7%</td><td>35.2%</td><td class="num">10</td><td class="num">49</td><td class="tg"><span class="tHot">重点机会（样本足·差距大）</span>；分销近乎零投放</td></tr><tr><td><b>冲调品</b></td><td class="num">6.34</td><td class="num">19</td><td>6.0%</td><td>11.9%</td><td>22.7%</td><td class="num">5</td><td class="num">14</td><td class="tg"><span class="tMid">有提升空间</span></td></tr><tr><td><b>生鲜</b></td><td class="num">5.2</td><td class="num">26</td><td>2.7%</td><td>5.3%</td><td>34.6%</td><td class="num">4</td><td class="num">22</td><td class="tg"><span class="tHot">重点机会（样本足·差距大）</span>；分销近乎零投放</td></tr><tr><td><b>乳制品</b></td><td class="num">5.01</td><td class="num">13</td><td>14.7%</td><td>29.4%</td><td>38.2%</td><td class="num">5</td><td class="num">8</td><td class="tg"><span class="tMid">有提升空间</span></td></tr><tr><td><b>传统滋补</b></td><td class="num">3.39</td><td class="num">22</td><td>16.2%</td><td>32.5%</td><td>45.5%</td><td class="num">7</td><td class="num">15</td><td class="tg"><span class="tMid">有提升空间</span>；分销近乎零投放</td></tr><tr><td><b>软饮料</b></td><td class="num">3.05</td><td class="num">14</td><td>16.8%</td><td>33.6%</td><td>45.1%</td><td class="num">7</td><td class="num">7</td><td class="tg"><span class="tMid">有提升空间</span></td></tr><tr><td><b>白酒</b></td><td class="num">1.9</td><td class="num">10</td><td>22.1%</td><td>44.3%</td><td>24.8%</td><td class="num">5</td><td class="num">5</td><td class="tg"><span class="tOk">已达标</span>；分销近乎零投放</td></tr><tr><td><b>啤酒</b></td><td class="num">1.42</td><td class="num">3</td><td>6.8%</td><td>13.7%</td><td>33.0%</td><td class="num">1</td><td class="num">2</td><td class="tg"><span class="tSml">小样本参考（基准回退大盘，不作机会判断）</span>；分销近乎零投放</td></tr><tr><td><b>保健食品</b></td><td class="num">1.17</td><td class="num">9</td><td>52.6%</td><td>105.2%</td><td>131.4%</td><td class="num">6</td><td class="num">3</td><td class="tg"><span class="tHot">重点机会（样本足·差距大）</span>；分销近乎零投放</td></tr><tr><td><b>茶叶</b></td><td class="num">0.91</td><td class="num">8</td><td>14.2%</td><td>28.4%</td><td>33.2%</td><td class="num">5</td><td class="num">3</td><td class="tg"><span class="tMid">有提升空间</span></td></tr><tr><td><b>宠物</b></td><td class="num">0.71</td><td class="num">3</td><td>43.9%</td><td>87.9%</td><td>33.0%</td><td class="num">2</td><td class="num">1</td><td class="tg"><span class="tSml">小样本参考（基准回退大盘，不作机会判断）</span>；分销近乎零投放</td></tr><tr><td><b>葡萄酒</b></td><td class="num">0.37</td><td class="num">4</td><td>25.0%</td><td>50.0%</td><td>33.0%</td><td class="num">2</td><td class="num">2</td><td class="tg"><span class="tSml">小样本参考（基准回退大盘，不作机会判断）</span></td></tr><tr><td><b>其他酒类</b></td><td class="num">0.1</td><td class="num">1</td><td>10.6%</td><td>21.1%</td><td>33.0%</td><td class="num">1</td><td class="num">0</td><td class="tg"><span class="tSml">小样本参考（基准回退大盘，不作机会判断）</span></td></tr><tr><td><b>洋酒</b></td><td class="num">0.07</td><td class="num">4</td><td>15.4%</td><td>30.7%</td><td>—</td><td class="num">0</td><td class="num">4</td><td class="tg"><span class="tSml">小样本参考（基准回退大盘，不作机会判断）</span></td></tr><tr><td><b>海外保健食品</b></td><td class="num">0.0</td><td class="num">1</td><td>8.3%</td><td>16.7%</td><td>—</td><td class="num">0</td><td class="num">1</td><td class="tg"><span class="tSml">小样本参考（基准回退大盘，不作机会判断）</span></td></tr></table>
-<p><span class="src">📄 <a href="1015/K800-行业TR分析与达标名单合并表_20261015.xlsx">合并表 · Sheet1三视角/Sheet7基准表（含行业分类）</a></span></p></section>
 
-<section><h2><span class="no">3</span>四池名单与牵引方向</h2>
-<div class="plain"><b>划分逻辑</b>：横轴 = 客户预估TR（闭环投放+微信豆投放） 是否达到所在行业的自营TR中位数参考值 → <b>高TR</b>（已达基准）/ <b>低TR</b>（未达基准）；纵轴 = 月均GMV 是否 ≥500 万 → 高GMV / 低GMV。两轴交叉得四象限标签（高GMV高TR / 高GMV低TR / 低GMV高TR / 低GMV低TR），各配专属牵引动作；ROI异常或品牌型/私域型客户（3家）为备注通道，不进四象限。<span class="src">🔗 <a href="tr-detail-20261015.html" target="_blank">查看全量客户明细（267家 · 可按象限筛选）↗</a></span></div>
+
+<section><h2><span class="no">2</span>四池名单与牵引方向</h2>
+<div class="plain"><b>划分逻辑</b>：横轴 = 客户预估TR（闭环投放+微信豆投放） 是否达到所在行业的自营TR中位数参考值 → <b>高TR</b>（已达基准）/ <b>低TR</b>（未达基准）；纵轴 = 月均GMV 是否 ≥500 万 → 高GMV / 低GMV。两轴交叉得四象限标签（高GMV高TR / 高GMV低TR / 低GMV高TR / 低GMV低TR），各配专属牵引动作；ROI异常或品牌型/私域型客户（3家）为备注通道，不进四象限。<span class="src">🔗 <a href="tr-detail-20261015.html" target="_blank">查看全量客户明细（267家 · 可按象限筛选）↗</a></span> <span class="src">🌐 <a href="tr-industry-20261015.html" target="_blank">行业全景（分行业基准与差距）↗</a></span></div>
 <div class="qwrap">
 <div class="qhead"></div><div class="qhead">TR 达标（已达行业基准）</div><div class="qhead">TR 未达标（低于行业基准）</div>
 <div class="qside">高GMV<br>月均≥500万</div>
@@ -122,7 +110,7 @@ th.hl{background:#FDE68A;color:#78350F}
 <div class="dnote"><b>备注 · ROI异常或品牌型/私域型客户（3家，不进四象限）</b>：<span class="pill ">敖东</span><span class="pill ">修正</span><span class="pill ">览翠</span> —— 前端亏损靠私域后端转化或品牌型投放，只理解模式、不治理。各象限完整名单见合并表 Sheet8「四象限标签」列（可筛选）；Sheet10-13 已按四象限改名存档（表头可返回本报告）。</div>
 </div><p class="dim">四象限名单：合并表 Sheet8 按「四象限标签」列筛选即可；Sheet10-13 已按四象限改名存档。</p></section>
 
-<section><h2><span class="no">4</span>五象限客群（主导渠道 × 自营/分销）</h2>
+<section><h2><span class="no">3</span>五象限客群（主导渠道 × 自营/分销）</h2>
 <div class="sub">口径速览：<b>主导渠道</b> = 单客户自身三渠道（直播/短视频/其他）GMV 占比取最大（argmax）；<b>自营</b> = 广告GMV占比≥20% 且 广告GMV≥100万（主动投广告）；<b>分销</b> = 广告投入不足以称为主动经营（其中「重微信豆」105家 = ADQ 明细有消耗但广告占比&lt;20%，推测为微信豆/直播加热类投放，「主动分销」77家 = ADQ 盘内无消耗记录）；<b>综合标签</b>（42家）= 三渠道占比均衡（最大渠道&lt;50%），不单独成象限。本节数字已按《K800-报告完整整合表_终版_20261015》Sheet1/1b 逐项重算校验。</div>
 <div class="fw-lead"><b>客群分布</b>：重直播&分销型（或重微豆）<b>109家/17.47亿</b>（含重微信豆60家），重直播&自营型 <b>62家/22.99亿</b>（GMV最重），重短视频&自营型 <b>9家但16.30亿</b>（含诺特兰德等天花板客户），货架型 <b>50家/6.38亿</b>，重短视频&分销型 <b>37家/5.47亿</b>。<span class="src">🔗 <a href="tr-detail-20261015.html" target="_blank">查看全量客户明细（可按客群筛选）↗</a></span></div>
 <div class="clwrap">
@@ -138,6 +126,6 @@ th.hl{background:#FDE68A;color:#78350F}
 <p><b>历史报告</b>：<a href="https://danniewowrich.github.io/k800-insight-report-v2/" target="_blank">K800 食品饮料客户·生意洞察报告·20260916 ↗</a></p>
 <p>广告消耗为 v3 治理+人工盘单后口径（店铺锚点+多维自证重映射 118 万行；错绑清除 4.7 亿、盘单加回 2.14 亿；一鸣 1,431 万确认为一鸣传媒错绑，真实仅 5 万；ROI 已剔除未归因行重算）。过程详见：<a href="K800-数据治理与TR重算报告_1014.html">治理报告</a> · <a href="K800-待确认池盘单表_1014.xlsx">盘单表</a> · <a href="K800-广告消耗终版底表_1015.xlsx">终版底表</a> · <a href="K800-报告完整整合表_终版_20261015.xlsx">总底表（两报告共用）</a>。</p></section>
 
-<p class="foot">K800-行业TR与客户分层报告_20261015.html · 20261015 · 主口径=闭环（预估口径=闭环×2含1倍微信豆假设）</p>
-<div class="wm"><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span></div>
+<p class="foot">K800 行业TR与客户分层报告 · 截止1028 · 主口径=闭环（预估口径=闭环×2含1倍微信豆假设）</p>
+<div class="wm"><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span><span>danniezh ang</span></div>
 </div></body></html>
